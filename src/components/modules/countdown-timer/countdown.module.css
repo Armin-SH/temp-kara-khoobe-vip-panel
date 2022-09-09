@@ -1,0 +1,18 @@
+.container {
+  width: 136px;
+  height: 47px;
+  align-items: center;
+  border-radius: 4px;
+  justify-content: center;
+  background-color: #27d4a8;
+}
+
+.margin {
+  margin: 0 3px
+}
+
+@media only screen and (max-width: 1023px) {
+  .container {
+    width: 118px;
+  }
+}

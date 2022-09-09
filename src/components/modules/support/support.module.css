@@ -1,0 +1,11 @@
+.supportIcon {
+  position: relative;
+  width: 107px;
+  height: 107px;
+}
+
+.supportContainer {
+  position: absolute;
+  bottom: 24px;
+  left: 30px;
+}

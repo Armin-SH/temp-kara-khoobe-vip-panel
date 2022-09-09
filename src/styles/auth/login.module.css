@@ -1,0 +1,67 @@
+.container {
+  width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.passwordTextField {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 50px;
+}
+
+.mobileTextField {
+  width: 100%;
+  margin-top: 74px;
+}
+
+.mobileInput input {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.passwordInput input {
+  direction: ltr;
+  text-align: center;
+  letter-spacing: 15px;
+  text-indent: 15px;
+  margin-top: 5px;
+}
+
+.forgetPasswordButton {
+  align-items: flex-start;
+  margin-top: 28px;
+}
+
+.loginButton {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.welcomeText {
+  align-self: center;
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+}
+
+@media only screen and (min-width: 640px) {
+  .passwordTextField {
+    margin-bottom: 30px;
+  }
+
+  .forgetPasswordButton {
+    margin-top: 16px;
+  }
+
+  .loginButton {
+  }
+
+  .welcomeText {
+    margin-bottom: 40px;
+  }
+}

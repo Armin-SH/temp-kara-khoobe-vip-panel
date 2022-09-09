@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.mobileTextField {
+  width: 100%;
+  margin-top: 74px;
+}
+
+.mobileInput input {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.editMobileButton {
+  align-items: flex-start;
+  margin-top: 28px;
+}
+
+.getCodeButton {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 60px;
+}
+
+.welcomeText {
+  align-self: center;
+}
+
+.returnIcon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.returnButton {
+  align-self: flex-end;
+  gap: 4px;
+  position: absolute;
+  top: 74px;
+  align-items: center;
+}
+
+@media only screen and (min-width: 640px) {
+  .editMobileButton {
+    margin-top: 16px;
+  }
+
+  .welcomeText {
+    margin-bottom: 40px;
+  }
+
+  .returnButton {
+    top: 104px;
+  }
+}

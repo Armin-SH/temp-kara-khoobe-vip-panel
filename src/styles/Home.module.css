@@ -1,0 +1,17 @@
+.container {
+  padding: 60px 0;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.textField {
+  width: 300px;
+}
+
+.input input {
+  text-align: center;
+  margin-top: 5px;
+}

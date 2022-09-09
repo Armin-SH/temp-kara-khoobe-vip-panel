@@ -1,0 +1,61 @@
+.defaultClass {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rowMobileClass {
+  flex-direction: row;
+}
+
+.row-reverseMobileClass {
+  flex-direction: row-reverse;
+}
+
+.columnMobileClass {
+  flex-direction: column;
+}
+
+.column-reverseMobileClass {
+  flex-direction: column-reverse;
+}
+
+
+@media only screen and (min-width: 640px) {
+
+  .rowTabletClass {
+    flex-direction: row;
+  }
+
+  .row-reverseTabletClass {
+    flex-direction: row-reverse;
+  }
+
+  .columnTabletClass {
+    flex-direction: column;
+  }
+
+  .column-reverseTabletClass {
+    flex-direction: column-reverse;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .rowDesktopClass {
+    flex-direction: row;
+  }
+
+  .row-reverseDesktopClass {
+    flex-direction: row-reverse;
+  }
+
+  .columnDesktopClass {
+    flex-direction: column;
+  }
+
+  .column-reverseDesktopClass {
+    flex-direction: column-reverse;
+  }
+
+}
