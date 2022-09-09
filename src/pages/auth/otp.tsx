@@ -7,14 +7,14 @@ const Otp = () => {
 
   return (
     <Div className={styles.container} mobile={"column"}>
-      <Button href={routes['route.auth.login']} className={styles.returnButton} variant={"text"}>
-        <Text typography={"tiny"} color={'grey.900'}>
-          بازگشت
-        </Text>
-        <Div className={styles.returnIcon}>
-          <Image src={ReturnIcon} alt={"بازگشت"}/>
-        </Div>
-      </Button>
+      {/*<Button href={routes['route.auth.login']} className={styles.returnButton} variant={"text"}>*/}
+      {/*  <Text typography={"tiny"} color={'grey.900'}>*/}
+      {/*    بازگشت*/}
+      {/*  </Text>*/}
+      {/*  <Div className={styles.returnIcon}>*/}
+      {/*    <Image src={ReturnIcon} alt={"بازگشت"}/>*/}
+      {/*  </Div>*/}
+      {/*</Button>*/}
       <Text className={styles.welcomeText} typography={"medium"} color={"grey.900"} type={"bold"}>
         ورود با رمز یکبار مصرف
       </Text>

@@ -43,9 +43,9 @@ const Layout = ({children, hasNavigation, gray, isAuthentication}: LayoutProps) 
             </Text>
           </a>
         </Media>
-        <Media greaterThanOrEqual={'sm'}>
-          <Support/>
-        </Media>
+        {/*<Media greaterThanOrEqual={'sm'}>*/}
+        {/*  <Support/>*/}
+        {/*</Media>*/}
       </Div>
     )
   }
