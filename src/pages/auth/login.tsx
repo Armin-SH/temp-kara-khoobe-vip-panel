@@ -2,13 +2,20 @@ import {useState} from "react";
 import styles from '@styles/auth/login.module.css'
 import {Button, Checkbox, Div, Text, TextField} from '@elements'
 import routes from '@routes'
+import {saveToCookie} from '@utils'
+import {useRouter} from "next/router";
 
 const Login = () => {
-
+  const router = useRouter()
   const [checkbox, setCheckbox] = useState(false)
 
   const handleCheckbox = () => {
     setCheckbox(prevState => !prevState)
+  }
+
+  const handleLogIn = async () => {
+    await saveToCookie('token', 'temp-token')
+    await router.push('/')
   }
 
   return (
@@ -41,7 +48,7 @@ const Login = () => {
       <Button href={routes['route.auth.otp']} size={"small"} className={styles.forgetPasswordButton} variant={"text"} color={"warning"}>
         کلمه عبور خود را فراموش کرده ام
       </Button>
-      <Button className={styles.loginButton}>
+      <Button onClick={handleLogIn} className={styles.loginButton}>
         ورود
       </Button>
       <Button href={routes['route.auth.otp']} className={styles.signUpButton}>
