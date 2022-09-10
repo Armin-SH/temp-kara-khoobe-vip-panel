@@ -58,6 +58,25 @@
 
 @media only screen and (min-width: 640px) {
   .authLeftContainer {
+    padding: 0 16%;
+  }
+
+  .tabletSecurityContainer {
+    position: relative;
+    width: 311px;
+    height: 130px;
+  }
+
+  .tabletSecurityWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 64px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .authLeftContainer {
     padding: 0 8%;
   }
 

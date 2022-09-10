@@ -3,7 +3,6 @@ import {Div, Image, Media, Text} from '@elements'
 import {LayoutProps} from "./layout.props";
 import styles from './layout.module.css'
 import {DevicesImage, LogoImage, SecurityImage} from '@images'
-import {Support} from '@modules'
 
 const Layout = ({children, hasNavigation, gray, isAuthentication}: LayoutProps) => {
   const containerClassName = `${gray}GrayContainer`;
@@ -11,8 +10,8 @@ const Layout = ({children, hasNavigation, gray, isAuthentication}: LayoutProps) 
 
   if (isAuthentication) {
     return (
-      <Div mobile={"column"} tablet={"row-reverse"} className={styles.authContainer}>
-        <Media className={styles.authRightWrapper} greaterThanOrEqual={'sm'}>
+      <Div mobile={"column"} desktop={"row-reverse"} className={styles.authContainer}>
+        <Media className={styles.authRightWrapper} greaterThanOrEqual={'md'}>
           <Div className={styles.authRightContainer} mobile={"column"}>
             <Div className={styles.logoContainer}>
               <Image src={LogoImage} alt={'کارا خوبه'}/>
@@ -33,7 +32,12 @@ const Layout = ({children, hasNavigation, gray, isAuthentication}: LayoutProps) 
         <Div className={styles.authLeftContainer} mobile={"column"}>
           {children}
         </Div>
-        <Media className={styles.mobileDeviceWrapper} lessThan={"sm"}>
+        <Media at={"sm"} className={styles.tabletSecurityWrapper}>
+          <Div className={styles.tabletSecurityContainer}>
+            <Image src={SecurityImage} alt={''}/>
+          </Div>
+        </Media>
+        <Media className={styles.mobileDeviceWrapper} lessThan={"md"}>
           <Div className={styles.devicesContainer}>
             <Image src={DevicesImage} alt={'پلتفرم ها'}/>
           </Div>

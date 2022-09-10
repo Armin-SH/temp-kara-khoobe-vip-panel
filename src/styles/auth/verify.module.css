@@ -64,6 +64,26 @@
 }
 
 @media only screen and (min-width: 640px) {
+  .returnButton {
+    margin-bottom: 25%;
+  }
+
+  .countDownContainer {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .changeMobile {
+    margin-top: 64px;
+  }
+
+  .passwordTextField {
+    margin-top: 48px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
   .container {
     padding-top: 110px;
   }
@@ -76,12 +96,6 @@
     margin-bottom: 40px;
   }
 
-  .countDownContainer {
-    justify-content: space-between;
-    margin-top: 32px;
-    flex-wrap: wrap;
-  }
-
   .passwordTextField {
     margin-top: 48px;
   }
@@ -89,9 +103,5 @@
   .returnButton {
     align-self: flex-end;
     margin-bottom: 20%;
-  }
-
-  .changeMobile {
-    margin-top: 69px;
   }
 }
