@@ -3,6 +3,7 @@ import {Div, Image, Media, Text} from '@elements'
 import {LayoutProps} from "./layout.props";
 import styles from './layout.module.css'
 import {DevicesImage, LogoImage, SecurityImage} from '@images'
+import {Support} from '@modules'
 
 const Layout = ({children, hasNavigation, gray, isAuthentication}: LayoutProps) => {
   const containerClassName = `${gray}GrayContainer`;
@@ -47,9 +48,9 @@ const Layout = ({children, hasNavigation, gray, isAuthentication}: LayoutProps) 
             </Text>
           </a>
         </Media>
-        {/*<Media greaterThanOrEqual={'sm'}>*/}
-        {/*  <Support/>*/}
-        {/*</Media>*/}
+        <Media greaterThanOrEqual={'sm'}>
+          <Support/>
+        </Media>
       </Div>
     )
   }
