@@ -8,14 +8,14 @@ const Verify = () => {
 
   return (
     <Div className={styles.container} mobile={"column"}>
-      {/*<Button href={routes['route.auth.otp']} className={styles.returnButton} variant={"text"}>*/}
-      {/*  <Text typography={"tiny"} color={'grey.900'}>*/}
-      {/*    بازگشت*/}
-      {/*  </Text>*/}
-      {/*  <Div className={styles.returnIcon}>*/}
-      {/*    <Image src={ReturnIcon} alt={"بازگشت"}/>*/}
-      {/*  </Div>*/}
-      {/*</Button>*/}
+      <Button href={routes['route.auth.otp']} className={styles.returnButton} variant={"text"}>
+        <Text typography={"tiny"} color={'grey.900'}>
+          بازگشت
+        </Text>
+        <Div className={styles.returnIcon}>
+          <Image src={ReturnIcon} alt={"بازگشت"}/>
+        </Div>
+      </Button>
       <Text className={styles.welcomeText} typography={"medium"} color={"grey.900"} type={"bold"}>
         کد پیامک شده را وارد کنید
       </Text>
@@ -35,6 +35,9 @@ const Verify = () => {
         </Text>
         <CountDown variant={"outlined"} sec={300}/>
       </Div>
+      <Button href={routes['route.auth.otp']} size={"small"} className={styles.changeMobile} color={"secondary"} variant={"text"}>
+        ویرایش شماره موبایل
+      </Button>
     </Div>
   )
 }

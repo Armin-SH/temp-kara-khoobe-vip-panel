@@ -24,7 +24,7 @@
 .authLeftContainer {
   flex: 1;
   min-width: 50%;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 0 24px;
 }
 
@@ -52,12 +52,18 @@
 
 .devicesContainer {
   position: relative;
-  width: 149px;
-  height: 38px;
+  width: 67px;
+  height: 17px;
 }
 
 @media only screen and (min-width: 640px) {
   .authLeftContainer {
     padding: 0 8%;
+  }
+
+  .devicesContainer {
+    position: relative;
+    width: 149px;
+    height: 38px;
   }
 }

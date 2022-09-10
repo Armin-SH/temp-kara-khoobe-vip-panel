@@ -22,6 +22,7 @@ const Login = () => {
         placeholder={"- - - - - - - - (98+)"}
         placeholderalign={"center"}
         label={'شماره همراه خود را وارد کنید'}
+        mobileLogin={true}
       />
       <TextField
         InputProps={{className: styles.passwordInput}}
@@ -29,6 +30,7 @@ const Login = () => {
         placeholder={"****"}
         placeholderalign={"center"}
         label={'کلمه عبور'}
+        mobileLogin={true}
       />
       <label onClick={handleCheckbox} className={styles.checkboxContainer}>
         <Checkbox color={'primary'} checked={checkbox}/>
@@ -41,6 +43,9 @@ const Login = () => {
       </Button>
       <Button className={styles.loginButton}>
         ورود
+      </Button>
+      <Button href={routes['route.auth.otp']} className={styles.signUpButton}>
+        ثبت نام
       </Button>
     </Div>
   )

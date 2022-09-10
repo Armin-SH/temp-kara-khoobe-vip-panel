@@ -92,13 +92,16 @@ const OutlinedTextField = styled(({fieldsetBackground, backgroundColor, padding,
       "@media (min-width: 640px)": {
         fontSize: props.placeholdertabletsize,
       },
+      "@media (min-width: 1024px)": {
+        fontSize: props.placeholderdesktopsize,
+      },
     },
     "& input": {
       "@media (min-width: 640px)": {
-        fontSize: props.mobileLogin ? "25px" : '16px',
+        fontSize: props.mobileLogin ? "24px" : '16px',
       },
       borderRadius: '8px',
-      fontSize: props.mobileLogin ? "19px" : "12px",
+      fontSize: props.mobileLogin ? "20px" : "12px",
       fontFamily: typography.regular,
       direction: props.inputMode === "email" || props.inputMode === "numeric" ? 'ltr' : "rtl",
     },
@@ -170,8 +173,9 @@ TextField.defaultProps = {
   variant: 'outlined',
   color: 'primary',
   mobileLogin: false,
-  placeholdertabletsize: '16px',
-  placeholdermobilesize: '12px',
+  placeholderdesktopsize: '24px',
+  placeholdertabletsize: '24px',
+  placeholdermobilesize: '20px',
 };
 
 export default TextField;

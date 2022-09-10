@@ -28,6 +28,7 @@ export interface TextFieldProps {
   maxRows?: number
   placeholdermobilesize?: string
   placeholderalign?: 'left' | "center" | "right"
+  placeholderdesktopsize?: string
   mobileLogin?: boolean
   placeholdertabletsize?: string
   multiline?: boolean

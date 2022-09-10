@@ -8,11 +8,7 @@ const Container = styled("div")<ContainerProps>`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  border-radius: 4px;
   justify-content: center;
-  ${(props) => props.variant === "contained" ? `
-    background-color: #84bffc;
-  ` : null}
 `;
 
 const CountDown = ({sec, parentCallback, reset, variant}: CountdownProps) => {
