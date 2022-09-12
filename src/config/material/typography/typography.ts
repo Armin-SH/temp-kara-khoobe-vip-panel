@@ -5,7 +5,7 @@ export const typographyTheme: TypographyType = {
   fontFamily: ['IRANYekanRegular', 'Helvetica', 'Calibri', 'Arial', 'sans-serif',].join(','),
   extraHuge: {
     lineHeight: 1.5,
-    fontSize: "6rem",
+    fontSize: "2.25rem",
     "@media only screen and (min-width: 640px)": {
       fontSize: "6rem"
     },

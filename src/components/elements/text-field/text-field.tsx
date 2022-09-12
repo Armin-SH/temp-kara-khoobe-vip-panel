@@ -5,7 +5,8 @@ import {paletteTheme} from '../../../config/material/palette'
 import {TextFieldProps} from './text-field.props'
 import {typography} from "@utils";
 
-const FilledTextField = styled(({color, borderWidth, backgroundColor, variant, ...props}: TextFieldProps) => <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => ({
+const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}: TextFieldProps) =>
+    <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => ({
   "& input": {
     direction: 'rtl',
     "@media (min-width: 640px)": {
@@ -25,25 +26,37 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, variant, .
     direction: props.inputMode === "email" || props.inputMode === "numeric" ? 'ltr' : "rtl",
     fontFamily: typography.regular,
     backgroundColor: paletteTheme[props.color || "primary"].main,
-    borderBottom: 'none',
-    borderRadius: '4px',
+    border: 'none',
+    borderRadius: '55px',
     paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: 0,
-    height: "48px",
+    paddingRight: '21px',
+    height: "39px",
   },
   "& .MuiFilledInput-root:before": {
-    borderBottom: 'none'
+    border: 'none'
   },
   "& .MuiFilledInput-root:hover": {
-    borderBottom: 'none',
+    border: 'none',
     backgroundColor: paletteTheme[props.color || "primary"].dark,
   },
   "& .MuiFilledInput-root:hover:not(.Mui-disabled):before": {
-    borderBottom: 'none',
+    border: 'none',
   },
   "& .MuiFilledInput-root:after": {
-    borderBottom: 'none'
+    border: 'none'
+  },
+  "& input::placeholder": {
+    fontSize: props.placeholdermobilesize,
+    textAlign: props.placeholderalign,
+    color: '#595858',
+    "@media (min-width: 640px)": {
+      fontSize: props.placeholdertabletsize,
+    },
+    "@media (min-width: 1024px)": {
+      fontSize: props.placeholderdesktopsize,
+    },
   },
 }));
 const OutlinedTextField = styled(({fieldsetBackground, backgroundColor, padding, borderWidth, mobileLogin, variant, ...props}: TextFieldProps) => <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => {
@@ -139,15 +152,17 @@ const TextField = (props: TextFieldProps) => {
 
   let CssTextField = variant === "filled" ? FilledTextField : OutlinedTextField;
 
+  console.log({variant})
+
   return (
-    <CssTextField
-      maxRows={maxRows}
-      id={id}
-      fullWidth={fullWidth}
-      onChange={onChange}
-      onInput={onInput}
-      type={type}
-      inputMode={inputMode}
+      <CssTextField
+          maxRows={maxRows}
+          id={id}
+          fullWidth={fullWidth}
+          onChange={onChange}
+          onInput={onInput}
+          type={type}
+          inputMode={inputMode}
       className={className}
       InputProps={InputProps}
       placeholder={placeholder}

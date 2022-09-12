@@ -1,5 +1,5 @@
 const primary = {
-  100: "#D1FCEF",
+  100: "#ffffff",
   200: "#A5F9E8",
   300: "#76EDDF",
   400: "#51DCD7",
