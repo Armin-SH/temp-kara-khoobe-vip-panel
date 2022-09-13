@@ -67,3 +67,7 @@
   border-radius: 49px;
   transform: rotate(-90deg);
 }
+
+.counterText {
+  position: absolute;
+}

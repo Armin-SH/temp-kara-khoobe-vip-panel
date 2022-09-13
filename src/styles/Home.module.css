@@ -16,30 +16,3 @@
   width: 60%;
   margin-top: 60px;
 }
-
-.inProgressWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-
-.inProgressContainer {
-  position: relative;
-  width: 84px;
-  height: 84px;
-  transform: rotate(-90deg);
-}
-
-.doneWrapper {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 9;
-}
-
-.doneContainer {
-  position: relative;
-  width: 84px;
-  height: 84px;
-}

@@ -1,5 +1,3 @@
-import {ReactNode} from "react";
-
 export interface RequestItemProps {
   title: string
 
@@ -12,6 +10,4 @@ export interface RequestItemProps {
   totalCounter: number
 
   buttonTitle: string
-
-  children: ReactNode
 }
