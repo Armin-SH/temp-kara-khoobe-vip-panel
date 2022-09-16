@@ -78,7 +78,6 @@ const DesktopMenu = () => {
       dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
     } else {
       router.push(route)
-      dispatch(HomeActions.setExpandedMenu({expand: false}))
     }
   }
 
