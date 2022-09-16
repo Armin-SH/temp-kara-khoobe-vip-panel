@@ -25,14 +25,14 @@
 }
 
 .falseIndicatorContainer {
-  transition-property: all;
+  transition-property: right;
   transition-duration: 500ms;
   position: absolute;
   right: 157px;
 }
 
 .trueIndicatorContainer {
-  transition-property: all;
+  transition-property: right;
   transition-duration: 500ms;
   position: absolute;
   right: 317px;
@@ -113,7 +113,7 @@
 }
 
 .IndicatorPosition {
-  transition-property: top, bottom;
+  transition-property: top, right;
   transition-duration: 500ms;
   top: 145px;
   bottom: unset;
@@ -122,48 +122,48 @@
 .requestIndicatorPosition {
   top: 230px;
   bottom: unset;
-  transition-property: top, bottom;
+  transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .messagesIndicatorPosition {
   top: 315px;
   bottom: unset;
-  transition-property: top, bottom;
+  transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .contactsIndicatorPosition {
   top: 400px;
   bottom: unset;
-  transition-property: top, bottom;
+  transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .orderIndicatorPosition {
   top: 485px;
   bottom: unset;
-  transition-property: top, bottom;
+  transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .profileIndicatorPosition {
   top: unset;
   bottom: 170px;
-  transition-property: top, bottom;
+  transition-property: bottom, right;
   transition-duration: 500ms;
 }
 
 .profileIndicatorPosition {
   top: unset;
   bottom: 170px;
-  transition-property: top, bottom;
+  transition-property: bottom, right;
   transition-duration: 500ms;
 }
 
 .settingsIndicatorPosition {
   top: unset;
   bottom: 85px;
-  transition-property: top, bottom;
+  transition-property: bottom, right;
   transition-duration: 500ms;
 }
