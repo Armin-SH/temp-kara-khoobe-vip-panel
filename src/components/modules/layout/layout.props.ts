@@ -8,4 +8,6 @@ export interface LayoutProps {
   gray?: boolean
 
   isAuthentication?: boolean
+
+  expand?: boolean
 }

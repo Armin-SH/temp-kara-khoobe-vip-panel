@@ -8,16 +8,34 @@
   height: 100%;
 }
 
-.rightMenuContainer {
+.trueRightMenuContainer {
   padding-top: 24px;
-  width: 182px;
+  width: 304px;
+  align-items: center;
+  transition-property: width;
+  transition-duration: 500ms;
+}
+
+.falseRightMenuContainer {
+  transition-property: width;
+  transition-duration: 500ms;
+  padding-top: 24px;
+  width: 158px;
   align-items: center;
 }
 
-.tabletIndicatorContainer {
+.falseIndicatorContainer {
+  transition-property: all;
+  transition-duration: 500ms;
   position: absolute;
   right: 157px;
-  top: 145px
+}
+
+.trueIndicatorContainer {
+  transition-property: all;
+  transition-duration: 500ms;
+  position: absolute;
+  right: 317px;
 }
 
 .tabletIndicator {
@@ -62,10 +80,90 @@
   position: relative;
   width: 32px;
   height: 32px;
-  margin-bottom: 54px;
+  min-width: 32px;
+  min-height: 32px;
+  cursor: pointer;
 }
 
 .bottomMenuContainer {
   justify-content: flex-end;
   height: 100%;
+  width: 100%;
+}
+
+.trueIconName {
+  white-space: nowrap;
+}
+
+.falseIconName {
+  display: none;
+}
+
+.topMenuContainer {
+  width: 100%;
+}
+
+.iconContainer {
+  padding-right: 67px;
+  width: 100%;
+  margin-bottom: 54px;
+  align-self: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.IndicatorPosition {
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+  top: 145px;
+  bottom: unset;
+}
+
+.requestIndicatorPosition {
+  top: 230px;
+  bottom: unset;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+}
+
+.messagesIndicatorPosition {
+  top: 315px;
+  bottom: unset;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+}
+
+.contactsIndicatorPosition {
+  top: 400px;
+  bottom: unset;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+}
+
+.orderIndicatorPosition {
+  top: 485px;
+  bottom: unset;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+}
+
+.profileIndicatorPosition {
+  top: unset;
+  bottom: 170px;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+}
+
+.profileIndicatorPosition {
+  top: unset;
+  bottom: 170px;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
+}
+
+.settingsIndicatorPosition {
+  top: unset;
+  bottom: 85px;
+  transition-property: top, bottom;
+  transition-duration: 500ms;
 }

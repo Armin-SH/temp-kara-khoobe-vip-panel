@@ -21,7 +21,7 @@ const DesktopRequestItem = (props: RequestItemProps) => {
             </Text>
             <ProgressProvider valueEnd={totalCounter} valueStart={0}>
               {(value: number) => <CircularProgressbar
-                  styles={buildStyles({pathColor: '#FCA600', trailColor: '#F1F1F1'})}
+                  styles={buildStyles({pathColor: '#FCA600', trailColor: '#F1F1F1', pathTransitionDuration: 3})}
                   value={value}
                   maxValue={100}
               />}

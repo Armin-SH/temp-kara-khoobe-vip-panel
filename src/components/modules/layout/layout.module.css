@@ -33,11 +33,23 @@
 @media only screen and (min-width: 1024px) {
   .container {
     z-index: 2;
-    padding: 0 158px 100px 24px;
-    width: calc(100% - 340px);
     border-bottom-right-radius: 29px;
     border-top-right-radius: 29px;
     background-color: #F6F7FB;
     margin-left: 158px;
+  }
+
+  .trueContainer {
+    transition-property: width;
+    transition-duration: 500ms;
+    padding: 0 24px 100px 24px;
+    width: calc(100% - 498px);
+  }
+
+  .falseContainer {
+    transition-property: width;
+    transition-duration: 500ms;
+    padding: 0 24px 100px 24px;
+    width: calc(100% - 340px);
   }
 }
