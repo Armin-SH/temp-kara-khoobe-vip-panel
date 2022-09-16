@@ -64,14 +64,14 @@ const TabletMenu = () => {
           </Div>
           <Div mobile={"column"}>
             {TopMenu.map((item, index) => (
-                <Div className={styles.icon}>
+                <Div key={index} className={styles.icon}>
                   <Image src={item.Icon} alt={item.name}/>
                 </Div>
             ))}
           </Div>
           <Div mobile={"column"} className={styles.bottomMenuContainer}>
             {BottomMenu.map((item, index) => (
-                <Div className={styles.icon}>
+                <Div key={index} className={styles.icon}>
                   <Image src={item.Icon} alt={item.name}/>
                 </Div>
             ))}
