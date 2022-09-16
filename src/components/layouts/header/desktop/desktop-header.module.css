@@ -1,0 +1,98 @@
+.tabletHeader {
+  padding: 48px 0 96px;
+  justify-content: space-between;
+}
+
+.searchBar {
+  width: 45%;
+}
+
+.searchIconContainer {
+  margin-left: 0
+}
+
+.searchIcon {
+  width: 53px;
+  height: 53px;
+  background: #24AFB6;
+  border-radius: 100% 0 100% 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.addButton {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background-color: #C4C4C4;
+  margin-left: 208px;
+}
+
+.addButtonIcon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.profilePicContainer {
+  position: relative;
+}
+
+.profileIconOne {
+  left: 144px;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #C4C4C4;
+}
+
+.profileIconPic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+}
+
+.profileIconTwo {
+  left: 96px;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #C4C4C4;
+}
+
+.profileIconThree {
+  left: 48px;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #C4C4C4;
+}
+
+.profileIconMaster {
+  left: 0;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FCA600;
+}

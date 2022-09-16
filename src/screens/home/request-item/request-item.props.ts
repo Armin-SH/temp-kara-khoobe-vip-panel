@@ -10,4 +10,6 @@ export interface RequestItemProps {
   totalCounter: number
 
   buttonTitle: string
+
+  header: string
 }

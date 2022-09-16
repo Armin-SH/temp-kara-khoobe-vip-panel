@@ -1,0 +1,88 @@
+.wrapper {
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  flex-grow: 1;
+  min-width: 365px;
+}
+
+.container {
+  padding: 36px 32px 68px;
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 43px;
+  gap: 74px;
+}
+
+.counterContainer {
+  width: 278px;
+  height: 278px;
+  min-width: 278px;
+  min-height: 278px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #F1F1F1;
+  align-self: center;
+}
+
+.counterText {
+  position: absolute;
+}
+
+.button {
+  width: 100%;
+}
+
+.infoContainer {
+  gap: 4px;
+}
+
+.inProgressIndicator {
+  width: 16px;
+  height: 16px;
+  background-color: #FCA600;
+  border-radius: 50%;
+}
+
+.doneIndicator {
+  width: 16px;
+  height: 16px;
+  background-color: #24AFB6;
+  border-radius: 50%;
+}
+
+.infoTitle {
+  gap: 12px;
+  align-items: center;
+}
+
+.infoWrapper {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  gap: 38px;
+  width: 100%;
+}
+
+.infoCounter {
+  background-color: #FCA600;
+  width: 62px;
+  height: 32px;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.doneCounter {
+  background-color: #24AFB6;
+  width: 62px;
+  height: 32px;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}

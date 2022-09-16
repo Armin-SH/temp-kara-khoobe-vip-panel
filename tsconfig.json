@@ -35,6 +35,9 @@
       "@routes": [
         "routes"
       ],
+      "@layouts": [
+        "components/layouts"
+      ],
       "@api/*": [
         "api/api-calls/*"
       ],

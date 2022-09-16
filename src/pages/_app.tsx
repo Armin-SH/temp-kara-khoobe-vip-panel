@@ -39,29 +39,30 @@ function MyApp({fallback, Component, pageProps}: any) {
   }, []);
 
   return (
-    <React.Fragment>
-      <Head>
-        <title>کارا خوبه (VIP)</title>
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <link href="/favicon.ico" rel="icon"/>
-        <link rel="stylesheet" type="text/css" href="/nprogress.css"/>
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <SnackbarAlert/>
-        <SWRConfig value={{refreshInterval: 30000, fallback}}>
-          <Layout isAuthentication={Component.isAuthentication} hasNavigation={Component.hasNavigation}>
-            <Component {...pageProps}/>
-          </Layout>
-          <Detector
-            render={({online}: { online: boolean }) => {
-              return (online ? null : <Alert/>)
-            }}
-          />
-        </SWRConfig>
-      </ThemeProvider>
-    </React.Fragment>
+      <React.Fragment>
+        <Head>
+          <title>کارا خوبه (VIP)</title>
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+          <link href="/favicon.ico" rel="icon"/>
+          <link rel="stylesheet" type="text/css" href="/nprogress.css"/>
+        </Head>
+        <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          <SnackbarAlert/>
+          {/*<Support/>*/}
+          <SWRConfig value={{refreshInterval: 30000, fallback}}>
+            <Layout isAuthentication={Component.isAuthentication} hasNavigation={Component.hasNavigation}>
+              <Component {...pageProps}/>
+            </Layout>
+            <Detector
+                render={({online}: { online: boolean }) => {
+                  return (online ? null : <Alert/>)
+                }}
+            />
+          </SWRConfig>
+        </ThemeProvider>
+      </React.Fragment>
   )
 }
 

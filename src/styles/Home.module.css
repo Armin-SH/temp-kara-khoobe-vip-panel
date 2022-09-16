@@ -16,3 +16,12 @@
   width: 60%;
   margin-top: 60px;
 }
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    width: 100%;
+    gap: 24px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

@@ -33,6 +33,9 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}:
     paddingLeft: 0,
     paddingRight: '21px',
     height: "39px",
+    "@media only screen and (min-width: 640px)": {
+      height: '53px'
+    }
   },
   "& .MuiFilledInput-root:before": {
     border: 'none'
@@ -163,23 +166,23 @@ const TextField = (props: TextFieldProps) => {
           onInput={onInput}
           type={type}
           inputMode={inputMode}
-      className={className}
-      InputProps={InputProps}
-      placeholder={placeholder}
-      color={color}
-      value={value}
-      defaultValue={defaultValue}
-      borderWidth={borderWidth}
-      disabled={disabled}
-      error={error}
-      label={label}
-      helperText={helperText}
-      inputProps={inputProps}
-      variant={variant}
-      onKeyPress={onKeyPress}
-      inputRef={inputRef}
-      InputLabelProps={label ? {shrink: true} : InputLabelProps}
-      {...rest}/>
+          className={className}
+          InputProps={InputProps}
+          placeholder={placeholder}
+          color={color}
+          value={value}
+          defaultValue={defaultValue}
+          borderWidth={borderWidth}
+          disabled={disabled}
+          error={error}
+          label={label}
+          helperText={helperText}
+          inputProps={inputProps}
+          variant={variant}
+          onKeyPress={onKeyPress}
+          inputRef={inputRef}
+          InputLabelProps={label ? {shrink: true} : InputLabelProps}
+          {...rest}/>
   );
 };
 

@@ -1,0 +1,49 @@
+.rightMenu {
+  z-index: 1;
+  width: 100%;
+  background-color: #24AFB6;
+  position: absolute;
+  right: 0;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.rightMenuContainer {
+  padding-top: 24px;
+  width: 120px;
+  align-items: center;
+  height: 100%;
+}
+
+.tabletIndicatorContainer {
+  position: absolute;
+  right: 96px;
+  top: 150px
+}
+
+.tabletIndicator {
+  position: relative;
+  width: 68px;
+  height: 139px;
+}
+
+.menuIcon {
+  position: relative;
+  width: 80px;
+  height: 91px;
+  min-width: 80px;
+  min-height: 91px;
+  margin-bottom: 80px;
+}
+
+.icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 54px;
+}
+
+.bottomMenuContainer {
+  justify-content: flex-end;
+  height: 100%;
+}

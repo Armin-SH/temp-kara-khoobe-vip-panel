@@ -1,0 +1,55 @@
+.headerWrapper {
+  width: 100%;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+
+.headerContainer {
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rightContainer {
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.logoIcon {
+  width: 45px;
+  height: 50px;
+  position: relative;
+}
+
+.titleContainer {
+  gap: 6px
+}
+
+.dayContainer {
+  gap: 4px
+}
+
+.hamMenuIcon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.searchIconContainer {
+  margin-left: 0
+}
+
+.searchIcon {
+  width: 39px;
+  height: 39px;
+  background: #24AFB6;
+  border-radius: 100% 0 100% 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}

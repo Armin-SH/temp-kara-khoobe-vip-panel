@@ -4,7 +4,7 @@ import {RequestItem} from '@screens/home'
 
 const Home = () => {
   return (
-      <Div mobile={"column"} className={styles.container}>
+      <Div mobile={"column"} desktop={"row-reverse"} className={styles.container}>
         <RequestItem
             doneCounter={11}
             inProgressCounter={26}
@@ -12,6 +12,7 @@ const Home = () => {
             title={'در حال انجام'}
             totalCounter={45}
             buttonTitle={'مشاهده درخواست های جاری'}
+            header={'درخواست های جاری'}
         />
         <RequestItem
             doneCounter={32}
@@ -20,6 +21,7 @@ const Home = () => {
             title={'پرداخت شده'}
             totalCounter={32}
             buttonTitle={'مشاهده درخواست های گذشته'}
+            header={'درخواست های گذشته'}
         />
         <RequestItem
             doneCounter={11}
@@ -28,6 +30,7 @@ const Home = () => {
             title={'پرداخت شده'}
             totalCounter={87}
             buttonTitle={'مشاهده کل درخواست ها'}
+            header={'کل درخواست ها'}
         />
       </Div>
   )

@@ -1,0 +1,28 @@
+.authContainer {
+  flex: 1;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.authLeftContainer {
+  flex: 1;
+  min-width: 50%;
+  justify-content: flex-start;
+  padding: 0 24px;
+}
+
+.mobileDeviceWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.devicesContainer {
+  position: relative;
+  width: 67px;
+  height: 17px;
+}
