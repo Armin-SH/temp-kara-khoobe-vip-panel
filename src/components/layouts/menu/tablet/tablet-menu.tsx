@@ -123,8 +123,8 @@ const TabletMenu = () => {
           </Div>
           <Div className={styles.topMenuContainer} mobile={"column"}>
             {TopMenu.map((item, index) => (
-                <Div mobile={"column"} className={styles.itemWrapper}>
-                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
+                <Div key={index} mobile={"column"} className={styles.itemWrapper}>
+                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
                     <Div className={styles.icon}>
                       <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                     </Div>
@@ -144,8 +144,8 @@ const TabletMenu = () => {
           </Div>
           <Div mobile={"column"} className={styles.bottomMenuContainer}>
             {BottomMenu.map((item, index) => (
-                <Div mobile={"column"} className={styles.itemWrapper}>
-                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
+                <Div key={index} mobile={"column"} className={styles.itemWrapper}>
+                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
                     <Div className={styles.icon}>
                       <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                     </Div>
