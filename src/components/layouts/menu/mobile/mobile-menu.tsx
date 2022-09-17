@@ -4,7 +4,7 @@ import styles from './mobile-menu.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 import {HomeActions} from "@store/home/home-actions";
-import {AddRequestBlackIcon, AddRequestWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, LogoIcon, MobileMenuIndicatorIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon} from "@icons";
+import {AddRequestBlackIcon, AddRequestWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, MobileMenuIndicatorIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon} from "@icons";
 import {useRouter} from "next/router";
 import routes from "@routes";
 
@@ -13,32 +13,59 @@ const TopMenu = [
   {
     name: 'داشبورد',
     activeIcon: HomeBlackIcon,
-    Icon: HomeBlackIcon,
+    Icon: HomeWhiteIcon,
     route: '/',
+    subRoutes: [
+      {
+        name: '. گزارش و آمار',
+        route: '',
+      },
+      {
+        name: '. حسابداری',
+        route: '',
+      },
+      {
+        name: '. تقویم',
+        route: '',
+      },
+    ]
   },
   {
     name: 'درخواست ها',
     activeIcon: RequestsBlackIcon,
     Icon: RequestsWhiteIcon,
     route: routes['route.request.index'],
+    subRoutes: [
+      {
+        name: '. جاری',
+        route: '',
+      },
+      {
+        name: '. گذشته',
+        route: '',
+      },
+    ]
   },
   {
     name: 'پیام ها',
     activeIcon: NotificationBlackIcon,
     Icon: NotificationWhiteIcon,
     route: routes['route.message.index'],
+    subRoutes: []
   },
   {
     name: 'ارتباط با متخصصان',
     activeIcon: ContactBlackIcon,
     Icon: ContactWhiteIcon,
     route: routes['route.contact.index'],
+    subRoutes: []
   },
   {
     name: 'افزودن درخواست',
     activeIcon: AddRequestBlackIcon,
     Icon: AddRequestWhiteIcon,
     route: routes['route.order.index'],
+    subRoutes: []
   }
 ]
 
@@ -48,18 +75,21 @@ const BottomMenu = [
     activeIcon: ProfileBlackIcon,
     Icon: ProfileWhiteIcon,
     route: routes['route.profile.index'],
+    subRoutes: []
   },
   {
     name: 'تنظیمات',
     activeIcon: SettingBlackIcon,
     Icon: SettingWhiteIcon,
     route: routes['route.setting.index'],
+    subRoutes: []
   },
   {
     name: 'خروج',
     activeIcon: ExitIcon,
     Icon: ExitIcon,
     route: routes['route.auth.login'],
+    subRoutes: []
   }
 ]
 
@@ -101,9 +131,9 @@ const MobileMenu = () => {
                   {TopMenu.map((item, index) => (
                       <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
                         <Div className={styles.icon}>
-                          <Image src={item.Icon} alt={item.name}/>
+                          <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                         </Div>
-                        <Text className={styles.iconName} color={"common.white"} typography={"small"}>
+                        <Text className={styles.iconName} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
                           {item.name}
                         </Text>
                       </Div>
@@ -112,10 +142,10 @@ const MobileMenu = () => {
                 <Div mobile={"column"} className={styles.bottomMenuContainer}>
                   {BottomMenu.map((item, index) => (
                       <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
-                        <Div key={index} className={styles.icon}>
-                          <Image src={item.Icon} alt={item.name}/>
+                        <Div className={styles.icon}>
+                          <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                         </Div>
-                        <Text className={styles.iconName} color={"common.white"} typography={"small"}>
+                        <Text className={styles.iconName} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
                           {item.name}
                         </Text>
                       </Div>

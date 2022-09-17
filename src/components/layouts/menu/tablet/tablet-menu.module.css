@@ -64,7 +64,6 @@
 .iconContainer {
   padding-right: 37px;
   width: 100%;
-  margin-bottom: 54px;
   align-self: center;
   justify-content: flex-start;
   gap: 16px;
@@ -142,4 +141,8 @@
   bottom: 85px;
   transition-property: bottom, right;
   transition-duration: 500ms;
+}
+
+.itemWrapper {
+  margin-bottom: 54px;
 }
