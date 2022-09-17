@@ -6,7 +6,7 @@
   gap: 26px;
 }
 
-.counterContainer {
+.falseCounterContainer {
   width: 248px;
   height: 248px;
   min-width: 248px;
@@ -16,6 +16,10 @@
   align-items: center;
   position: relative;
   background-color: #F1F1F1;
+}
+
+.trueCounterContainer {
+  display: none;
 }
 
 .counterText {

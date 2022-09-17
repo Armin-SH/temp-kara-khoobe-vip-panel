@@ -6,6 +6,7 @@ import Image from './image'
 import Text from './text'
 import Checkbox from './checkbox'
 import Media from './media'
+import Modal from './modal'
 
 export {
   Div,
@@ -16,4 +17,5 @@ export {
   Text,
   Checkbox,
   Media,
+  Modal,
 }

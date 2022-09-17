@@ -35,6 +35,9 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}:
     height: "39px",
     "@media only screen and (min-width: 640px)": {
       height: '53px'
+    },
+    "@media only screen and (min-width: 1024px)": {
+      height: '56px'
     }
   },
   "& .MuiFilledInput-root:before": {
@@ -154,8 +157,6 @@ const TextField = (props: TextFieldProps) => {
   } = props;
 
   let CssTextField = variant === "filled" ? FilledTextField : OutlinedTextField;
-
-  console.log({variant})
 
   return (
       <CssTextField

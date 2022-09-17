@@ -22,6 +22,7 @@ import SettingBlackIcon from './setting-black.svg'
 import RequestsBlackIcon from './requests-black.svg'
 import HomeWhiteIcon from './home-white.svg'
 import ExitIcon from './exit.svg'
+import MobileMenuIndicatorIcon from './mobile-menu-indicator.svg'
 
 export {
   SupportIcon,
@@ -48,4 +49,5 @@ export {
   ContactBlackIcon,
   AddRequestBlackIcon,
   ExitIcon,
+  MobileMenuIndicatorIcon,
 }

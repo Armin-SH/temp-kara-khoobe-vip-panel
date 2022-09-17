@@ -4,6 +4,7 @@ import {HomeReducerTypes} from "./home";
 
 const initialState: HomeReducerTypes = {
   expanded: false,
+  mobileMenu: false,
 };
 
 function homeReducer(state = initialState, action: any) {
@@ -13,6 +14,12 @@ function homeReducer(state = initialState, action: any) {
       return {
         ...state,
         expanded: action?.data?.expand,
+      };
+
+    case homeActionTypes.SET_MOBILE_MENU:
+      return {
+        ...state,
+        mobileMenu: action?.data?.mobileMenu,
       };
 
     default:

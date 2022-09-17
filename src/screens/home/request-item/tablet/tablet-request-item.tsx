@@ -4,19 +4,23 @@ import styles from "./tablet-request-item.module.css";
 import {ProgressProvider} from "@modules";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {RequestItemProps} from '../request-item.props'
+import {useSelector} from "react-redux";
+import {ReducerTypes} from "@store/reducer";
 
 const TabletRequestItem = (props: RequestItemProps) => {
+  const {expanded} = useSelector((state: ReducerTypes) => state.home);
   const {inProgressCounter, doneCounter, title, subTitle, totalCounter, buttonTitle, header} = props
 
+  const counterClass = `${expanded}CounterContainer`
   return (
       <Div className={styles.container}>
-        <Div className={styles.counterContainer}>
+        <Div className={styles[counterClass]}>
           <Text className={styles.counterText} color={'grey.900'} typography={"extraHuge"} type={"bold"}>
             {totalCounter}
           </Text>
           <ProgressProvider valueEnd={totalCounter} valueStart={0}>
             {(value: number) => <CircularProgressbar
-                styles={buildStyles({pathColor: '#FCA600', trailColor: '#F1F1F1'})}
+                styles={buildStyles({pathColor: '#FCA600', trailColor: '#F1F1F1', pathTransitionDuration: 3})}
                 value={value}
                 maxValue={100}
             />}

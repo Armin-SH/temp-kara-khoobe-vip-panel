@@ -3,9 +3,16 @@ import {Div, Image, Text, TextField} from '@elements'
 import styles from "./mobile-header.module.css";
 import {HamMenuIcon, LogoIcon, SearchIcon} from "@icons";
 import {InputAdornment} from "@mui/material";
+import {useDispatch} from "react-redux";
+import {HomeActions} from "@store/home/home-actions";
 
 
 const MobileHeader = () => {
+  const dispatch = useDispatch()
+
+  const handleMobileMenu = () => {
+    dispatch(HomeActions.setMobileMenu({mobileMenu: true}))
+  }
 
   return (
       <Div className={styles.headerWrapper} mobile={'column'}>
@@ -28,7 +35,7 @@ const MobileHeader = () => {
               </Div>
             </Div>
           </Div>
-          <Div className={styles.hamMenuIcon}>
+          <Div onClick={handleMobileMenu} className={styles.hamMenuIcon}>
             <Image src={HamMenuIcon} alt={'متو'}/>
           </Div>
         </Div>

@@ -12,8 +12,7 @@ const DesktopHeader = () => {
       <Div tablet={'row-reverse'} className={styles.tabletHeader}>
         <TextField
             className={styles.searchBar}
-            placeholdermobilesize={'14px'}
-            placeholdertabletsize={'16px'}
+            placeholderdesktopsize={'16px'}
             placeholder={"جستجو کن ..."}
             color={"tertiary"}
             variant={"filled"}

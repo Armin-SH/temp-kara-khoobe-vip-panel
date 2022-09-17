@@ -1,3 +1,23 @@
+.container {
+  position: relative;
+  width: 270px;
+  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.wrapper {
+  width: 100%;
+  background-color: #F6F7FB;
+}
+
+.modal {
+  transition-property: visibility;
+  transition-duration: 500ms;
+  justify-content: flex-end;
+}
+
 .rightMenu {
   z-index: 1;
   width: 100%;
@@ -8,34 +28,19 @@
   height: 100%;
 }
 
-.trueRightMenuContainer {
+.rightMenuContainer {
   padding-top: 24px;
-  width: 304px;
+  width: 270px;
   align-items: center;
-  transition-property: width, height;
+  transition-property: width;
   transition-duration: 500ms;
 }
 
-.falseRightMenuContainer {
-  transition-property: width, height;
-  transition-duration: 500ms;
-  padding-top: 24px;
-  width: 158px;
-  align-items: center;
-}
-
-.falseIndicatorContainer {
+.indicatorContainer {
   transition-property: right;
   transition-duration: 500ms;
   position: absolute;
-  right: 157px;
-}
-
-.trueIndicatorContainer {
-  transition-property: right;
-  transition-duration: 500ms;
-  position: absolute;
-  right: 317px;
+  right: 245px;
 }
 
 .tabletIndicator {
@@ -53,36 +58,25 @@
   margin-bottom: 80px;
 }
 
-.leftMenu {
-  width: 159px;
-  min-height: 100vh;
-  height: 100%;
-  left: 0;
-  z-index: 1;
-  background-color: #ECEFFB;
-  position: absolute;
-}
-
-.leftMenuContainer {
-  padding-top: 24px;
-  width: 159px;
-  align-items: center;
-  align-self: flex-start;
-}
-
-.logoContainer {
-  position: relative;
-  width: 77px;
-  height: 77px;
-}
-
 .icon {
   position: relative;
   width: 32px;
   height: 32px;
   min-width: 32px;
   min-height: 32px;
-  cursor: pointer;
+}
+
+.iconContainer {
+  padding-right: 37px;
+  width: 100%;
+  margin-bottom: 54px;
+  align-self: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.iconName {
+  white-space: nowrap;
 }
 
 .bottomMenuContainer {
@@ -91,25 +85,8 @@
   width: 100%;
 }
 
-.trueIconName {
-  white-space: nowrap;
-}
-
-.falseIconName {
-  display: none;
-}
-
 .topMenuContainer {
   width: 100%;
-}
-
-.iconContainer {
-  cursor: pointer;
-  padding-right: 67px;
-  width: 100%;
-  align-self: center;
-  justify-content: flex-start;
-  gap: 16px;
 }
 
 .IndicatorPosition {
@@ -166,19 +143,4 @@
   bottom: 85px;
   transition-property: bottom, right;
   transition-duration: 500ms;
-}
-
-.itemWrapper {
-  margin-bottom: 54px;
-}
-
-.trueSubItem {
-  width: 100%;
-  padding-right: 110px;
-  justify-content: flex-start;
-  margin-top: 21px;
-}
-
-.falseSubItem {
-  display: none;
 }
