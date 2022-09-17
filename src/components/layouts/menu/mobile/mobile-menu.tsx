@@ -116,42 +116,38 @@ const MobileMenu = () => {
   return (
       <Modal closeAfterTransition={true} className={styles.modal} open={mobileMenu} onClose={handleCloseMenu}>
         <Div onClick={handleCloseMenu} className={styles.wrapper}>
-          <Div mobile={"column"} className={styles.container}>
-            <Div className={styles.rightMenu}>
-              <Div mobile={'column'} className={styles.rightMenuContainer}>
-                <Div className={`${styles.indicatorContainer} ${styles[indicatorPosition]}`}>
-                  <Div className={styles.tabletIndicator}>
-                    <Image src={MobileMenuIndicatorIcon} alt={'indicator'}/>
-                  </Div>
-                </Div>
-                <Div className={styles.menuIcon}>
-                  <Image src={LogoIcon} alt={"کاراخوبه"}/>
-                </Div>
-                <Div className={styles.topMenuContainer} mobile={"column"}>
-                  {TopMenu.map((item, index) => (
-                      <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
-                        <Div className={styles.icon}>
-                          <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
-                        </Div>
-                        <Text className={styles.iconName} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
-                          {item.name}
-                        </Text>
-                      </Div>
-                  ))}
-                </Div>
-                <Div mobile={"column"} className={styles.bottomMenuContainer}>
-                  {BottomMenu.map((item, index) => (
-                      <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
-                        <Div className={styles.icon}>
-                          <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
-                        </Div>
-                        <Text className={styles.iconName} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
-                          {item.name}
-                        </Text>
-                      </Div>
-                  ))}
-                </Div>
+          <Div mobile={'column'} className={styles.rightMenuContainer}>
+            <Div className={`${styles.indicatorContainer} ${styles[indicatorPosition]}`}>
+              <Div className={styles.tabletIndicator}>
+                <Image src={MobileMenuIndicatorIcon} alt={'indicator'}/>
               </Div>
+            </Div>
+            <Div className={styles.menuIcon}>
+              <Image src={LogoIcon} alt={"کاراخوبه"}/>
+            </Div>
+            <Div className={styles.topMenuContainer} mobile={"column"}>
+              {TopMenu.map((item, index) => (
+                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
+                    <Div className={styles.icon}>
+                      <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                    </Div>
+                    <Text className={styles.iconName} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                      {item.name}
+                    </Text>
+                  </Div>
+              ))}
+            </Div>
+            <Div mobile={"column"} className={styles.bottomMenuContainer}>
+              {BottomMenu.map((item, index) => (
+                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
+                    <Div className={styles.icon}>
+                      <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                    </Div>
+                    <Text className={styles.iconName} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                      {item.name}
+                    </Text>
+                  </Div>
+              ))}
             </Div>
           </Div>
         </Div>

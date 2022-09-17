@@ -10,6 +10,9 @@
 .wrapper {
   width: 100%;
   background-color: #F6F7FB;
+  overflow: scroll;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .modal {
@@ -22,15 +25,17 @@
   z-index: 1;
   width: 100%;
   background-color: #24AFB6;
-  position: absolute;
-  right: 0;
   min-height: 100vh;
   height: 100%;
+  flex-grow: 1;
 }
 
 .rightMenuContainer {
+  background-color: #24AFB6;
   padding-top: 24px;
   width: 270px;
+  height: 100%;
+  overflow: scroll;
   align-items: center;
   transition-property: width;
   transition-duration: 500ms;
