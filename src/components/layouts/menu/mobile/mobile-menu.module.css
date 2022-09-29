@@ -10,7 +10,6 @@
 .wrapper {
   width: 100%;
   background-color: #F6F7FB;
-  overflow: scroll;
   min-height: 100vh;
   height: 100%;
 }
@@ -35,10 +34,16 @@
   padding-top: 24px;
   width: 270px;
   height: 100%;
-  overflow: scroll;
   align-items: center;
   transition-property: width;
   transition-duration: 500ms;
+  overflow: scroll;
+  position: relative;
+}
+
+.rightMenuWrapper {
+  height: 100%;
+  align-items: center;
 }
 
 .indicatorContainer {
@@ -74,10 +79,13 @@
 .iconContainer {
   padding-right: 37px;
   width: 100%;
-  margin-bottom: 54px;
   align-self: center;
   justify-content: flex-start;
   gap: 16px;
+}
+
+.itemWrapper {
+  margin-bottom: 54px;
 }
 
 .iconName {
@@ -102,50 +110,87 @@
 }
 
 .requestIndicatorPosition {
-  top: 230px;
+  top: 360px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .messagesIndicatorPosition {
-  top: 315px;
+  top: 540px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .contactsIndicatorPosition {
-  top: 400px;
+  top: 625px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .orderIndicatorPosition {
-  top: 485px;
+  top: 715px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
 .profileIndicatorPosition {
-  top: unset;
-  bottom: 170px;
+  top: 800px;
+  bottom: unset;
   transition-property: bottom, right;
   transition-duration: 500ms;
 }
 
-.profileIndicatorPosition {
-  top: unset;
-  bottom: 170px;
-  transition-property: bottom, right;
-  transition-duration: 500ms;
-}
 
 .settingsIndicatorPosition {
-  top: unset;
-  bottom: 85px;
+  top: 885px;
+  bottom: unset;
   transition-property: bottom, right;
+  transition-duration: 500ms;
+}
+
+.subItem {
+  cursor: pointer;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 21px;
+  padding-right: 76px;
+}
+
+.reportsIndicatorPosition {
+  top: 200px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.accountingIndicatorPosition {
+  top: 240px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.calendarIndicatorPosition {
+  top: 285px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.requestpresentIndicatorPosition {
+  top: 415px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.requestpastIndicatorPosition {
+  top: 460px;
+  bottom: unset;
+  transition-property: top, right;
   transition-duration: 500ms;
 }

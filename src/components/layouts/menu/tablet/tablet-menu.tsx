@@ -2,30 +2,30 @@ import React from 'react'
 import {Div, Image, Text} from '@elements'
 import styles from "./tablet-menu.module.css";
 import {AddRequestBlackIcon, AddRequestWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon, TabletMenuIndicatorIcon} from "@icons";
+import routes from '@routes'
+import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
-import {useRouter} from "next/router";
 import {HomeActions} from "@store/home/home-actions";
-import routes from "@routes";
 
 const TopMenu = [
   {
     name: 'داشبورد',
     activeIcon: HomeBlackIcon,
     Icon: HomeWhiteIcon,
-    route: '/',
+    route: routes['route.home.index'],
     subRoutes: [
       {
         name: '. گزارش و آمار',
-        route: '',
+        route: routes["route.home.reports"],
       },
       {
         name: '. حسابداری',
-        route: '',
+        route: routes['route.home.accounting'],
       },
       {
         name: '. تقویم',
-        route: '',
+        route: routes['route.home.calendar'],
       },
     ]
   },
@@ -37,11 +37,11 @@ const TopMenu = [
     subRoutes: [
       {
         name: '. جاری',
-        route: '',
+        route: routes['route.request.present'],
       },
       {
         name: '. گذشته',
-        route: '',
+        route: routes['route.request.past'],
       },
     ]
   },
@@ -100,7 +100,8 @@ const TabletMenu = () => {
   const indicatorClass = `${expanded}IndicatorContainer`
   const iconNameClass = `${expanded}IconName`
   const rightContainer = `${expanded}RightMenuContainer`
-  const indicatorPosition = `${router.pathname.replace('/', '')}IndicatorPosition`
+  const subItemClass = `${expanded}SubItem`
+  const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '')}IndicatorPosition`
 
   const handleClick = ({route}: { route: string }) => {
     if (router.pathname === route) {
@@ -111,60 +112,53 @@ const TabletMenu = () => {
   }
 
   return (
-      <Div className={styles.rightMenu}>
-        <Div mobile={'column'} className={styles[rightContainer]}>
-          <Div className={`${styles[indicatorClass]} ${styles[indicatorPosition]}`}>
-            <Div className={styles.tabletIndicator}>
-              <Image src={TabletMenuIndicatorIcon} alt={'indicator'}/>
-            </Div>
-          </Div>
-          <Div className={styles.menuIcon}>
-            <Image src={LogoIcon} alt={"کاراخوبه"}/>
-          </Div>
-          <Div className={styles.topMenuContainer} mobile={"column"}>
-            {TopMenu.map((item, index) => (
-                <Div key={index} mobile={"column"} className={styles.itemWrapper}>
-                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
-                    <Div className={styles.icon}>
-                      <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
-                    </Div>
-                    <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
-                      {item.name}
-                    </Text>
-                  </Div>
-                  {/*{item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string }, index) => (*/}
-                  {/*    <Div key={item.name} className={styles[subItemClass]}>*/}
-                  {/*      <Text className={styles[iconNameClass]} color={'common.white'} typography={"small"}>*/}
-                  {/*        {subItem.name}*/}
-                  {/*      </Text>*/}
-                  {/*    </Div>*/}
-                  {/*)) : null}*/}
-                </Div>
-            ))}
-          </Div>
-          <Div mobile={"column"} className={styles.bottomMenuContainer}>
-            {BottomMenu.map((item, index) => (
-                <Div key={index} mobile={"column"} className={styles.itemWrapper}>
-                  <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
-                    <Div className={styles.icon}>
-                      <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
-                    </Div>
-                    <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
-                      {item.name}
-                    </Text>
-                  </Div>
-                  {/*{item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string }, index) => (*/}
-                  {/*    <Div key={item.name} className={styles[subItemClass]}>*/}
-                  {/*      <Text className={styles[iconNameClass]} color={'common.white'} typography={"small"}>*/}
-                  {/*        {subItem.name}*/}
-                  {/*      </Text>*/}
-                  {/*    </Div>*/}
-                  {/*)) : null}*/}
-                </Div>
-            ))}
+    <Div className={styles.rightMenu}>
+      <Div mobile={'column'} className={styles[rightContainer]}>
+        <Div className={`${styles[indicatorClass]} ${styles[indicatorPosition]}`}>
+          <Div className={styles.tabletIndicator}>
+            <Image src={TabletMenuIndicatorIcon} alt={'indicator'}/>
           </Div>
         </Div>
+        <Div className={styles.menuIcon}>
+          <Image src={LogoIcon} alt={"کاراخوبه"}/>
+        </Div>
+        <Div className={styles.topMenuContainer} mobile={"column"}>
+          {TopMenu.map((item, index) => (
+            <Div key={index} mobile={"column"} className={styles.itemWrapper}>
+              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
+                <Div className={styles.icon}>
+                  <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                </Div>
+                <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                  {item.name}
+                </Text>
+              </Div>
+              {item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string }, index) => (
+                <Div onClick={() => handleClick({route: subItem.route})} key={item.name} className={styles[subItemClass]}>
+                  <Text className={styles[iconNameClass]} color={router.pathname === subItem.route ? "grey.900" : "common.white"} typography={"small"}>
+                    {subItem.name}
+                  </Text>
+                </Div>
+              )) : null}
+            </Div>
+          ))}
+        </Div>
+        <Div mobile={"column"} className={styles.bottomMenuContainer}>
+          {BottomMenu.map((item, index) => (
+            <Div key={index} mobile={"column"} className={styles.itemWrapper}>
+              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
+                <Div className={styles.icon}>
+                  <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                </Div>
+                <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                  {item.name}
+                </Text>
+              </Div>
+            </Div>
+          ))}
+        </Div>
       </Div>
+    </Div>
   )
 }
 

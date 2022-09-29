@@ -1,26 +1,23 @@
 .rightMenu {
   z-index: 1;
-  width: 100%;
   background-color: #24AFB6;
-  position: absolute;
-  right: 0;
+  position: relative;
   min-height: 100vh;
-  height: 100%;
 }
 
 .trueRightMenuContainer {
   padding-top: 24px;
-  width: 270px;
+  width: 304px;
   align-items: center;
-  transition-property: width;
+  transition-property: width, height;
   transition-duration: 500ms;
 }
 
 .falseRightMenuContainer {
-  transition-property: width;
+  transition-property: width, height;
   transition-duration: 500ms;
   padding-top: 24px;
-  width: 119px;
+  width: 158px;
   align-items: center;
 }
 
@@ -28,14 +25,14 @@
   transition-property: right;
   transition-duration: 500ms;
   position: absolute;
-  right: 96px;
+  right: 135px;
 }
 
 .trueIndicatorContainer {
   transition-property: right;
   transition-duration: 500ms;
   position: absolute;
-  right: 245px;
+  right: 280px;
 }
 
 .tabletIndicator {
@@ -59,14 +56,14 @@
   height: 32px;
   min-width: 32px;
   min-height: 32px;
+  cursor: pointer;
 }
 
-.iconContainer {
-  padding-right: 37px;
+.bottomMenuContainer {
+  justify-content: flex-end;
+  height: 100%;
+  align-items: center;
   width: 100%;
-  align-self: center;
-  justify-content: flex-start;
-  gap: 16px;
 }
 
 .trueIconName {
@@ -77,72 +74,210 @@
   display: none;
 }
 
-.bottomMenuContainer {
-  justify-content: flex-end;
-  height: 100%;
-  width: 100%;
-}
-
 .topMenuContainer {
   width: 100%;
+  align-items: center;
 }
 
-.IndicatorPosition {
+.iconContainer {
+  cursor: pointer;
+  width: 100%;
+  align-self: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.falseIndicatorPosition {
   transition-property: top, right;
   transition-duration: 500ms;
   top: 145px;
   bottom: unset;
 }
 
-.requestIndicatorPosition {
+.trueIndicatorPosition {
+  transition-property: top, right;
+  transition-duration: 500ms;
+  top: 145px;
+  bottom: unset;
+}
+
+.falserequestIndicatorPosition {
   top: 230px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
-.messagesIndicatorPosition {
+.truerequestIndicatorPosition {
+  top: 385px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falsemessagesIndicatorPosition {
   top: 315px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
-.contactsIndicatorPosition {
+.truemessagesIndicatorPosition {
+  top: 575px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falsecontactsIndicatorPosition {
   top: 400px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
-.orderIndicatorPosition {
+.truecontactsIndicatorPosition {
+  top: 665px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falseorderIndicatorPosition {
   top: 485px;
   bottom: unset;
   transition-property: top, right;
   transition-duration: 500ms;
 }
 
-.profileIndicatorPosition {
+.trueorderIndicatorPosition {
+  top: 745px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.trueprofileIndicatorPosition {
   top: unset;
   bottom: 170px;
   transition-property: bottom, right;
   transition-duration: 500ms;
 }
 
-.profileIndicatorPosition {
+.falseprofileIndicatorPosition {
   top: unset;
   bottom: 170px;
   transition-property: bottom, right;
   transition-duration: 500ms;
 }
 
-.settingsIndicatorPosition {
+.falsesettingsIndicatorPosition {
   top: unset;
   bottom: 85px;
   transition-property: bottom, right;
   transition-duration: 500ms;
 }
 
+.truesettingsIndicatorPosition {
+  top: unset;
+  bottom: 85px;
+  transition-property: bottom, right;
+  transition-duration: 500ms;
+}
+
+.truereportsIndicatorPosition {
+  top: 200px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falsereportsIndicatorPosition {
+  top: 145px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.trueaccountingIndicatorPosition {
+  top: 255px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falseaccountingIndicatorPosition {
+  top: 145px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.truecalendarIndicatorPosition {
+  top: 305px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falsecalendarIndicatorPosition {
+  top: 145px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.truerequestpresentIndicatorPosition {
+  top: 440px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falserequestpresentIndicatorPosition {
+  top: 230px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.truerequestpastIndicatorPosition {
+  top: 490px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falserequestpastIndicatorPosition {
+  top: 230px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.truereportsSubItem {
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 21px;
+  padding-right: 32px;
+}
+
+.falsereportsSubItem {
+  display: none;
+}
+
 .itemWrapper {
   margin-bottom: 54px;
+}
+
+.trueSubItem {
+  cursor: pointer;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 21px;
+  padding-right: 32px;
+}
+
+.falseSubItem {
+  display: none;
 }

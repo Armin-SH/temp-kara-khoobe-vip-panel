@@ -14,19 +14,19 @@ const TopMenu = [
     name: 'داشبورد',
     activeIcon: HomeBlackIcon,
     Icon: HomeWhiteIcon,
-    route: '/',
+    route: routes['route.home.index'],
     subRoutes: [
       {
         name: '. گزارش و آمار',
-        route: '',
+        route: routes["route.home.reports"],
       },
       {
         name: '. حسابداری',
-        route: '',
+        route: routes['route.home.accounting'],
       },
       {
         name: '. تقویم',
-        route: '',
+        route: routes['route.home.calendar'],
       },
     ]
   },
@@ -38,11 +38,11 @@ const TopMenu = [
     subRoutes: [
       {
         name: '. جاری',
-        route: '',
+        route: routes['route.request.present'],
       },
       {
         name: '. گذشته',
-        route: '',
+        route: routes['route.request.past'],
       },
     ]
   },
@@ -97,8 +97,8 @@ const MobileMenu = () => {
   const dispatch = useDispatch()
   const {mobileMenu} = useSelector((state: ReducerTypes) => state.home);
   const router = useRouter()
-
-  const indicatorPosition = `${router.pathname.replace('/', '')}IndicatorPosition`
+  console.log(`${router.pathname.replaceAll('/', '')}IndicatorPosition`)
+  const indicatorPosition = `${router.pathname.replaceAll('/', '')}IndicatorPosition`
 
   const handleClick = ({route}: { route: string }) => {
     if (router.pathname === route) {
@@ -114,9 +114,10 @@ const MobileMenu = () => {
   }
 
   return (
-      <Modal closeAfterTransition={true} className={styles.modal} open={mobileMenu} onClose={handleCloseMenu}>
-        <Div onClick={handleCloseMenu} className={styles.wrapper}>
-          <Div mobile={'column'} className={styles.rightMenuContainer}>
+    <Modal closeAfterTransition={true} className={styles.modal} open={mobileMenu} onClose={handleCloseMenu}>
+      <Div className={styles.wrapper} onClick={handleCloseMenu}>
+        <Div className={styles.rightMenuContainer}>
+          <Div mobile={'column'} className={styles.rightMenuWrapper}>
             <Div className={`${styles.indicatorContainer} ${styles[indicatorPosition]}`}>
               <Div className={styles.tabletIndicator}>
                 <Image src={MobileMenuIndicatorIcon} alt={'indicator'}/>
@@ -127,6 +128,7 @@ const MobileMenu = () => {
             </Div>
             <Div className={styles.topMenuContainer} mobile={"column"}>
               {TopMenu.map((item, index) => (
+                <Div key={index} mobile={"column"} className={styles.itemWrapper}>
                   <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
                     <Div className={styles.icon}>
                       <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
@@ -135,10 +137,19 @@ const MobileMenu = () => {
                       {item.name}
                     </Text>
                   </Div>
+                  {item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string }, index) => (
+                    <Div onClick={() => handleClick({route: subItem.route})} key={item.name} className={styles.subItem}>
+                      <Text className={styles.iconName} color={router.pathname === subItem.route ? "grey.900" : "common.white"} typography={"small"}>
+                        {subItem.name}
+                      </Text>
+                    </Div>
+                  )) : null}
+                </Div>
               ))}
             </Div>
             <Div mobile={"column"} className={styles.bottomMenuContainer}>
               {BottomMenu.map((item, index) => (
+                <Div key={index} mobile={"column"} className={styles.itemWrapper}>
                   <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})} key={index}>
                     <Div className={styles.icon}>
                       <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
@@ -147,11 +158,13 @@ const MobileMenu = () => {
                       {item.name}
                     </Text>
                   </Div>
+                </Div>
               ))}
             </Div>
           </Div>
         </Div>
-      </Modal>
+      </Div>
+    </Modal>
   )
 }
 

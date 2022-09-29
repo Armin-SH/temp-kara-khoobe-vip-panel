@@ -7,17 +7,17 @@ import {Media} from '@elements'
 const Menu = () => {
 
   return (
-      <>
-        <Media at={"xs"}>
-          <MobileMenu/>
-        </Media>
-        <Media at={'sm'}>
-          <TabletMenu/>
-        </Media>
-        <Media greaterThan={"sm"}>
-          <DesktopMenu/>
-        </Media>
-      </>
+    <>
+      <Media at={"xs"}>
+        <MobileMenu/>
+      </Media>
+      <Media at={'sm'}>
+        <TabletMenu/>
+      </Media>
+      <Media greaterThan={"sm"}>
+        <DesktopMenu/>
+      </Media>
+    </>
   )
 }
 

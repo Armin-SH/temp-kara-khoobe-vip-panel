@@ -5,6 +5,7 @@ import {profileRoutes} from './profile'
 import {requestRoutes} from './request'
 import {settingRoutes} from './settings'
 import {orderRoutes} from './order'
+import {homeRoutes} from './home'
 
 export default {
   ...authRoutes,
@@ -14,4 +15,5 @@ export default {
   ...profileRoutes,
   ...requestRoutes,
   ...orderRoutes,
+  ...homeRoutes,
 }
