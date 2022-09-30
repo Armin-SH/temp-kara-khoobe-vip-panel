@@ -6,7 +6,7 @@ import {TextFieldProps} from './text-field.props'
 import {typography} from "@utils";
 
 const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}: TextFieldProps) =>
-    <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => ({
+  <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => ({
   "& input": {
     direction: 'rtl',
     "@media (min-width: 640px)": {
@@ -45,7 +45,6 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}:
   },
   "& .MuiFilledInput-root:hover": {
     border: 'none',
-    backgroundColor: paletteTheme[props.color || "primary"].dark,
   },
   "& .MuiFilledInput-root:hover:not(.Mui-disabled):before": {
     border: 'none',
@@ -159,31 +158,31 @@ const TextField = (props: TextFieldProps) => {
   let CssTextField = variant === "filled" ? FilledTextField : OutlinedTextField;
 
   return (
-      <CssTextField
-          maxRows={maxRows}
-          id={id}
-          fullWidth={fullWidth}
-          onChange={onChange}
-          onInput={onInput}
-          type={type}
-          inputMode={inputMode}
-          className={className}
-          InputProps={InputProps}
-          placeholder={placeholder}
-          color={color}
-          value={value}
-          defaultValue={defaultValue}
-          borderWidth={borderWidth}
-          disabled={disabled}
-          error={error}
-          label={label}
-          helperText={helperText}
-          inputProps={inputProps}
-          variant={variant}
-          onKeyPress={onKeyPress}
-          inputRef={inputRef}
-          InputLabelProps={label ? {shrink: true} : InputLabelProps}
-          {...rest}/>
+    <CssTextField
+      maxRows={maxRows}
+      id={id}
+      fullWidth={fullWidth}
+      onChange={onChange}
+      onInput={onInput}
+      type={type}
+      inputMode={inputMode}
+      className={className}
+      InputProps={InputProps}
+      placeholder={placeholder}
+      color={color}
+      value={value}
+      defaultValue={defaultValue}
+      borderWidth={borderWidth}
+      disabled={disabled}
+      error={error}
+      label={label}
+      helperText={helperText}
+      inputProps={inputProps}
+      variant={variant}
+      onKeyPress={onKeyPress}
+      inputRef={inputRef}
+      InputLabelProps={label ? {shrink: true} : InputLabelProps}
+      {...rest}/>
   );
 };
 

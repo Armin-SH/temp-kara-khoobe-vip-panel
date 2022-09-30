@@ -127,7 +127,7 @@ const DesktopMenu = () => {
             <Div key={index} mobile={"column"} className={styles.itemWrapper}>
               <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
                 <Div className={styles.icon}>
-                  <Image src={(router.pathname.includes(item.route) && !expanded) || router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                  <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                 </Div>
                 <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
                   {item.name}
