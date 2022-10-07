@@ -23,6 +23,11 @@ import RequestsBlackIcon from './requests-black.svg'
 import HomeWhiteIcon from './home-white.svg'
 import ExitIcon from './exit.svg'
 import MobileMenuIndicatorIcon from './mobile-menu-indicator.svg'
+import FilterIcon from './filter.svg'
+import MoreIcon from './more.svg'
+import CameraIcon from './camera.svg'
+import StarIcon from './star.svg'
+import CloseGreyIcon from './close-grey.svg'
 
 export {
   SupportIcon,
@@ -50,4 +55,9 @@ export {
   AddRequestBlackIcon,
   ExitIcon,
   MobileMenuIndicatorIcon,
+  FilterIcon,
+  MoreIcon,
+  CameraIcon,
+  StarIcon,
+  CloseGreyIcon,
 }

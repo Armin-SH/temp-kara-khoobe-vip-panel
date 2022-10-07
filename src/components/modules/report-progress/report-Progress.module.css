@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  position: absolute;
+  right: 33%;
+  top: 25%
+}
+
+.mobile {
+  position: relative;
+}
+
+.tablet {
+  position: relative;
+}
+
+.infoContainer {
+  margin-top: 36px;
+}
+
+.fillPath {
+  fill: #FF9860;
+}
+
+.path {
+  fill: #EBECF0;
+}
+
+@media only screen and (min-width: 640px) {
+  .total {
+    position: absolute;
+    right: 36%;
+    top: 28%;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .total {
+    position: absolute;
+    right: 36%;
+    top: 25%
+  }
+
+  .container {
+    width: 250px;
+  }
+}

@@ -5,7 +5,7 @@ import {paletteTheme} from '../../../config/material/palette'
 import {TextFieldProps} from './text-field.props'
 import {typography} from "@utils";
 
-const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}: TextFieldProps) =>
+const FilledTextField = styled(({color, borderWidth, backgroundColor, size, search, ...props}: TextFieldProps) =>
   <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => ({
   "& input": {
     direction: 'rtl',
@@ -25,15 +25,17 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}:
   "& .MuiFilledInput-root": {
     direction: props.inputMode === "email" || props.inputMode === "numeric" ? 'ltr' : "rtl",
     fontFamily: typography.regular,
-    backgroundColor: paletteTheme[props.color || "primary"].main,
+    // @ts-ignore
+    backgroundColor: props.color === 'common.white' ? paletteTheme.common?.white : paletteTheme[props.color || "primary"].main,
     border: 'none',
-    borderRadius: '55px',
+    borderRadius: props.search ? '55px' : '0',
     paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: 0,
-    paddingRight: '21px',
-    height: "39px",
+    paddingRight: props.search ? '21px' : '0',
+    height: "48px",
     "@media only screen and (min-width: 640px)": {
+      borderRadius: props.search ? '55px' : '8px',
       height: '53px'
     },
     "@media only screen and (min-width: 1024px)": {
@@ -64,6 +66,7 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, ...props}:
     },
   },
 }));
+// @ts-ignore
 const OutlinedTextField = styled(({fieldsetBackground, backgroundColor, padding, borderWidth, mobileLogin, variant, ...props}: TextFieldProps) => <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => {
   // let fieldsetOptions = {};
   //

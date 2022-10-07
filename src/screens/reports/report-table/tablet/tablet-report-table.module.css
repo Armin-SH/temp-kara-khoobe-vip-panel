@@ -1,0 +1,104 @@
+.container {
+  width: 100%;
+}
+
+.filter {
+  position: relative;
+  width: 12px;
+  height: 8px;
+}
+
+.filterContainer {
+  gap: 4px;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.filterButton {
+  width: 105px;
+}
+
+.topContainer {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px
+}
+
+.tableHeader {
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EBEDFA;
+  height: 62px;
+  margin-top: 20px;
+}
+
+.rightHeader {
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 56px;
+  width: 60%;
+}
+
+.leftHeader {
+  padding-left: 56px;
+  width: 40%;
+  justify-content: flex-end;
+}
+
+.tableBody {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #F8F9FB;
+  height: 62px;
+}
+
+.rightBody {
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 56px;
+  width: 60%;
+}
+
+.leftBody {
+  padding-left: 56px;
+  width: 40%;
+  justify-content: flex-end;
+}
+
+.cell {
+  width: 15%;
+}
+
+@media only screen and (min-width: 640px) {
+  .cell {
+    width: 25%;
+  }
+
+  .rightBody {
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 56px;
+    width: 80%;
+  }
+
+  .leftBody {
+    padding-left: 56px;
+    width: 20%;
+    justify-content: flex-end;
+  }
+
+  .rightHeader {
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 56px;
+    width: 80%;
+  }
+
+  .leftHeader {
+    padding-left: 56px;
+    width: 20%;
+    justify-content: flex-end;
+  }
+}

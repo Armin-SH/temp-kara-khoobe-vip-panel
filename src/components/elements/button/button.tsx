@@ -16,6 +16,10 @@ const CssButton = styled(({shape, href, ...props}: ButtonProps) => <MaterialButt
   const costumeSmallWidth = props.shape !== 'rectangle' ? {
     width: "32px",
     minWidth: '32px',
+    "@media (min-width: 640px)": {
+      width: "40px",
+      minWidth: "40px",
+    },
   } : {};
 
   const costumeMediumWidth = props.shape !== 'rectangle' ? {

@@ -1,13 +1,14 @@
 import React from 'react'
 import {Div} from '@elements'
+import {AccountingTable} from '@screens/accounting'
 
 
-const Profile = () => {
+const Accounting = () => {
   return (
     <Div>
-
+      <AccountingTable/>
     </Div>
   )
 }
 
-export default Profile
+export default Accounting

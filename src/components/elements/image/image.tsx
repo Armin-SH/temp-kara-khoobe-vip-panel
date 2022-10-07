@@ -18,6 +18,7 @@ const Image = (props: ImageProps) => {
 Image.defaultProps = {
   objectFit: 'contain',
   layout: 'fill',
+  alt: 'icon'
 }
 
 export default Image;

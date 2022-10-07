@@ -3,6 +3,7 @@ import Layout from './layout'
 import Support from './support'
 import CountDown from './countdown-timer'
 import ProgressProvider from './progress-provider'
+import ReportProgress from './report-progress'
 
 export {
   SnackbarAlert,
@@ -10,4 +11,5 @@ export {
   Support,
   CountDown,
   ProgressProvider,
+  ReportProgress,
 }

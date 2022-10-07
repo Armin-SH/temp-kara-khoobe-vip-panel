@@ -1,0 +1,90 @@
+.container {
+  width: 100%;
+}
+
+.filter {
+  position: relative;
+  width: 12px;
+  height: 8px;
+}
+
+.filterContainer {
+  gap: 4px;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.filterButton {
+  width: 105px;
+}
+
+.topContainer {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px
+}
+
+.tableHeader {
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EBEDFA;
+  height: 62px;
+  margin-top: 20px;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+}
+
+.rightHeader {
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 32px;
+  width: 100%;
+}
+
+.tableBody {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #F8F9FB;
+  height: 62px;
+}
+
+.rightBody {
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 32px;
+  width: 100%;
+}
+
+.cell {
+  width: 15%;
+}
+
+.status {
+  background-color: #24AFB6;
+  border-radius: 16px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 640px) {
+  .cell {
+    width: 25%;
+  }
+
+  .rightBody {
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 32px;
+    width: 100%;
+  }
+
+  .rightHeader {
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 32px;
+    width: 100%;
+  }
+}

@@ -5,7 +5,9 @@ import styles from './layout.module.css'
 import {AuthLayout, Header, Menu} from '@layouts'
 import {KishLogoImage} from '@images'
 
-const Layout = ({children, isAuthentication}: LayoutProps) => {
+const Layout = ({children, isAuthentication, hasHeader}: LayoutProps) => {
+
+  const containerClass = `${hasHeader}Container`
 
   if (isAuthentication) {
     return (
@@ -19,7 +21,9 @@ const Layout = ({children, isAuthentication}: LayoutProps) => {
     <Div mobile={"column"} tablet={"row-reverse"} className={styles.wrapper}>
       <Menu/>
       <Div mobile={"column"} className={styles.container}>
-        <Header/>
+        {hasHeader ? (
+          <Header/>
+        ) : null}
         {children}
       </Div>
       <Media greaterThan={"sm"}>
@@ -38,6 +42,7 @@ const Layout = ({children, isAuthentication}: LayoutProps) => {
 Layout.defaultProps = {
   hasNavigation: true,
   isAuthentication: false,
+  hasHeader: true,
 }
 
 export default Layout

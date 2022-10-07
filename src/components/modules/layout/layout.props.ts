@@ -10,4 +10,6 @@ export interface LayoutProps {
   isAuthentication?: boolean
 
   expand?: boolean
+
+  hasHeader?: boolean
 }

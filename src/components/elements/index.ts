@@ -7,6 +7,11 @@ import Text from './text'
 import Checkbox from './checkbox'
 import Media from './media'
 import Modal from './modal'
+import Accordion from './accordion'
+import AccordionSummary from './accordion/accordion-summary'
+import AccordionDetails from './accordion/accordion-details'
+import MenuItem from './menu-item'
+import Select from './select'
 
 export {
   Div,
@@ -18,4 +23,9 @@ export {
   Checkbox,
   Media,
   Modal,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  MenuItem,
+  Select,
 }

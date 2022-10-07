@@ -5,7 +5,7 @@ export interface TextFieldProps {
   InputProps?: any
   variant?: "outlined" | "filled" | "standard" | undefined
   placeholder?: string
-  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning" | "tertiary" | "control"
+  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning" | "tertiary" | "control" | "common.white"
   backgroundColor?: string
   inputMode?: "text" | "none" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined
   type?: string
@@ -35,4 +35,6 @@ export interface TextFieldProps {
   onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void
   inputRef?: RefObject<HTMLInputElement>
   InputLabelProps?: any
+  size?: 'small' | 'medium'
+  search?: boolean
 }
