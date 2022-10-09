@@ -28,6 +28,8 @@ import MoreIcon from './more.svg'
 import CameraIcon from './camera.svg'
 import StarIcon from './star.svg'
 import CloseGreyIcon from './close-grey.svg'
+import ArrowRightIcon from './arrow-right.svg'
+import ArrowLeftIcon from './arrow-left.svg'
 
 export {
   SupportIcon,
@@ -60,4 +62,6 @@ export {
   CameraIcon,
   StarIcon,
   CloseGreyIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
 }

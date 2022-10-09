@@ -12,6 +12,7 @@ import AccordionSummary from './accordion/accordion-summary'
 import AccordionDetails from './accordion/accordion-details'
 import MenuItem from './menu-item'
 import Select from './select'
+import Skeleton from './skeleton'
 
 export {
   Div,
@@ -28,4 +29,5 @@ export {
   AccordionDetails,
   MenuItem,
   Select,
+  Skeleton,
 }

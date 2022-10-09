@@ -1,0 +1,72 @@
+.weekSkeleton {
+  gap: 8px
+}
+
+.header {
+  align-items: center;
+  justify-content: space-between;
+  width: 470px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.headerItem {
+  width: 150px;
+  height: 38px;
+  border-radius: 4px;
+}
+
+.week {
+  height: 29px;
+  width: 470px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+.dayContainerSkeleton {
+  gap: 7px;
+}
+
+.day {
+  height: 46px;
+  width: 60px;
+  border-radius: 4px;
+}
+
+
+@media only screen and (max-width: 639px) {
+  .weekSkeleton {
+    gap: 6px
+  }
+
+  .header {
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .headerItem {
+    width: 70px;
+    height: 29px;
+    border-radius: 4px;
+  }
+
+  .week {
+    height: 29px;
+    width: 280px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+
+  .dayContainerSkeleton {
+    gap: 7px;
+  }
+
+  .day {
+    height: 29px;
+    width: 35px;
+    border-radius: 4px;
+  }
+}
