@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+
+.headerBackground {
+  width: 100%;
+  position: absolute;
+  background-color: #ECEFFB;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+  height: 80px;
+  top: 0;
+  right: 0;
+}

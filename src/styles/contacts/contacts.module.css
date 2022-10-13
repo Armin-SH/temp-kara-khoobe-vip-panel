@@ -1,0 +1,42 @@
+.wrapper {
+  justify-content: flex-end;
+  margin-top: 32px;
+  gap: 40px
+}
+
+.container {
+  background-color: #ECEFFB;
+  border-radius: 20px;
+  padding: 16px 16px 32px;
+}
+
+.textField {
+  width: 100%;
+  min-height: 176px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.input {
+  min-height: 176px;
+  border-radius: 12px;
+}
+
+.sendButton {
+  margin-top: 40px;
+}
+
+.leaveButton {
+  margin-top: 32px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    border-radius: 24px;
+    padding: 44px 10% 62px;
+  }
+
+  .wrapper {
+    gap: 20px
+  }
+}

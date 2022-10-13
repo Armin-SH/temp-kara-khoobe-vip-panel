@@ -1,0 +1,11 @@
+.container {
+width: 100%;
+}
+
+.paginationContainer {
+  width: 100%;
+  background-color: #ECEFFB;
+  height: 80px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}

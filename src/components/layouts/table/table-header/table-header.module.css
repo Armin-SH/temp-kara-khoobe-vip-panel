@@ -1,0 +1,8 @@
+.container {
+  height: 80px;
+  background-color: #ECEFFB;
+  align-items: flex-end;
+  padding-bottom: 18px;
+  border-top-left-radius: 24px;
+  margin-bottom: 32px;
+}

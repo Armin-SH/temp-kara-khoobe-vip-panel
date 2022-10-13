@@ -28,18 +28,18 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
     // @ts-ignore
     backgroundColor: props.color === 'common.white' ? paletteTheme.common?.white : paletteTheme[props.color || "primary"].main,
     border: 'none',
-    borderRadius: props.search ? '55px' : '0',
-    paddingTop: 0,
+    borderRadius: props.search ? '55px' : '12px',
+    paddingTop: props.search ? 0 : '16px',
     paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: props.search ? '21px' : '0',
-    height: "48px",
+    paddingLeft: props.search ? 0 : '24px',
+    paddingRight: props.search ? '21px' : '24px',
+    height: props.search ? "48px" : 'auto',
     "@media only screen and (min-width: 640px)": {
       borderRadius: props.search ? '55px' : '8px',
-      height: '53px'
+      height: props.search ? '53px' : 'auto'
     },
     "@media only screen and (min-width: 1024px)": {
-      height: '56px'
+      height: props.search ?  '56px' : 'auto'
     }
   },
   "& .MuiFilledInput-root:before": {
@@ -89,7 +89,7 @@ const OutlinedTextField = styled(({fieldsetBackground, backgroundColor, padding,
     "& .MuiOutlinedInput-root": {
       height: props.multiline ? 'auto' : '56px',
       minHeight: props.multiline ? '56px' : 'auto',
-      borderRadius: '8px',
+      borderRadius: props.multiline ? '12px' : '8px',
       color: '#8d8d8d',
       zIndex: 4,
       fontFamily: typography.regular,
