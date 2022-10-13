@@ -1,29 +1,28 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Div} from '@elements'
-import {TableBodyProps} from './table-body.props'
 import TableColumn from '../table-column'
 import styles from './table-body.module.css'
+import {TableContext} from '../table'
 
+const TableBody = () => {
 
-const TableBody = ({bodyData, headerData, cellNames, selectRows, length, actions}: TableBodyProps) => {
-  const selectRowArray = new Array(length)
-  for (let i = 0; i < length; i++) {
-    selectRowArray[i] = false
-  }
+  const context = useContext(TableContext)
+
+  console.log(context)
   return (
     <Div className={styles.container}>
       <Div className={styles.headerBackground}/>
-      {selectRows ? (
-        <TableColumn headerData={'selectRows'} columnData={selectRowArray} cellName={'selectRows'}/>
+      {context.state.selectRows ? (
+        <TableColumn headerData={'selectRows'} columnData={context.state?.data?.selectedRows} cellName={'selectRows'}/>
       ) : null}
-      {cellNames.map((item, index) => {
+      {context.state.cellKeys.map((item, index) => {
         return (
           // @ts-ignore
-          <TableColumn headerData={headerData[index]} columnData={bodyData[item]} cellName={item} key={`column_${index}`}/>
+          <TableColumn headerData={context.state.header[index]} columnData={context.state.data[item]} cellName={item} key={`column_${index}`}/>
         )
       })}
-      {actions ? (
-        <TableColumn headerData={'actions'} columnData={selectRowArray} cellName={'actions'}/>
+      {context.state.actions ? (
+        <TableColumn headerData={'actions'} columnData={context?.state.data?.selectedRows} cellName={'actions'}/>
       ) : null}
     </Div>
   )

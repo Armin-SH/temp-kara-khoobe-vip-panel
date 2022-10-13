@@ -15,7 +15,7 @@ const TableColumn = ({columnData, headerData, cellName}: TableColumnProps) => {
         <TableHeader data={headerData}/>
         {columnData.map((item, index) => {
           return (
-            <TableCell data={item} id={cellName} key={`column_${index}`}/>
+            <TableCell index={index} data={item} id={cellName} key={`column_${index}`}/>
           )
         })}
       </Div>
@@ -28,7 +28,7 @@ const TableColumn = ({columnData, headerData, cellName}: TableColumnProps) => {
         <TableHeader data={headerData}/>
         {columnData.map((item, index) => {
           return (
-            <TableCell data={item} id={cellName} key={`column_${index}`}/>
+            <TableCell index={index} data={item} id={cellName} key={`column_${index}`}/>
           )
         })}
       </Div>
