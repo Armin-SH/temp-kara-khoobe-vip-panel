@@ -9,5 +9,5 @@ export interface TableBodyProps {
 
   length: number
 
-  actions: boolean
+  actions: boolean | undefined
 }

@@ -10,7 +10,6 @@ const TableBody = ({bodyData, headerData, cellNames, selectRows, length, actions
   for (let i = 0; i < length; i++) {
     selectRowArray[i] = false
   }
-  console.log(selectRowArray)
   return (
     <Div className={styles.container}>
       <Div className={styles.headerBackground}/>
