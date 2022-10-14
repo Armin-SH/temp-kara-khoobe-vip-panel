@@ -3,5 +3,5 @@ export interface TableCellProps {
 
   id: string
 
-  index?: number
+  index: number
 }

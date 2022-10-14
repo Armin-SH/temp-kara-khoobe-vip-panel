@@ -35,12 +35,25 @@ const TableColumn = ({columnData, headerData, cellName}: TableColumnProps) => {
     )
   }
 
+  if (cellName === 'expandable') {
+    return (
+      <Div mobile={'column'} className={styles.container}>
+        <TableHeader data={headerData}/>
+        {columnData.map((item, index) => {
+          return (
+            <TableCell index={index} data={item} id={cellName} key={`column_${index}`}/>
+          )
+        })}
+      </Div>
+    )
+  }
+
   return (
     <Div mobile={'column'} className={styles.container}>
       <TableHeader data={headerData}/>
       {columnData.map((item, index) => {
         return (
-          <TableCell data={item} id={cellName} key={`column_${index}`}/>
+          <TableCell index={index} data={item} id={cellName} key={`column_${index}`}/>
         )
       })}
     </Div>

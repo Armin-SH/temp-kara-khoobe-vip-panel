@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {Div} from '@elements'
+import {Div, Text} from '@elements'
 import TableColumn from '../table-column'
 import styles from './table-body.module.css'
 import {TableContext} from '../table'
@@ -8,7 +8,7 @@ const TableBody = () => {
 
   const context = useContext(TableContext)
 
-  console.log(context)
+
   return (
     <Div className={styles.container}>
       <Div className={styles.headerBackground}/>
@@ -21,6 +21,61 @@ const TableBody = () => {
           <TableColumn headerData={context.state.header[index]} columnData={context.state.data[item]} cellName={item} key={`column_${index}`}/>
         )
       })}
+      {context.state.expandable ? (
+        <>
+          <TableColumn headerData={'expandable'} columnData={context?.state.expandArray} cellName={'expandable'}/>
+          {context.state.expandArray.map((item: any, index: number) => {
+
+            const expandClassName = `${item}ExpandContainer`
+            const sectionClassName = `${item}SectionContainer`
+            const topCalculator = 165 + (index * 48)
+            return (
+              <Div key={index} style={{top: `${topCalculator}px`}} className={styles[expandClassName]}>
+                <Div className={styles[sectionClassName]}>
+                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                    دسته تخصص :
+                  </Text>
+                  <Text color={"grey.900"} typography={"tiny"}>
+                    نظافت
+                  </Text>
+                </Div>
+                <Div className={styles[sectionClassName]}>
+                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                    تخصص :
+                  </Text>
+                  <Text color={"grey.900"} typography={"tiny"}>
+                    نظافت دوره ای
+                  </Text>
+                </Div>
+                <Div className={styles[sectionClassName]}>
+                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                    شماره تماس :
+                  </Text>
+                  <Text color={"grey.900"} typography={"tiny"}>
+                    09385450060
+                  </Text>
+                </Div>
+                <Div className={styles[sectionClassName]}>
+                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                    استان :
+                  </Text>
+                  <Text color={"grey.900"} typography={"tiny"}>
+                    تهران
+                  </Text>
+                </Div>
+                <Div className={styles[sectionClassName]}>
+                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                    شهر :
+                  </Text>
+                  <Text color={"grey.900"} typography={"tiny"}>
+                    تهران
+                  </Text>
+                </Div>
+              </Div>
+            )
+          })}
+        </>
+      ) : null}
       {context.state.actions ? (
         <TableColumn headerData={'actions'} columnData={context?.state.data?.selectedRows} cellName={'actions'}/>
       ) : null}

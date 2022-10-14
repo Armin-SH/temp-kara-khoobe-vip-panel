@@ -4,8 +4,75 @@
   justify-content: center;
 }
 
+.trueCellContainer {
+  transition-duration: 1000ms;
+  transition-property: margin-bottom;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 120px;
+}
+
+.falseCellContainer {
+  transition-duration: 500ms;
+  transition-property: margin-bottom;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
 .moreButton {
   position: relative;
   width: 20px;
   height: 20px;
+}
+
+.popper {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 9999;
+  padding-right: 8px;
+}
+
+.fadePopper {
+  width: 123px;
+  height: 134px;
+  background-color: #ffffff;
+  z-index: 9999;
+}
+
+.popperContainer {
+  z-index: 99;
+}
+
+.button {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.trueExpandContainer {
+  transition-duration: 500ms;
+  transition-property: background-color;
+  width: 134px;
+  height: 32px;
+  background-color: #FCA600;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.falseExpandContainer {
+  transition-duration: 500ms;
+  transition-property: background-color;
+  width: 134px;
+  height: 32px;
+  background-color: #24AFB6;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  cursor: pointer;
 }

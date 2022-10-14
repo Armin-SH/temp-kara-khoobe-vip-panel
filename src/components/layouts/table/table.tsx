@@ -1,19 +1,36 @@
 import React, {createContext, useReducer} from 'react'
-import {Div} from '@elements'
-import {TableProps} from './table.props'
+import {Div, Image, Text} from '@elements'
+import {TableProps, TableState} from './table.props'
 import TableBody from './table-body'
 import styles from './table.module.css'
+import Pagination from '@mui/material/Pagination';
+import {ArrowBottomIcon, ArrowTopIcon} from '@icons'
 
 const defaultValue = {
-  state: {},
+  state: {
+    selectAll: false,
+    expandArray: [],
+    showAction: {id: null, action: false},
+    selectRows: false,
+    cellKeys: [],
+    expandable: false,
+    data: {
+      selectedRows: []
+    },
+    actions: false,
+    pagination: false,
+    header: [],
+    length: 0,
+    rows: 10,
+    expandedItem: null,
+  },
   dispatch: function (p: { payload: any; type: string }) {
-
   }
 }
 
 export const TableContext = createContext(defaultValue)
 
-const Table = ({data = [], actions = false, selectRows = false, pagination = false, header = {}}: TableProps) => {
+const Table = ({data = [], actions = false, selectRows = false, pagination = false, header = {}, expandable = false}: TableProps) => {
 
 
   const tempCellNames: Array<string> = Object.keys(header)
@@ -37,7 +54,7 @@ const Table = ({data = [], actions = false, selectRows = false, pagination = fal
   }
 
   obj['selectedRows'] = selectRowArray
-  const initialState = {
+  const initialState: TableState = {
     selectRows: selectRows,
     actions: actions,
     data: obj,
@@ -45,25 +62,52 @@ const Table = ({data = [], actions = false, selectRows = false, pagination = fal
     header: Object.values(header),
     length: data.length,
     cellKeys: tempCellNames,
-    expandArray: []
+    expandArray: selectRowArray,
+    showAction: {id: null, action: true},
+    selectAll: false,
+    rows: 10,
+    expandedItem: null,
+    expandable: expandable,
   };
 
-  const reducer = (state: any, action: any) => {
+  const reducer = (state: TableState, action: any) => {
+    function newExpandFunction(value: boolean, index: number) {
+      return value ? false : index === action?.payload?.id;
+    }
+
     switch (action.type) {
       case "SELECT_ROW": {
-        const tempSelectedRows = state.data.selectedRows
+        const tempSelectedRows = state.data?.selectedRows
         tempSelectedRows[action?.payload?.id] = action?.payload?.checked
         return {
           ...state,
           data: {...state.data, selectedRows: tempSelectedRows}
         }
       }
-      case "SET_EXPAND": {
-        console.log(action)
-        const position = state.expandArray.indexOf(action?.payload?.id)
+      case "SELECT_ALL": {
         return {
           ...state,
-          expandArray: position === -1 ? [...state.expandArray, action?.payload?.id] : state.expandArray.splice(position, 1)
+          selectAll: action.payload.select,
+        }
+      }
+      case "SET_ACTION": {
+        return {
+          ...state,
+          showAction: {id: action?.payload?.id, action: action?.payload?.showAction},
+        }
+      }
+      case "SET_EXPAND": {
+        const tempArray = state.expandArray.map(newExpandFunction);
+        return {
+          ...state,
+          expandArray: tempArray,
+          expandedItem: action?.payload?.expand ? action?.payload?.id : null,
+        }
+      }
+      case "SET_ROWS": {
+        return {
+          ...state,
+          rows: state.rows + action?.payload?.rows
         }
       }
       default:
@@ -72,7 +116,13 @@ const Table = ({data = [], actions = false, selectRows = false, pagination = fal
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state)
+
+  const handleRows = (value: number) => {
+    if ((state.rows === 1 && value === -1) || (state.rows === data.length && value === +1)) {
+      return null
+    }
+    return dispatch({type: 'SET_ROWS', payload: {rows: value}})
+  }
 
   return (
     // @ts-ignore
@@ -81,7 +131,28 @@ const Table = ({data = [], actions = false, selectRows = false, pagination = fal
         <TableBody/>
         {pagination ? (
           <Div className={styles.paginationContainer}>
-
+            <Div className={styles.paginationRightContainer}>
+              <Div className={styles.button}>
+                <Div className={styles.arrowContainer} mobile={"column"}>
+                  <Div onClick={() => handleRows(+1)} className={styles.arrow}>
+                    <Image src={ArrowTopIcon}/>
+                  </Div>
+                  <Div onClick={() => handleRows(-1)} className={styles.arrow}>
+                    <Image src={ArrowBottomIcon}/>
+                  </Div>
+                </Div>
+                <Text className={styles.rows} color={"common.white"} typography={"tiny"}>
+                  {state.rows}
+                </Text>
+              </Div>
+              <Text color={"grey.500"} typography={"tiny"}>
+                مقدار نمایش
+              </Text>
+              <Text color={"grey.500"} typography={"tiny"}>
+                {`( نمایش ${state.rows} از ${data.length} )`}
+              </Text>
+            </Div>
+            <Pagination color={'primary'} count={25} shape={'rounded'}/>
           </Div>
         ) : null}
       </Div>

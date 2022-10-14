@@ -30,6 +30,8 @@ import StarIcon from './star.svg'
 import CloseGreyIcon from './close-grey.svg'
 import ArrowRightIcon from './arrow-right.svg'
 import ArrowLeftIcon from './arrow-left.svg'
+import ArrowTopIcon from './arrow-top.svg'
+import ArrowBottomIcon from './arrow-buttom.svg'
 
 export {
   SupportIcon,
@@ -64,4 +66,6 @@ export {
   CloseGreyIcon,
   ArrowRightIcon,
   ArrowLeftIcon,
+  ArrowTopIcon,
+  ArrowBottomIcon
 }

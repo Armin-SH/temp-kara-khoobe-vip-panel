@@ -13,6 +13,7 @@ import AccordionDetails from './accordion/accordion-details'
 import MenuItem from './menu-item'
 import Select from './select'
 import Skeleton from './skeleton'
+import Popper from './popper'
 
 export {
   Div,
@@ -30,4 +31,5 @@ export {
   MenuItem,
   Select,
   Skeleton,
+  Popper,
 }

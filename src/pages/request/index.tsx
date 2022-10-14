@@ -109,14 +109,21 @@ const tempData = [
   },
 ]
 
-const tempDataHeader = {name: 'مشخصات', mobile: 'شماره تماس',state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
+const tempDataHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
 
 const Request = () => {
 
   return (
-      <Div>
-        <Table actions={true} pagination={true} selectRows={true} header={tempDataHeader} data={tempData} />
-      </Div>
+    <Div>
+      <Table
+        expandable={true}
+        actions={true}
+        pagination={true}
+        selectRows={true}
+        header={tempDataHeader}
+        data={tempData}
+      />
+    </Div>
   )
 }
 
