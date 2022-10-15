@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {Div, Text} from '@elements'
 import TableColumn from '../table-column'
 import styles from './table-body.module.css'
-import {TableContext} from '../table'
+import {TableContext} from '../desktop-table'
 
 const TableBody = () => {
 

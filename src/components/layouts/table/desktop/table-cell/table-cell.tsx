@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import {Button, Checkbox, Div, Image, Popper, Text} from '@elements'
 import {TableCellProps} from './table-cell.props'
 import styles from './table-cell.module.css'
-import {TableContext} from '../table'
+import {TableContext} from '../desktop-table'
 import {MoreIcon} from '@icons'
 
 const TableCell = ({data, id, index}: TableCellProps) => {

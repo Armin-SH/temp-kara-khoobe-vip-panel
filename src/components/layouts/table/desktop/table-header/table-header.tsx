@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {Checkbox, Div, Text} from '@elements'
 import {TableHeaderProps} from './table-header.props'
 import styles from './table-header.module.css'
-import {TableContext} from '../table'
+import {TableContext} from '../desktop-table'
 
 
 const TableHeader = ({data}: TableHeaderProps) => {
