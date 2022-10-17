@@ -1,10 +1,12 @@
 .tabletHeader {
   padding: 54px 0;
   justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .searchBar {
-  width: 204px;
+  flex: 1
 }
 
 .searchIconContainer {

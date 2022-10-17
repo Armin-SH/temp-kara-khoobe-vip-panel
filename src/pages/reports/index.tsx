@@ -27,4 +27,8 @@ const Reports = () => {
   )
 }
 
+
+Reports.sideBar = true;
+
+
 export default Reports

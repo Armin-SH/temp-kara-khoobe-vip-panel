@@ -59,11 +59,25 @@
   cursor: pointer;
 }
 
-.bottomMenuContainer {
+.trueBottomMenuContainer {
+  justify-content: flex-end;
+  height: 100%;
+  align-items: flex-end;
+  width: 100%;
+  padding-right: 67px;
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
+}
+
+.falseBottomMenuContainer {
   justify-content: flex-end;
   height: 100%;
   align-items: center;
   width: 100%;
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
 }
 
 .trueIconName {
@@ -74,9 +88,21 @@
   display: none;
 }
 
-.topMenuContainer {
+.falseTopMenuContainer {
   width: 100%;
   align-items: center;
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
+}
+
+.trueTopMenuContainer {
+  width: 100%;
+  align-items: flex-end;
+  padding-right: 67px;
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
 }
 
 .iconContainer {

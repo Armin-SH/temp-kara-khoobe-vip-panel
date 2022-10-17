@@ -12,4 +12,6 @@ export interface LayoutProps {
   expand?: boolean
 
   hasHeader?: boolean
+
+  sideBar?: boolean
 }

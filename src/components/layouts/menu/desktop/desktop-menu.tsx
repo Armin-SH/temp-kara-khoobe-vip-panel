@@ -122,7 +122,7 @@ const DesktopMenu = () => {
         <Div className={styles.menuIcon}>
           <Image src={LogoIcon} alt={"کاراخوبه"}/>
         </Div>
-        <Div className={styles.topMenuContainer} mobile={"column"}>
+        <Div className={styles[`${expanded}TopMenuContainer`]} mobile={"column"}>
           {TopMenu.map((item, index) => (
             <Div key={index} mobile={"column"} className={styles.itemWrapper}>
               <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
@@ -143,7 +143,7 @@ const DesktopMenu = () => {
             </Div>
           ))}
         </Div>
-        <Div mobile={"column"} className={styles.bottomMenuContainer}>
+        <Div mobile={"column"} className={styles[`${expanded}BottomMenuContainer`]}>
           {BottomMenu.map((item, index) => (
             <Div key={index} mobile={"column"} className={styles.itemWrapper}>
               <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>

@@ -32,6 +32,7 @@ import ArrowRightIcon from './arrow-right.svg'
 import ArrowLeftIcon from './arrow-left.svg'
 import ArrowTopIcon from './arrow-top.svg'
 import ArrowBottomIcon from './arrow-buttom.svg'
+import ProfileGreyIcon from './profile-grey.svg'
 
 export {
   SupportIcon,
@@ -67,5 +68,6 @@ export {
   ArrowRightIcon,
   ArrowLeftIcon,
   ArrowTopIcon,
-  ArrowBottomIcon
+  ArrowBottomIcon,
+  ProfileGreyIcon,
 }

@@ -52,7 +52,7 @@ function MyApp({fallback, Component, pageProps}: any) {
         <SnackbarAlert/>
         {/*<Support/>*/}
         <SWRConfig value={{refreshInterval: 30000, fallback}}>
-          <Layout hasHeader={Component.hasHeader} isAuthentication={Component.isAuthentication} hasNavigation={Component.hasNavigation}>
+          <Layout sideBar={Component.sideBar} hasHeader={Component.hasHeader} isAuthentication={Component.isAuthentication} hasNavigation={Component.hasNavigation}>
             <Component {...pageProps}/>
           </Layout>
           <Detector

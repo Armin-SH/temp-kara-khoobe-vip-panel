@@ -19,10 +19,6 @@
   position: relative;
 }
 
-.infoContainer {
-  margin-top: 36px;
-}
-
 .fillPath {
   fill: #FF9860;
 }
@@ -44,7 +40,7 @@
   .total {
     position: absolute;
     right: 36%;
-    top: 25%
+    top: 30%
   }
 
   .container {
