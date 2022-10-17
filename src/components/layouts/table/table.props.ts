@@ -10,6 +10,16 @@ export interface TableProps {
   header: object
 
   expandable?: any
+
+  expandableHeader?: string
+
+  expandKey?: string
+
+  mobileHeader: object
+
+  modalAction?: () => void
+
+  modal: boolean
 }
 
 export interface TableState {

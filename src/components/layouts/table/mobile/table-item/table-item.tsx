@@ -5,7 +5,7 @@ import styles from './table-item.module.css'
 import {MoreIcon} from "@icons";
 
 
-const TableItem = ({item}: TableItemProps) => {
+const TableItem = ({item, keys, values, modal, modalAction}: TableItemProps) => {
   const [expand, setExpand] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -30,10 +30,10 @@ const TableItem = ({item}: TableItemProps) => {
           <Div className={styles[topContainerClass]}>
             <Div className={styles.head}>
               <Text color={"grey.900"}>
-                مشخصات :
+                {values[0]}
               </Text>
               <Text color={"grey.500"}>
-                {item.name}
+                {item[keys[0]]}
               </Text>
             </Div>
             <Button onClick={handleAction} shape={"square"} size={"small"} variant={"text"}>
@@ -64,46 +64,33 @@ const TableItem = ({item}: TableItemProps) => {
         </AccordionSummary>
         <AccordionDetails>
           <Div mobile={"column"} className={styles.detailsContainer}>
-            <Div className={styles.details}>
-              <Text align={'right'} className={styles.detailsLabel} color={'grey.900'}>
-                شماره تلفن :
-              </Text>
-              <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
-                {item.mobile}
-              </Text>
-            </Div>
-            <Div className={styles.details}>
-              <Text align={'right'} className={styles.detailsLabel} color={'grey.900'}>
-                استان :
-              </Text>
-              <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
-                {item.state}
-              </Text>
-            </Div>
-            <Div className={styles.details}>
-              <Text align={'right'} className={styles.detailsLabel} color={'grey.900'}>
-                دسته تخصص :
-              </Text>
-              <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
-                {item.speciality}
-              </Text>
-            </Div>
-            <Div className={styles.details}>
-              <Text align={'right'} className={styles.detailsLabel} color={'grey.900'}>
-                پرداختی :
-              </Text>
-              <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
-                {item.payment}
-              </Text>
-            </Div>
-            <Div className={styles.details}>
-              <Text align={'right'} className={styles.detailsLabel} color={'grey.900'}>
-                وضعیت :
-              </Text>
-              <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
-                {item.status}
-              </Text>
-            </Div>
+            {keys.map((k: any, index) => {
+              if (index === 0) {
+                return null
+              }
+              return (
+                <Div key={index} className={styles.details}>
+                  <Text align={'right'} className={styles.detailsLabel} color={'grey.900'}>
+                    {values[index]}
+                  </Text>
+                  <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
+                    {item[keys[index]]}
+                  </Text>
+                </Div>
+              )
+            })}
+            {modal ? (
+              <Div className={styles.modalContainer}>
+                <Text align={'right'} color={'grey.900'}>
+                  وضعیت
+                </Text>
+                <Button size={'small'} className={styles.modalButton} onClick={modalAction}>
+                  <Text color={'common.white'} typography={'tiny'} type={'medium'}>
+                    درخواست
+                  </Text>
+                </Button>
+              </Div>
+            ) : null}
           </Div>
         </AccordionDetails>
       </Accordion>

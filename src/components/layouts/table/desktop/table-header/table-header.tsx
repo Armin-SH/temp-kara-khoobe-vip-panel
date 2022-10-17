@@ -35,7 +35,7 @@ const TableHeader = ({data}: TableHeaderProps) => {
     return (
       <Div className={styles.container}>
         <Text color={'grey.900'} typography={'tiny'} type={'bold'}>
-          وضعیت درخواست
+          {context.state.expandableHeader}
         </Text>
       </Div>
     )

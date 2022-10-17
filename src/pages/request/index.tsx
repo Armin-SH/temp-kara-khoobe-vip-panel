@@ -1,6 +1,7 @@
 import React from 'react'
 import {Div} from '@elements'
 import {Table} from '@layouts'
+import styles from '@styles/request/request.module.css'
 
 const tempData = [
   {
@@ -110,11 +111,11 @@ const tempData = [
 ]
 
 const tempDataHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
-
+const tempDataMobileHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
 const Request = () => {
 
   return (
-    <Div>
+    <Div className={styles.wrapper}>
       <Table
         expandable={true}
         actions={true}
@@ -122,6 +123,7 @@ const Request = () => {
         selectRows={true}
         header={tempDataHeader}
         data={tempData}
+        mobileHeader={tempDataMobileHeader}
       />
     </Div>
   )

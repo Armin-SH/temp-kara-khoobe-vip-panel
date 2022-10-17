@@ -48,6 +48,19 @@ const TableColumn = ({columnData, headerData, cellName}: TableColumnProps) => {
     )
   }
 
+  if (cellName === 'modal') {
+    return (
+      <Div mobile={'column'} className={styles.container}>
+        <TableHeader data={'وضعیت'}/>
+        {columnData.map((item, index) => {
+          return (
+            <TableCell index={index} data={'درخواست'} id={cellName} key={`column_${index}`}/>
+          )
+        })}
+      </Div>
+    )
+  }
+
   return (
     <Div mobile={'column'} className={styles.container}>
       <TableHeader data={headerData}/>

@@ -23,6 +23,11 @@ const defaultValue = {
     length: 0,
     rows: 10,
     expandedItem: null,
+    expandableHeader: '',
+    expandKey: '',
+    modalAction: () => {
+    },
+    modal: false
   },
   dispatch: function (p: { payload: any; type: string }) {
   }
@@ -30,7 +35,20 @@ const defaultValue = {
 
 export const TableContext = createContext(defaultValue)
 
-const DesktopTable = ({data = [], actions = false, selectRows = false, pagination = false, header = {}, expandable = false}: TableProps) => {
+const DesktopTable = (
+  {
+    data = [],
+    actions = false,
+    selectRows = false,
+    pagination = false,
+    header = {},
+    expandable = false,
+    expandableHeader = 'وضعیت درخواست',
+    expandKey = '',
+    modalAction = () => {
+    },
+    modal = false,
+  }: TableProps) => {
 
 
   const tempCellNames: Array<string> = Object.keys(header)
@@ -68,6 +86,10 @@ const DesktopTable = ({data = [], actions = false, selectRows = false, paginatio
     rows: 10,
     expandedItem: null,
     expandable: expandable,
+    expandableHeader: expandableHeader,
+    expandKey: expandKey,
+    modalAction: modalAction,
+    modal: modal,
   };
 
   const reducer = (state: TableState, action: any) => {

@@ -1,0 +1,69 @@
+.title {
+  margin-right: 8px;
+  margin-bottom: 32px;
+  align-self: flex-end;
+}
+
+.container {
+  width: 100%;
+  background-color: #ECEFFB;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  padding: 20px 16px 64px;
+}
+
+.wrapper {
+  min-height: calc(100vh - 170px);
+  justify-content: flex-end;
+}
+
+.walletAmount {
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.amountButton {
+  background-color: #ffffff;
+  height: 48px;
+  flex: 0.5;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  max-width: 186px;
+}
+
+.amountButtonContainer {
+  margin-top: 25px;
+  flex-wrap: wrap;
+  flex: 1;
+  width: 100%;
+  column-gap: 10px;
+  row-gap: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.textField {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.input {
+  border-radius: 4px;
+}
+
+.input input {
+  border-radius: 4px;
+}
+
+.inputBackground {
+  height: 48px;
+  background-color: #ffffff;
+}
+
+.buttonContainer {
+  margin-top: 40px;
+  gap: 24px
+}

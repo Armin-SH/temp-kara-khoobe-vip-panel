@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.wrapper {
+  min-height: calc(100vh - 170px);
+}
+
 .progressContainer {
   background-color: #ffffff;
   padding: 20px 12px 20px 12px;
@@ -51,5 +55,9 @@
     background-color: #ffffff;
     margin-top: 44px;
     padding: 21px 0;
+  }
+
+  .wrapper {
+    min-height: calc(100vh - 200px);
   }
 }

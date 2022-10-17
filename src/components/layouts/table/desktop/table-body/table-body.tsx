@@ -31,50 +31,65 @@ const TableBody = () => {
             const topCalculator = 165 + (index * 48)
             return (
               <Div key={index} style={{top: `${topCalculator}px`}} className={styles[expandClassName]}>
-                <Div className={styles[sectionClassName]}>
-                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                    دسته تخصص :
-                  </Text>
-                  <Text color={"grey.900"} typography={"tiny"}>
-                    نظافت
-                  </Text>
-                </Div>
-                <Div className={styles[sectionClassName]}>
-                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                    تخصص :
-                  </Text>
-                  <Text color={"grey.900"} typography={"tiny"}>
-                    نظافت دوره ای
-                  </Text>
-                </Div>
-                <Div className={styles[sectionClassName]}>
-                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                    شماره تماس :
-                  </Text>
-                  <Text color={"grey.900"} typography={"tiny"}>
-                    09385450060
-                  </Text>
-                </Div>
-                <Div className={styles[sectionClassName]}>
-                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                    استان :
-                  </Text>
-                  <Text color={"grey.900"} typography={"tiny"}>
-                    تهران
-                  </Text>
-                </Div>
-                <Div className={styles[sectionClassName]}>
-                  <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                    شهر :
-                  </Text>
-                  <Text color={"grey.900"} typography={"tiny"}>
-                    تهران
-                  </Text>
-                </Div>
+                {context.state.expandKey ? (
+                  <Div className={styles[sectionClassName]}>
+                    <Text color={'grey.500'} align={'right'} typography={'tiny'}>
+                      به گزارش خبرگزاری صدا و سیما ، اپلیکیشن « کاراخوبه » در راستای مهارت محوری و اشتغال آفرینی، طی تفاهم نامه‌ای با سازمان آموزش فنی و حرفه‌ای
+                      آماده خدمت رسانی به عموم مردم است .
+                    </Text>
+                  </Div>
+                ) : (
+                  <>
+                    <Div className={styles[sectionClassName]}>
+                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                        دسته تخصص :
+                      </Text>
+                      <Text color={"grey.900"} typography={"tiny"}>
+                        نظافت
+                      </Text>
+                    </Div>
+                    <Div className={styles[sectionClassName]}>
+                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                        تخصص :
+                      </Text>
+                      <Text color={"grey.900"} typography={"tiny"}>
+                        نظافت دوره ای
+                      </Text>
+                    </Div>
+                    <Div className={styles[sectionClassName]}>
+                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                        شماره تماس :
+                      </Text>
+                      <Text color={"grey.900"} typography={"tiny"}>
+                        09385450060
+                      </Text>
+                    </Div>
+                    <Div className={styles[sectionClassName]}>
+                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                        استان :
+                      </Text>
+                      <Text color={"grey.900"} typography={"tiny"}>
+                        تهران
+                      </Text>
+                    </Div>
+                    <Div className={styles[sectionClassName]}>
+                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
+                        شهر :
+                      </Text>
+                      <Text color={"grey.900"} typography={"tiny"}>
+                        تهران
+                      </Text>
+                    </Div>
+                  </>
+                )}
+
               </Div>
             )
           })}
         </>
+      ) : null}
+      {context.state.modal ? (
+        <TableColumn headerData={'modal'} columnData={context.state.data[context.state.cellKeys[0]]} cellName={'modal'}/>
       ) : null}
       {context.state.actions ? (
         <TableColumn headerData={'actions'} columnData={context?.state.data?.selectedRows} cellName={'actions'}/>

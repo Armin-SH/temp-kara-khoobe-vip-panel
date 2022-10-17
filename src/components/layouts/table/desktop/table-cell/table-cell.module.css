@@ -76,3 +76,13 @@
   border-radius: 16px;
   cursor: pointer;
 }
+
+.modalContainer {
+  width: 134px;
+  height: 32px;
+  background-color: #24AFB6;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  cursor: pointer;
+}

@@ -104,6 +104,24 @@ const TableCell = ({data, id, index}: TableCellProps) => {
     )
   }
 
+  if (id === 'modal') {
+
+    const handleClick = () => {
+      state.state.modalAction()
+    }
+
+
+    return (
+      <Div className={styles[containerClassName]}>
+        <Div onClick={handleClick} className={styles.modalContainer}>
+          <Text color={'common.white'} typography={'tiny'} type={'bold'}>
+            درخواست
+          </Text>
+        </Div>
+      </Div>
+    )
+  }
+
   return (
     <Div className={styles[containerClassName]}>
       <Text color={'grey.900'} typography={'tiny'}>

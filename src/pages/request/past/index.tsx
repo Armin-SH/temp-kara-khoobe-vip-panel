@@ -1,6 +1,7 @@
 import React from 'react'
 import {Div} from '@elements'
 import {Table} from '@layouts'
+import styles from '@styles/request/past-request.module.css'
 
 const tempData = [
   {
@@ -114,7 +115,7 @@ const tempDataHeader = {name: 'مشخصات', mobile: 'شماره تماس', sta
 const PastRequest = () => {
 
   return (
-    <Div>
+    <Div className={styles.wrapper}>
       <Table selectRows={true} header={tempDataHeader} data={tempData}/>
     </Div>
   )

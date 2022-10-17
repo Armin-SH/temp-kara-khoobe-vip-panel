@@ -19,8 +19,8 @@
 }
 
 .details {
-  height: 33px;
-  align-items: center;
+  padding: 8px 0;
+  align-items: flex-start;
   justify-content: flex-end;
   border-bottom: 1px solid #DEDEE5;
 }
@@ -84,4 +84,17 @@
 .actionButton {
   width: 100%;
   justify-content: flex-end;
+}
+
+.modalButton {
+  border-radius: 16px;
+  width: 146px;
+}
+
+.modalContainer {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 54px;
+  padding-top: 8px;
 }
