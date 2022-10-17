@@ -111,12 +111,13 @@ const tempData = [
 ]
 
 const tempDataHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
+const tempDataMobileHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
 
 const PresentRequest = () => {
 
   return (
     <Div className={styles.wrapper}>
-      <Table actions={true} pagination={true} selectRows={true} header={tempDataHeader} data={tempData}/>
+      <Table modal={false} mobileHeader={tempDataMobileHeader} actions={true} pagination={true} selectRows={true} header={tempDataHeader} data={tempData}/>
     </Div>
   )
 }

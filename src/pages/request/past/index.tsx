@@ -111,12 +111,13 @@ const tempData = [
 ]
 
 const tempDataHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
+const tempDataMobileHeader = {name: 'مشخصات', mobile: 'شماره تماس', state: 'استان', speciality: 'دسته تخصص', payment: 'پرداختی (ریال)', status: 'وضعیت'}
 
 const PastRequest = () => {
 
   return (
     <Div className={styles.wrapper}>
-      <Table selectRows={true} header={tempDataHeader} data={tempData}/>
+      <Table modal={false} mobileHeader={tempDataMobileHeader} selectRows={true} header={tempDataHeader} data={tempData}/>
     </Div>
   )
 }

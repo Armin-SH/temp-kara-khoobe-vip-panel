@@ -77,6 +77,7 @@ const Messages = () => {
   return (
     <Div className={styles.wrapper}>
       <Table
+        modal={false}
         mobileHeader={tempDataMobile}
         expandable={true}
         expandableHeader={'وضعیت پیام'}

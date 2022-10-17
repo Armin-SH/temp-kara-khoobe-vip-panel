@@ -117,6 +117,7 @@ const Request = () => {
   return (
     <Div className={styles.wrapper}>
       <Table
+        modal={false}
         expandable={true}
         actions={true}
         pagination={true}
