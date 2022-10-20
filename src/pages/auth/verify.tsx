@@ -3,8 +3,40 @@ import {Button, Div, Image, Text, TextField} from '@elements'
 import {CountDown} from '@modules'
 import {ReturnIcon} from '@icons'
 import routes from '@routes'
+import {useDispatch, useSelector} from "react-redux";
+import {ReducerTypes} from "@store/reducer";
+import {AuthActions} from "@store/auth/auth-actions";
+import {ChangeEvent, KeyboardEvent, useEffect} from "react";
+import {pressEnterKey} from "@utils";
+import {useAutofocus} from "@hooks";
+import {useDebouncedCallback} from "use-debounce";
+import {useRouter} from "next/router";
 
 const Verify = () => {
+  const router = useRouter()
+  const {verifyLoading, otpCode, mobile} = useSelector((state: ReducerTypes) => state.auth);
+
+  useEffect(() => {
+    if (!mobile) {
+      router.push(routes['route.auth.otp'])
+    }
+  }, [])
+  const dispatch = useDispatch()
+  const inputRef = useAutofocus(null)
+
+  const handleOtpCode = useDebouncedCallback((e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(AuthActions.setOtpCode({otpCode: e.target.value}))
+  }, 500)
+
+  const handleVerifyCode = () => {
+    dispatch(AuthActions.verifyOtpCode())
+  }
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    pressEnterKey({
+      event: e, callBack: handleVerifyCode
+    })
+  }
 
   return (
     <Div className={styles.container} mobile={"column"}>
@@ -20,20 +52,23 @@ const Verify = () => {
         کد پیامک شده را وارد کنید
       </Text>
       <TextField
+        inputRef={inputRef}
+        onKeyPress={handleKeyPress}
+        onChange={handleOtpCode}
         InputProps={{className: styles.passwordInput}}
         className={styles.passwordTextField}
-        placeholder={"****"}
+        placeholder={"******"}
         placeholderalign={"center"}
         label={'کد تایید'}
       />
-      <Button className={styles.getCodeButton}>
+      <Button onClick={handleVerifyCode} loading={verifyLoading} disabled={verifyLoading || otpCode.length < 6} className={styles.getCodeButton}>
         تایید کد
       </Button>
       <Div mobile={"column-reverse"} tablet={"row-reverse"} className={styles.countDownContainer}>
         <Text color={"grey.900"} align={"right"} typography={"tiny"}>
           پس از ورود در بخش تنظیمات پنل ، رمز خود را تغییر دهید
         </Text>
-        <CountDown variant={"outlined"} sec={300}/>
+        <CountDown variant={"outlined"} sec={90}/>
       </Div>
       <Button href={routes['route.auth.otp']} size={"small"} className={styles.changeMobile} color={"secondary"} variant={"text"}>
         ویرایش شماره موبایل

@@ -9,9 +9,9 @@ export async function middleware(req: NextRequest) {
   const iconsPattern = /^\/icons\/[a-z]*/g;
   const brandIconsPattern = /^\/brand-icons\/[a-z]*/g;
   const workboxPattern = /^\/workbox\-[a-z0-9]*.js/g;
-  // if (!token && !authPattern.test(decodeURI(pathname)) && !brandIconsPattern.test(decodeURI(pathname)) && !iconsPattern.test(decodeURI(pathname)) && !fontPattern.test(decodeURI(pathname)) && !workboxPattern.test(decodeURI(pathname)) && decodeURI(pathname) !== '/sw.js' && decodeURI(pathname) !== '/manifest.json' && decodeURI(pathname) !== '/favicon.ico') {
-  //   return NextResponse.redirect(new URL('/auth/login', req.url))
-  // }
+  if (!token && !authPattern.test(decodeURI(pathname)) && !brandIconsPattern.test(decodeURI(pathname)) && !iconsPattern.test(decodeURI(pathname)) && !fontPattern.test(decodeURI(pathname)) && !workboxPattern.test(decodeURI(pathname)) && decodeURI(pathname) !== '/sw.js' && decodeURI(pathname) !== '/manifest.json' && decodeURI(pathname) !== '/favicon.ico') {
+    return NextResponse.redirect(new URL('/auth/login', req.url))
+  }
 
   return NextResponse.next();
 }

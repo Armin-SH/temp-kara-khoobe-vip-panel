@@ -97,7 +97,6 @@ const MobileMenu = () => {
   const dispatch = useDispatch()
   const {mobileMenu} = useSelector((state: ReducerTypes) => state.home);
   const router = useRouter()
-  console.log(`${router.pathname.replaceAll('/', '')}IndicatorPosition`)
   const indicatorPosition = `${router.pathname.replaceAll('/', '')}IndicatorPosition`
 
   const handleClick = ({route}: { route: string }) => {

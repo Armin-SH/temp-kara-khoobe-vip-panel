@@ -39,7 +39,7 @@
         "components/layouts"
       ],
       "@api/*": [
-        "api/api-calls/*"
+        "api/*"
       ],
       "@store/*": [
         "store/*"
@@ -58,6 +58,9 @@
       ],
       "@styles/*": [
         "styles/*"
+      ],
+      "@hooks": [
+        "hooks"
       ]
     }
   },

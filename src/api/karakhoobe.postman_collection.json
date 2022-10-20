@@ -1,0 +1,2684 @@
+{
+  "info": {
+    "_postman_id": "fda52fe3-56f0-4409-a7f5-50520b06d0fb",
+    "name": "karakhoobe",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7044969"
+  },
+  "item": [
+    {
+      "name": "questions",
+      "item": [
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/questions?specialityID=62a6126c4398ac2836a6358e",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions"
+              ],
+              "query": [
+                {
+                  "key": "specialityID",
+                  "value": "62a6126c4398ac2836a6358e"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insert root",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"specialityID\": \"62276f3e6c9809aac5a1e7f6\",\n  \"inOrder\": 1,\n  \"title\": \"سوال اول\",\n  \"type\": \"Radio\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "specialityID",
+                  "value": "61deb6e2e4a8624add5f8cc",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insert nested",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dependsOn\": \"6241b6aa5ac153705120df11\",\n  \"answerIndex\": 1,\n  \"inOrder\": 1,\n  \"title\": \"دارد؟\",\n  \"type\": \"Switch\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "specialityID",
+                  "value": "61deb6e2e4a8624add5f8cc",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61e7cc797faaca38f0d238cb\",\n    \"title\": \"kara1\",\n    \"type\": \"Switch\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"6242ab6f57178e0e2ce84a9c\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insert answer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"questionID\": \"6241b6aa5ac153705120df11\",\n    \"title\": \"132\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/answer",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                "answer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update answer",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"questionID\": \"6241639bf207ec5896e1fc04\",\n    \"title\": \"123\",\n    \"_id\": \"6241af8e3b6e0fba816b8338\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/answer",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                "answer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete answer",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"questionID\": \"6241b6aa5ac153705120df11\",\n    \"_id\": \"6241b7bc5ac153705120df51\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/questions/answer",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "questions",
+                "answer"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "refresh",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"deviceID\": \"1234\",\n    \"token\": \"{{refreshToken}}\",\n    \"type\": \"admin\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/auth/refresh",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verify",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = JSON.parse(responseBody);",
+                  "pm.environment.set(\"refreshToken\", json['refreshToken']);",
+                  "pm.environment.set(\"token\", json['token']);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"deviceID\": \"1234\",\n    \"id\": \"{{id}}\",\n    \"code\": \"123123\",\n    \"type\": \"vipUser\",\n    \"phonenumber\": \"09223787161\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/auth/verify",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "auth",
+                "verify"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sendCode",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = JSON.parse(responseBody);",
+                  "pm.environment.set(\"id\", json.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-auth-token",
+                "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZW51bWJlciI6IjA5MjIzNzg3MTYxIiwidHlwZSI6InVzZXIiLCJpYXQiOjE2Mzk4MzAyMjMsImV4cCI6MTYzOTg0NDYyM30.S7TLSbAg7VRmrApY6JIL0SXQnXVQPMW2M4C2dctGmuEhc9TbnpEoV0iqxqoqdY6nyJWDmXHJye3FfHEEUVHGX-ts4Fnd3FLWfMxQBSH6fZ69PZ1H7y-M0oflqULiL1Z76NkoCTzBrsLDKEnrJSUvYZVZpHjbExQ5Ytl7jywGjEO6iEBmYD_996b_tJ3WItwrQ49cHDkhsm6OsLG3dkK-sVv-1KpAaioje9c4euDy_4kiMAv4riNeGgAhaa_0OGs3V3179OuOuKVEgrTdl1pTl8NIOB84h_9ZAmcbPRRmVvcIf7BrrlYG1-DZxq4L_AexahMichGoiqkNvpxOiio7pA",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phonenumber\": \"09223787161\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/auth/sendCode",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "auth",
+                "sendCode"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "vipUserPasswordLogin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phonenumber\": \"09223787161\",\n    \"password\": \"mahan1122\",\n    \"deviceID\": \"123\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/auth/vipUserPasswordLogin",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "auth",
+                "vipUserPasswordLogin"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "speciality",
+      "item": [
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Haeadlo\",\n  \"description\": \"ui\",\n  \"imageUrl\": \"adwas\",\n  \"_id\": \"61ded2073dc2a46c84f08521\",\n  \"options\": [\n    {\n      \"title\": \"Hello\",\n      \"value\": \"Hello\"\n    },\n    {\n      \"title\": \"Hello\",\n      \"value\": \"Hello\"\n    },\n    {\n      \"title\": \"Hell\",\n      \"value\": \"Hel\"\n    },\n    {\n      \"title\": \"He\",\n      \"value\": \"Hlo\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/speciality",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Summery",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/speciality/summery/?categoryID=62276d826c9809aac5a1e7ec",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality",
+                "summery",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "categoryID",
+                  "value": "62276d826c9809aac5a1e7ec"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insert",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"عادی\",\n  \"description\": \"نظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دnنظافت دوره ای خانه\\\\دn\",\n  \"imageUrl\": \"https://s4.uupload.ir/files/shutterstock_152816510_copy_1_yfb9.png\",\n  \"thumbnailUrl\": \"https://s4.uupload.ir/files/frame_tenv.png\",\n  \"summery\": \"نظافت یکی از خدمات منزل است که ....\",\n  \"categoryID\": \"6225f1d6ac0e8698c61a4659\",\n  \"keyWords\": [\n      \"نظافت\",\n      \"بهداشت\"\n  ],\n  \"options\": [\n    {\n      \"title\": \"هزینه\",\n      \"value\": \"توافقی\"\n    },\n    {\n      \"title\": \"دوره\",\n      \"value\": \"یک روزه\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/speciality",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61ded1f83dc2a46c84f0851d\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/speciality",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/speciality?_id=61ebe01272c9530df7ddf1d7",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality"
+              ],
+              "query": [
+                {
+                  "key": "_id",
+                  "value": "61ebe01272c9530df7ddf1d7"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getNewSpecialities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/speciality/getNewSpecialities?city=تهران",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality",
+                "getNewSpecialities"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "تهران"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/speciality/search?city=تهران&text=بهداشت",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "تهران"
+                },
+                {
+                  "key": "text",
+                  "value": "بهداشت"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Skills",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/speciality/skills",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality",
+                "skills"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllSpecialities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/speciality/getAllSpecialities",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "speciality",
+                "getAllSpecialities"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "category",
+      "item": [
+        {
+          "name": "delete category",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61d18443890e312d034377f2\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/category",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "category"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update category",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"mamad\",\n    \"imageUrl\": \"ali\",\n    \"cities\": [\n        \"tehran\",\n        \"rasht\"\n    ],\n    \"_id\": \"61d0969fc8bf4d8ccb8d6ffd\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/category",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "category"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insert category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"2 بهداشت\",\n  \"parent\": \"61e6a398dbda50c0ce144fa1\",\n  \"imageUrl\": \"https://s4.uupload.ir/files/shutterstock_152816510_copy_1_yfb9.png\",\n  \"thumbnailUrl\": \"https://s4.uupload.ir/files/frame_tenv.png\",\n  \"cities\": [\n    \"تهران\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/category",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "category"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get categories",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": {
+              "raw": "{{host}}/category?city=تهران",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "category"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "تهران"
+                },
+                {
+                  "key": "parent",
+                  "value": "61e6a3b2dbda50c0ce144fa3",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "get profile info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-auth-token",
+                "value": "{{token}}",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Cookie",
+                "value": "x-auth-token={{token}};",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{host}}/user/profile",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "set profile info",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Cookie",
+                "value": "x-auth-token={{token}};",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"firstname\": \"mahan\",\n    \"lastname\": \"gholizadeh\",\n    \"nationalCode\": \"0200186566\",\n    \"birthdate\": \"2005-12-21T11:04:55.000Z\",\n    \"gender\": \"Male\",\n    \"email\": \"mahan1122mg@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/user/profile",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "userInfo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/user/userInfo",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "user",
+                "userInfo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "submitReferalCode",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"referalCode\": \"09111111113\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/user/submitReferalCode",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "user",
+                "submitReferalCode"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "address",
+      "item": [
+        {
+          "name": "insert",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"khoone\",\n  \"geoLat\": 1.4,\n  \"geoLong\": 1.4,\n  \"number\": \"12\",\n  \"unit\": \"10\",\n  \"fullAddress\": \"khiaban mamad\",\n  \"userInfo\": {\n    \"firstname\": \"jafar\",\n    \"lastname\": \"alizadeh\",\n    \"phonenumber\": \"09106812312\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/address",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "address"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/address",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "address"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61e7e731bd5be20589c54b06\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/address",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "address"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61e7e7ae08587b80b16d3d83\",\n    \"title\": \"ads\",\n  \"geoLat\": 1.4,\n  \"geoLong\": 1.4,\n  \"number\": \"12\",\n  \"unit\": \"10\",\n  \"fullAddress\": \"khiaban mamad\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/address",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "address"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "offer",
+      "item": [
+        {
+          "name": "insert",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"برق گشی\",\n  \"description\": \"فارسی یا پارسی یک زبان ایرانی غربی از زیرگروه ایرانی شاخه هندوایرانی خانواده زبان‌های هندواروپایی است که بیشتر در کشورهای ایران، افغانستان، تاجیکستان و ازبکستان گفتگو می‌شود.\",\n  \"amount\": 0,\n  \"discount\": 300000,\n  \"maxDiscount\": 300000,\n  \"discountType\": \"Flat\",\n  \"expDays\": 10,\n  \"imageUrl\": \"https://s6.uupload.ir/files/plumber-man-fixing-kitchen-sink_1_w7p.png\",\n  \"specialityID\": \"622f16126c9809aac5a2107b\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/offer",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "offer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/offer/?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "offer",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61ede13a3dcf2e2da11326c4\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/offer",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "offer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n            \"title\": \"خدمات پزشک در محل\",\n            \"description\": \"فارسی یا پارسی یک زبان ایرانی غربی از زیرگروه ایرانی شاخه هندوایرانی خانواده زبان‌های هندواروپایی است که بیشتر در کشورهای ایران، افغانستان، تاجیکستان و ازبکستان گفتگو می‌شود.\",\n            \"amount\": 345,\n            \"discount\": 25,\n            \"maxDiscount\": 20000,\n            \"discountType\": \"Percentage\",\n            \"expDays\": 31,\n            \"imageUrl\": \"https://s6.uupload.ir/files/young-handsome-physician-medical-robe-with-stethoscope_1_k7yv.png\",\n            \"_id\": \"61eddbbca7b608188a83f041\",\n            \"categoryID\": \"61e69b041e54e10c0690577b\"\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/offer",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "offer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getOffersBySpeciality",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/offer/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "offer",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "advertisement",
+      "item": [
+        {
+          "name": "insert",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"key\": \"app-slidebar\",\n    \"images\": [\n        {\n            \"link\": \"http://karakhoobe.ir\",\n            \"url\": \"https://s6.uupload.ir/files/slide_jayeze_kjr5.jpg\"\n        },\n        {\n            \"link\": \"http://karakhoobe.ir\",\n            \"url\": \"https://s6.uupload.ir/files/slid_1dr.png\"\n        },\n        {\n            \"link\": \"http://karakhoobe.ir\",\n            \"url\": \"https://s6.uupload.ir/files/slid__twib.jpg\"\n        }\n        \n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/advertisement",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "advertisement"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/advertisement?key",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "advertisement"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "edit",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{host}}/advertisement",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "advertisement"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllAdvertisements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/advertisement/all",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "advertisement",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete advertisement",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"624417c75603b54345ca0fe2\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/advertisement",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "advertisement"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "club",
+      "item": [
+        {
+          "name": "generate reward code",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"offerID\": \"61edd6fcbd4e69dc5a836a67\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/club/generateRewardCode",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "club",
+                "generateRewardCode"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get reward hisory",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/club/getRewardHistory?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "club",
+                "getRewardHistory"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRewardCount",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/club/getRewardCount",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "club",
+                "getRewardCount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "rewardCodeInfo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/club/rewardCodeInfo?code&speciality",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "club",
+                "rewardCodeInfo"
+              ],
+              "query": [
+                {
+                  "key": "code",
+                  "value": null
+                },
+                {
+                  "key": "speciality",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "scoreHistory",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/club/scoreHistory?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "club",
+                "scoreHistory"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "generateLotteryCode",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"count\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/club/generateLotteryCode",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "club",
+                "generateLotteryCode"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ticket",
+      "item": [
+        {
+          "name": "create ticket",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"مشکل در سفارش \",\n  \"subject\": \"پشتیبانی\",\n  \"body\": \"اهمیت روابط اجتماعی بود. روش تحقیق ازنوع توصیفی –همبستگی بود.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/ticket/createTicket",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "ticket",
+                "createTicket"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get tickets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/ticket/getTickets?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "ticket",
+                "getTickets"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reply to ticket",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ticketID\": \"61f7e6688ef37c52f2386736\",\n  \"body\": \"جواب نهایی متخضض\",\n  \"succeed\": true\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/ticket/replyToTicket",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "ticket",
+                "replyToTicket"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get ticket messages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/ticket/getTicketMessages?ticketID=61f7e63a8ef37c52f2386733",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "ticket",
+                "getTicketMessages"
+              ],
+              "query": [
+                {
+                  "key": "ticketID",
+                  "value": "61f7e63a8ef37c52f2386733"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "order",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"speciality\": \"61e6a5b0dbda50c0ce144fb0\",\n  \"description\": \"لطفا هنگام مراجعه زنگ در را نزنید و تماس بگیرید\",\n  \"details\": [\n    {\n      \"title\": \"آیا به کرونا مبتلا شده اید؟\",\n      \"value\": \"خیر\"\n    },\n    {\n      \"title\": \"مدل دستگاه رو مشخض کنید\",\n      \"value\": \"مدل مشخض\"\n    }\n  ],\n  \"address\": \"61fd334ba2e62959e9f30fdd\",\n  \"datetime\": \"2022-04-05T04:00:00+0000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/order",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{host}}/order?live=true&page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order"
+              ],
+              "query": [
+                {
+                  "key": "live",
+                  "value": "true"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cancel",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"61fe530e8e2d7204be84db6b\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/order/cancel",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "rate Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"\",\n    \"reason\": \"\",\n    \"description\": \"\",\n    \"rate\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/order/rate",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order",
+                "rate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "payment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"6210febc17470a897e0fb3a1\",\n    \"method\": \"Cash\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/order/payment",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order",
+                "payment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lastOrderRateCheck",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/order/lastOrderRateCheck",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order",
+                "lastOrderRateCheck"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllOrders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/order/getAllOrders?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order",
+                "getAllOrders"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getFactorInfo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/order/getFactorInfo?factorID=b26d78ae-1f2b-4f54-9c12-24222a2f297e",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "order",
+                "getFactorInfo"
+              ],
+              "query": [
+                {
+                  "key": "factorID",
+                  "value": "b26d78ae-1f2b-4f54-9c12-24222a2f297e"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "item": [
+        {
+          "name": "insert text",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"key\": \"specialist-rules\",\n    \"value\": \"بطور کلی نظافت در زندگی شخصی افراد نقش بسزایی دارد ، نظافت از مواردیست که شامل حال همه ما میباشد پس چه بهتر که همیشه در کیفیت آن نظارت داشته باشیم\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/text",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "text"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get text",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/text?key=specialist-app-version",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "text"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "specialist-app-version"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"620e465d545fd6950a94ca3c\",\n    \"key\": \"user-app-version\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/text",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "text"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/text/all",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "text",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "specialist",
+      "item": [
+        {
+          "name": "update profile",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"firstname\": \"ماهان\",\n    \"lastname\": \"قلیزاده\",\n    \"gender\": \"Male\",\n    \"birthdate\": \"2003-06-18T00:00:00.000Z\",\n    \"city\": \"تهران\",\n    \"address\": \"خونه\",\n    \"skill\": \"62276d826c9809aac5a1e7ec\",\n    \"subSkills\": [\n        \"62276f3e6c9809aac5a1e7f6\",\n        \"62285d4c6c9809aac5a1e8e6\"\n    ],\n    \"nationalCode\": \"0200186566\",\n    \"zipCode\": \"1855818695\",\n    \"fatherName\": \"مهدی\",\n    \"idNumber\": \"0200186566\",\n    \"cardNumber\": \"1234123412341234\",\n    \"iban\": \"IR341234123412341234123412\",\n    \"isWeb\": true,\n    \"telephone\": \"02133467169\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/specialist/updateProfile",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "updateProfile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "editProfileInfo",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"city\": \"تهران\",\n    \"address\": \"خونه\",\n    \"skill\": \"62276d826c9809aac5a1e7ec\",\n    \"subSkills\": [\n        \"62276f3e6c9809aac5a1e7f6\",\n        \"62285d4c6c9809aac5a1e8e6\"\n    ],\n    \"zipCode\": \"1855818695\",\n    \"cardNumber\": \"1234123412341234\",\n    \"iban\": \"IR341234123412341234123412\",\n    \"telephone\": \"02133467169\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/specialist/editProfileInfo",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "editProfileInfo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get specialist info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/specialist/info",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "info"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAuthorizeMessage",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/specialist/authorizeMessage",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "authorizeMessage"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "submitReferralCode",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"refCode\": \"09111111112\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/specialist/submitReferralCode",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "submitReferralCode"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get spcialities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/specialist/search?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "authorizeState",
+                  "value": "Pending",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "specialistPerSpecialityReport",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/specialist/specialistPerSpecialityReport",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "specialistPerSpecialityReport"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getReportForSpeciality",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/specialist/getReportForSpeciality?_id=62276f3e6c9809aac5a1e7f6",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "getReportForSpeciality"
+              ],
+              "query": [
+                {
+                  "key": "_id",
+                  "value": "62276f3e6c9809aac5a1e7f6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "changeAuthorizeState",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"627832abf1ab9169f2a143b5\",\n    \"authorizeState\": \"Unauthorized\",\n    \"authorizeMessage\": \"321\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/specialist/changeAuthorizeState",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "changeAuthorizeState"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "uploadFile",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/home/darth/Downloads/pexels-cesar-perez-733745.jpg"
+                },
+                {
+                  "key": "key",
+                  "value": "lease",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{host}}/specialist/uploadFile",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "specialist",
+                "uploadFile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "insurance",
+      "item": [
+        {
+          "name": "getUrl",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"branch\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/insurance/url",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "insurance",
+                "url"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getData",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/insurance/data?insuranceID=da726a58-a5f6-454f-9ccc-7c99ce93afcb",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "insurance",
+                "data"
+              ],
+              "query": [
+                {
+                  "key": "insuranceID",
+                  "value": "da726a58-a5f6-454f-9ccc-7c99ce93afcb"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insuranceInfo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/insurance/info",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "insurance",
+                "info"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "insuranceInfo update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"البرز\",\n    \"code\": \"24123213\",\n    \"state\": \"Other\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/insurance/info",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "insurance",
+                "info"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "map",
+      "item": [
+        {
+          "name": "address",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc2NWE1NTgwNmNjNTM3MjJlODk1ZGQzNmYzYTA4MzIzNzRiNTY3NGI4NmUwYTQ2M2U3NzNmYWY4NDQxY2M4YTZlNzBkN2I5YWQzOTgyMzk5In0.eyJhdWQiOiIxNzAzNCIsImp0aSI6Ijc2NWE1NTgwNmNjNTM3MjJlODk1ZGQzNmYzYTA4MzIzNzRiNTY3NGI4NmUwYTQ2M2U3NzNmYWY4NDQxY2M4YTZlNzBkN2I5YWQzOTgyMzk5IiwiaWF0IjoxNjQ0NzM4OTk5LCJuYmYiOjE2NDQ3Mzg5OTksImV4cCI6MTY0NzI0NDU5OSwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.Ht8JNvY1f8tNYprSil-qV8jpyHH1165aN0ugTf6dRK5abwxCzqPA6kge6yt7xxYmNO3-urjLPfiU_PAqn_16xUt5yCUK8NQFQ6dT6qKHEJUg83t46AE90-S7_9weJ2yDV2lCzm4YpEmrlqeqOTNdBDPa7Jp2jkAeMFeNTIYPbz_7ubqLsvn2QbCpzhFjiaAmgudGWb11gaqGzamyOmqIYGpWHY-2QIEtexjVaK86F7JFvtakxuU1Kptmb6LRNmedKoWkah4VMg0Ify6T1PeDPPhleEDgXCeE9t8gCTIWKzeIRBV6BRmQHs6AxXEpoj4LJa4UUBWjhbCw6Py0Yo9g2g",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://map.ir/reverse/no/?lat=35.6892&lon=51.3890",
+              "protocol": "https",
+              "host": [
+                "map",
+                "ir"
+              ],
+              "path": [
+                "reverse",
+                "no",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "35.6892"
+                },
+                {
+                  "key": "lon",
+                  "value": "51.3890"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc2NWE1NTgwNmNjNTM3MjJlODk1ZGQzNmYzYTA4MzIzNzRiNTY3NGI4NmUwYTQ2M2U3NzNmYWY4NDQxY2M4YTZlNzBkN2I5YWQzOTgyMzk5In0.eyJhdWQiOiIxNzAzNCIsImp0aSI6Ijc2NWE1NTgwNmNjNTM3MjJlODk1ZGQzNmYzYTA4MzIzNzRiNTY3NGI4NmUwYTQ2M2U3NzNmYWY4NDQxY2M4YTZlNzBkN2I5YWQzOTgyMzk5IiwiaWF0IjoxNjQ0NzM4OTk5LCJuYmYiOjE2NDQ3Mzg5OTksImV4cCI6MTY0NzI0NDU5OSwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.Ht8JNvY1f8tNYprSil-qV8jpyHH1165aN0ugTf6dRK5abwxCzqPA6kge6yt7xxYmNO3-urjLPfiU_PAqn_16xUt5yCUK8NQFQ6dT6qKHEJUg83t46AE90-S7_9weJ2yDV2lCzm4YpEmrlqeqOTNdBDPa7Jp2jkAeMFeNTIYPbz_7ubqLsvn2QbCpzhFjiaAmgudGWb11gaqGzamyOmqIYGpWHY-2QIEtexjVaK86F7JFvtakxuU1Kptmb6LRNmedKoWkah4VMg0Ify6T1PeDPPhleEDgXCeE9t8gCTIWKzeIRBV6BRmQHs6AxXEpoj4LJa4UUBWjhbCw6Py0Yo9g2g",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"text\": \"میرداماد\",\n    \"$filter\": \"province eq تهران\",\n    \"$select\": \"neighborhood,roads,woodwater,poi\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://map.ir/search/v2/autocomplete",
+              "protocol": "https",
+              "host": [
+                "map",
+                "ir"
+              ],
+              "path": [
+                "search",
+                "v2",
+                "autocomplete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "request",
+      "item": [
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "page",
+                "value": "1",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{host}}/request?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "request"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "geoLong",
+                  "value": "51.39406979084015",
+                  "disabled": true
+                },
+                {
+                  "key": "geoLat",
+                  "value": "35.75639833860602",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "acceptRequest",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"621c84217087400915f8f415\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/request/accept",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "request",
+                "accept"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "startRequest",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"6210bce1f23fefc367967950\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/request/start",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "request",
+                "start"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "finalRequest",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"622f16126c9809aac5a2107b\",\n    \"finalPrice\": 12000000,\n    \"specialistDescription\": \"توضیحات لازمه\",\n    \"useScore\": false,\n    \"otherPrice\": 10000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/request/final",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "request",
+                "final"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "transaction",
+      "item": [
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/transaction?page=1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "transaction"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "charge wallet",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 10000,\n    \"isWeb\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/wallet/charge",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "wallet",
+                "charge"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "withdraw money",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 10000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/wallet/withdraw",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "wallet",
+                "withdraw"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "state",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/portal/state?_id=624d59a7f2c6cf41ce481894",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "portal",
+                "state"
+              ],
+              "query": [
+                {
+                  "key": "_id",
+                  "value": "624d59a7f2c6cf41ce481894"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "mixedServices",
+      "item": [
+        {
+          "name": "countList",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/mixedServices/countList",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "mixedServices",
+                "countList"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "inbox",
+      "item": [
+        {
+          "name": "createMessage",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"تست\",\n    \"content\": \"تست\",\n    \"targetSubSkills\": [\n    ],\n    \"userType\": \"user\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/inbox/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getMessages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/inbox",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateMessage",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62adae435f47383a5fcf4b68\",\n    \"title\": \"asd\",\n    \"content\": \"asdas\",\n    \"targetSubSkills\": [\n        \"62276f3e6c9809aac5a1e7f6\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/inbox",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteMessage",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62e916fb52028f4c21569876\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/inbox",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUserMessage",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/inbox/user",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "readUserMessage",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62adae745f47383a5fcf4b6b\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/inbox/user/read",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox",
+                "user",
+                "read"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteUserMessage",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62b6f1e82f4f83a45ea78aa4\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/inbox/user/delete",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "inbox",
+                "user",
+                "delete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "{{token}}",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "x-auth-token",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
