@@ -32,8 +32,10 @@ export async function fetchApi({method, payload, withToken, URL, userType, respo
         const hashId = sha1Hash(id)
         if (refreshToken) {
           refreshTokenApi({token: refreshToken, deviceID: hashId}).then((response) => {
+            console.log(response)
             saveToCookie('token', response?.data?.token)
           }).catch((e) => {
+            console.log(e)
             if (e.response.data.statusCode === 401) {
               Router.push({pathname: routes['route.auth.login'], query: {redirect: encodeURIComponent(Router.asPath)}});
               removeFromCookie('refreshToken')

@@ -6,6 +6,12 @@ import {requestRoutes} from './request'
 import {settingRoutes} from './settings'
 import {orderRoutes} from './order'
 import {homeRoutes} from './home'
+import {userRoutes} from "./user";
+import {questionRoutes} from './questions'
+import {specialityRoutes} from './speciality'
+import {categoryRoutes} from './category'
+import {addressRoutes} from "./address";
+import {offerRoutes} from "./offer";
 
 export default {
   ...authRoutes,
@@ -16,4 +22,10 @@ export default {
   ...requestRoutes,
   ...orderRoutes,
   ...homeRoutes,
+  ...userRoutes,
+  ...questionRoutes,
+  ...specialityRoutes,
+  ...categoryRoutes,
+  ...addressRoutes,
+  ...offerRoutes,
 }

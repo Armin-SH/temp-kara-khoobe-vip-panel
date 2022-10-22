@@ -19,7 +19,6 @@ function authReducer(state = initialState, action: any) {
   switch (action.type) {
 
     case AuthActionTypes.SEND_VALIDATION_CODE:
-      console.log('handleValidationReducer')
       return {
         ...state,
         validationCodeLoading: true,

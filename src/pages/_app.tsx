@@ -14,7 +14,8 @@ import createCache from '@emotion/cache';
 import {Layout, SnackbarAlert} from "@modules";
 import {ReducerTypes} from "@store/reducer";
 import {AuthActions} from "@store/auth/auth-actions";
-import {sha1Hash} from "@utils";
+import {getFromCookie, sha1Hash} from "@utils";
+import {UserActions} from "@store/user/user-actions";
 
 
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -42,6 +43,11 @@ function MyApp({fallback, Component, pageProps}: any) {
       const id = navigator.userAgent;
       const hashId = sha1Hash(id)
       dispatch(AuthActions.setDeviceId({deviceId: hashId}))
+    }
+    const token = getFromCookie("token");
+    console.log(token)
+    if (!!token) {
+      dispatch(UserActions.getUserInfo())
     }
   }, [])
 
