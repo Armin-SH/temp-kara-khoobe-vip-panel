@@ -12,6 +12,7 @@ import {specialityRoutes} from './speciality'
 import {categoryRoutes} from './category'
 import {addressRoutes} from "./address";
 import {offerRoutes} from "./offer";
+import {advertisementRoutes} from './advertisement'
 
 export default {
   ...authRoutes,
@@ -28,4 +29,5 @@ export default {
   ...categoryRoutes,
   ...addressRoutes,
   ...offerRoutes,
+  ...advertisementRoutes,
 }
