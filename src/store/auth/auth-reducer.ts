@@ -13,6 +13,8 @@ const initialState: AuthReducerTypes = {
   verifyLoading: false,
   loginLoading: false,
   isNumberValid: false,
+  countDownReset: false,
+  countDownOver: false,
 };
 
 function authReducer(state = initialState, action: any) {
@@ -29,6 +31,8 @@ function authReducer(state = initialState, action: any) {
         ...state,
         validationCodeLoading: false,
         uId: action?.data?.uId,
+        countDownOver: false,
+        countDownReset: state.countDownReset,
       }
 
     case AuthActionTypes.SET_MOBILE_NUMBER:
@@ -84,6 +88,12 @@ function authReducer(state = initialState, action: any) {
         ...state,
         isNumberValid: action?.data?.isNumberValid,
       };
+
+    case AuthActionTypes.SET_COUNT_DOWN_RESET:
+      return {
+        ...state,
+        countDownOver: action?.data?.reset,
+      }
 
     default:
       return state

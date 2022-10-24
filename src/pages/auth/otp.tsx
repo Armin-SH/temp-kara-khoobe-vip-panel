@@ -6,21 +6,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from '@store/reducer'
 import {AuthActions} from "@store/auth/auth-actions";
 import {KeyboardEvent} from "react";
-import {pressEnterKey} from "@utils";
+import {pressEnterKey, validMobileNumber} from "@utils";
 import {useAutofocus} from "@hooks";
 
 const Otp = () => {
-  const {mobile, validationCodeLoading} = useSelector((state: ReducerTypes) => state.auth);
+  const {validationCodeLoading, isNumberValid} = useSelector((state: ReducerTypes) => state.auth);
   const dispatch = useDispatch()
   const inputRef = useAutofocus(null)
 
   const handleSetMobile = (e: { target: { value: string } }) => {
     const value = e.target.value
-    dispatch(AuthActions.setMobileNumber({mobile: value}))
+    if (value.length >= 10) {
+      const validMobile = validMobileNumber(value);
+      dispatch(AuthActions.setMobileValidation({isNumberValid: validMobile.isValid}))
+      if (validMobile.isValid) {
+        dispatch(AuthActions.setMobileNumber({mobile: `0${validMobile.mobile}`}))
+      }
+    } else if (isNumberValid) {
+      dispatch(AuthActions.setMobileValidation({isNumberValid: false}))
+    }
   }
 
   const handleSendValidationCode = () => {
-    console.log('handleValidationFunction')
     dispatch(AuthActions.sendValidationCode())
   }
 
@@ -46,11 +53,13 @@ const Otp = () => {
       <TextField
         inputRef={inputRef}
         onKeyPress={handleKeyPress}
-        value={mobile}
         onChange={handleSetMobile}
         InputProps={{className: styles.mobileInput}}
         className={styles.mobileTextField}
-        placeholder={"- - - - - - - - (98+)"}
+        inputMode={"numeric"}
+        type={'numeric'}
+        inputProps={{inputMode: 'numeric'}}
+        placeholder={"(98+) - - - - - - - -"}
         placeholderalign={"center"}
         label={'شماره همراه خود را وارد کنید'}
         mobileLogin={true}

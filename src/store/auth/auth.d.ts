@@ -18,4 +18,8 @@ export interface AuthReducerTypes {
   loginLoading: boolean
 
   isNumberValid: boolean
+
+  countDownReset: boolean
+
+  countDownOver: boolean
 }

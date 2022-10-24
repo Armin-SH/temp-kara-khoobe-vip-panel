@@ -11,8 +11,9 @@ import {useAutofocus} from '@hooks'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const {loginLoading, isNumberValid} = useSelector((state: ReducerTypes) => state.auth)
+  const {loginLoading, isNumberValid, mobile} = useSelector((state: ReducerTypes) => state.auth)
 
+  console.log({mobile})
   const inputRef = useAutofocus(null)
 
   const [checkbox, setCheckbox] = useState(false)
@@ -46,7 +47,6 @@ const Login = () => {
     } else if (isNumberValid) {
       dispatch(AuthActions.setMobileValidation({isNumberValid: false}))
     }
-    dispatch(AuthActions.setMobileNumber({mobile: e.target.value}))
   }, 500)
 
   return (
@@ -59,8 +59,11 @@ const Login = () => {
         onChange={handleMobileNumber}
         InputProps={{className: styles.mobileInput}}
         className={styles.mobileTextField}
-        placeholder={"- - - - - - - - (98+)"}
+        placeholder={"(+98) - - - - - - - -"}
         placeholderalign={"center"}
+        inputMode={"numeric"}
+        type={'numeric'}
+        inputProps={{inputMode: 'numeric'}}
         label={'شماره همراه خود را وارد کنید'}
         mobileLogin={true}
       />

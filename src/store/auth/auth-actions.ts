@@ -13,6 +13,7 @@ export const AuthActionTypes = {
   SET_LOGIN_LOADING: `${preType}SET_LOGIN_LOADING`,
   SET_MOBILE_VALIDATION: `${preType}SET_MOBILE_VALIDATION`,
   CHECK_REFRESH_TOKEN: `${preType}CHECK_REFRESH_TOKEN`,
+  SET_COUNT_DOWN_RESET: `${preType}SET_COUNT_DOWN_RESET`,
 };
 
 const sendValidationCode = () => ({type: AuthActionTypes.SEND_VALIDATION_CODE});
@@ -24,6 +25,7 @@ const setUserPassword = (data: { password: string }) => ({type: AuthActionTypes.
 const loginWithPassword = () => ({type: AuthActionTypes.LOGIN_WITH_PASSWORD})
 const setMobileValidation = (data: { isNumberValid: boolean }) => ({type: AuthActionTypes.SET_MOBILE_VALIDATION, data: data});
 const checkRefreshToken = () => ({type: AuthActionTypes.CHECK_REFRESH_TOKEN})
+const setCountDownReset = (data: { reset: boolean }) => ({type: AuthActionTypes.SET_COUNT_DOWN_RESET, data: data})
 
 export const AuthActions = {
   sendValidationCode: sendValidationCode,
@@ -35,4 +37,5 @@ export const AuthActions = {
   loginWithPassword: loginWithPassword,
   setMobileValidation: setMobileValidation,
   checkRefreshToken: checkRefreshToken,
+  setCountDownReset: setCountDownReset,
 };

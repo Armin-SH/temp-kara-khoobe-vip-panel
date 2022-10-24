@@ -63,6 +63,26 @@
   margin-top: 30px;
 }
 
+.trueResendButton {
+  width: 100%;
+  margin-top: 30px;
+  opacity: 1;
+  height: 48px !important;
+  min-height: 48px !important;
+  transition-duration: 1500ms;
+  transition-property: opacity, height, min-height;
+}
+
+.falseResendButton {
+  width: 100%;
+  margin-top: 30px;
+  opacity: 0;
+  height: 0 !important;
+  min-height: 0 !important;
+  transition-duration: 1500ms;
+  transition-property: opacity, height, min-height;
+}
+
 @media only screen and (min-width: 640px) {
   .returnButton {
     margin-bottom: 25%;
@@ -75,6 +95,10 @@
   }
 
   .changeMobile {
+    margin-top: 16px;
+  }
+
+  .getCode {
     margin-top: 64px;
   }
 
