@@ -1,11 +1,11 @@
 import userInfoApi from './user-info'
-import userApi from './user'
-import setUserInfoApi from './set-info'
-import submitReferralCodeApi from './submit-referral-code'
+import changePasswordApi from './change-password'
+import uploadFileApi from './upload-file'
+import updateUserProfileApi from './update-user-profile'
 
 export {
   userInfoApi,
-  userApi,
-  setUserInfoApi,
-  submitReferralCodeApi
+  changePasswordApi,
+  uploadFileApi,
+  updateUserProfileApi,
 }

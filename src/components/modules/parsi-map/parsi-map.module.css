@@ -1,0 +1,392 @@
+.marker {
+  position: absolute;
+  z-index: 40000000000000;
+}
+
+.markerIcon {
+  width: 30px;
+  height: 40px;
+  position: relative;
+}
+
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: monospace;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #d1d1d1;
+}
+
+.markerContainer {
+  z-index: 9999;
+  position: absolute;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #ffffff;
+}
+
+.returnButton {
+  position: absolute;
+  border: 1px solid #FCA600;
+  width: 15% !important;
+  height: 65px;
+  left: 140px;
+  top: 23px;
+  z-index: 10;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.accept {
+  position: absolute;
+  width: 15%;
+  height: 65px;
+  left: 136px;
+  bottom: 70px;
+  border-radius: 4px;
+}
+
+.loc {
+  width: 25px;
+  height: 25px;
+  position: relative;
+}
+
+.myLocationContainer {
+  bottom: 70px;
+  right: 134px;
+  position: absolute;
+  width: 207px;
+  height: 65px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.divider {
+  height: 70%;
+  width: 2px;
+  background-color: #ffffff;
+  display: flex;
+}
+
+.mapPin {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  left: -20px;
+  top: -34px;
+  grid-gap: 4px;
+  gap: 4px;
+  width: 40px;
+  height: 55px;
+  z-index: 3;
+}
+
+.locationText {
+  display: flex;
+}
+
+.haloPointer {
+  z-index: 2;
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  background-color: #D9A2F1;
+  border-radius: 50%;
+  opacity: 0.2
+}
+
+.test {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+}
+
+.topContainer {
+  background-color: #FCA600;
+  opacity: 1;
+  width: 100%;
+  height: 106px;
+  top: 0;
+  position: absolute;
+  z-index: 9999999999999;
+}
+
+.pinContainer {
+  top: 141px;
+  right: 140px;
+  position: absolute;
+  width: 100%;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.zoomInButton {
+  border: 1px solid #84bffc;
+  position: absolute;
+  bottom: 262px;
+  right: 134px;
+}
+
+.zoomOutButton {
+  border: 1px solid #84bffc;
+  position: absolute;
+  bottom: 183px;
+  right: 134px;
+}
+
+.addressInfoWrapper {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  min-height: 100vh;
+  flex: 1;
+  z-index: 9999999999
+}
+
+.backgroundTransparent {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.addressInfoContainer {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 42px 20% 56px;
+  bottom: 0;
+  align-self: flex-end;
+  align-items: flex-end;
+  z-index: 4;
+}
+
+.addressInfo {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.addressPlateContainer {
+  margin-top: 40px;
+  gap: 20px;
+  width: 100%;
+}
+
+.buttonContainer {
+  margin-top: 56px;
+  gap: 16px;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+}
+
+.modalReturnButton {
+  width: 100%;
+  background-color: #f7f8fc;
+}
+
+.titleTextField {
+  flex: 1
+}
+
+@media only screen and (max-width: 1279px) {
+  .accept {
+    height: 47px;
+  }
+
+  .returnButton {
+    height: 47px;
+  }
+
+  .myLocationContainer {
+    height: 47px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .returnButton {
+    width: 15%;
+    height: 47px;
+    left: 80px;
+    top: 48px;
+    border-radius: 4px;
+  }
+
+  .accept {
+    width: calc(100% - 160px);
+    height: 47px;
+    right: unset;
+    left: 80px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.41);
+    bottom: 48px;
+    border-radius: 10px;
+    align-self: center;
+    position: absolute;
+  }
+
+  .myLocationContainer {
+    bottom: 174px;
+    right: 80px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .locationText {
+    display: none;
+  }
+
+  .haloPointer {
+    width: 207px;
+    height: 207px;
+  }
+
+  .mobileReturnButton {
+    position: absolute;
+    right: 80px;
+    top: 36px
+  }
+
+  .returnIcon {
+    position: relative;
+    width: 10px;
+    height: 20px;
+  }
+
+  .pinContainer {
+    top: 130px;
+    right: unset;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    gap: 18px
+  }
+
+  .zoomInButton {
+    background-color: #ffffff;
+    border: 1px solid #84bffc;
+    position: absolute;
+    bottom: 329px;
+    right: 80px;
+  }
+
+  .zoomOutButton {
+    background-color: #ffffff;
+    border: 1px solid #84bffc;
+    position: absolute;
+    bottom: 260px;
+    right: 80px;
+  }
+
+  .addressInfoContainer {
+    padding: 86px 80px;
+  }
+
+  .detailsTextField {
+    width: 140px;
+    min-width: 140px;
+  }
+
+  .addressPlateContainer {
+    margin-top: 16px;
+    gap: 16px
+  }
+
+  .buttonContainer {
+    margin-top: 34px;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .returnButton {
+    width: 15%;
+    height: 38px;
+    left: 40px;
+    top: 40px;
+    border-radius: 4px;
+  }
+
+  .accept {
+    width: calc(100% - 32px);
+    height: 38px;
+    right: 16px;
+    left: 16px;
+    bottom: 44px;
+    border-radius: 6px;
+  }
+
+  .myLocationContainer {
+    padding: 0;
+    bottom: 116px;
+    left: 16px;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+  }
+
+  .haloPointer {
+    width: 136px;
+    height: 136px;
+  }
+
+  .mobileReturnButton {
+    position: absolute;
+    right: 16px;
+    height: 38px;
+    width: 38px;
+    top: 24px
+  }
+
+  .topContainer {
+    height: 78px;
+  }
+
+  .mapPin {
+    width: 42px;
+    height: 60px;
+  }
+
+  .pinContainer {
+    top: 98px;
+    gap: 12px
+  }
+
+  .addressInfoContainer {
+    padding: 30px 38px 112px;
+  }
+
+  .addressPlateContainer {
+    gap: 24px;
+    justify-content: space-between;
+  }
+}
+

@@ -1,0 +1,68 @@
+.container {
+  min-height: calc(100vh - 170px);
+  width: 100%;
+  gap: 32px;
+}
+
+.addressListContainer {
+  width: 100%;
+  gap: 24px;
+}
+
+.addressList {
+  flex: 1;
+  padding: 32px 16px;
+  border-radius: 6px;
+  gap: 24px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: #ffffff;
+}
+
+.row {
+  gap: 6px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.buttonContainer {
+  width: 100%;
+  gap: 8px;
+}
+
+.addressValue {
+
+}
+
+.addressKey {
+  white-space: nowrap;
+}
+
+.button {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    min-height: calc(100vh - 200px);
+  }
+
+  .buttonContainer {
+    gap: 24px;
+  }
+
+  .addressList {
+    flex: none;
+    flex-basis: 48%;
+    padding: 32px 16px;
+    border-radius: 6px;
+    gap: 24px;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: #ffffff;
+  }
+
+  .addressListContainer {
+    flex-wrap: wrap;
+  }
+}

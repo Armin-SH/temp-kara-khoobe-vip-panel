@@ -183,6 +183,20 @@
   transition-duration: 500ms;
 }
 
+.falseaddressIndicatorPosition {
+  top: 570px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.trueaddressIndicatorPosition {
+  top: 830px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
 .trueprofileIndicatorPosition {
   top: unset;
   bottom: 170px;

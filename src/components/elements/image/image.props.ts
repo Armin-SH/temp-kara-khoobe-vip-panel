@@ -20,4 +20,6 @@ export interface ImageProps {
   layout?: 'fill' | 'intrinsic' | 'responsive' | 'fixed'
 
   objectFit?: 'contain' | 'cover' | 'fill' | 'inherit' | 'unset' | 'none' | 'scale-down' | 'initial' | 'revert' | '-moz-initial'
+
+  loader?: any
 }

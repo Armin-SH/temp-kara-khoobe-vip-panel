@@ -1,0 +1,140 @@
+.autoComplete {
+  position: absolute;
+  right: 140px;
+  top: 107px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #ffffff;
+  z-index: 99999999999999999
+}
+
+.autoCompleteWrapper {
+  position: absolute;
+  width: 50%;
+}
+
+.autoCompleteContainer {
+  position: relative;
+  width: 100%;
+}
+
+
+.suggestionWrapperTrue {
+  margin: 5px;
+  cursor: pointer;
+  z-index: 999999999999999999999999;
+}
+
+.suggestions {
+  z-index: 5;
+  text-align: right;
+}
+
+.suggestionWrapperTrue:hover {
+  margin: 5px;
+  background-color: #FCA600;
+  border-radius: 4px;
+}
+
+.suggestions:hover {
+  color: #ffffff;
+}
+
+.input {
+  padding-right: 20px;
+  text-align: right;
+  border: 1px solid #FCA600;
+  position: absolute;
+  right: 140px;
+  height: 65px;
+  top: 23px;
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 9999999999;
+  padding-left: 56px;
+}
+
+.input:focus-visible {
+  border: 1px solid #8d8d8d;
+  outline: none;
+}
+
+.searchIcon {
+  position: relative;
+  width: 45px;
+  height: 45px;
+}
+
+.searchIconContainer {
+  position: absolute;
+  left: 200px;
+  z-index: 99999999999999999;
+  bottom: 30px;
+}
+
+.loading {
+  position: absolute;
+  z-index: 9999999999999999999;
+  left: -120px;
+  top: 45px
+}
+
+@media only screen and (max-width: 1023px) {
+  .input {
+    height: 47px;
+    align-self: center;
+    right: unset;
+    left: 80px;
+    top: 36px;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+
+  .autoComplete {
+    right: 65px;
+    top: 110px;
+    width: 78%;
+    border-radius: 4px;
+  }
+
+  .autoCompleteWrapper {
+    width: 83%;
+    left: 0;
+  }
+
+  .loading {
+    left: 86px;
+    top: 46px
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .input {
+    height: 38px;
+    position: absolute;
+    align-self: center;
+    right: unset;
+    left: 16px;
+    top: 24px;
+    width: 90%;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .autoComplete {
+    left: 16px;
+    top: 85px;
+    width: 90%;
+    border-radius: 4px;
+  }
+
+  .loading {
+    left: 30px;
+    top: 30px
+  }
+}

@@ -4,14 +4,14 @@ import {ImageProps} from './image.props'
 
 const Image = (props: ImageProps) => {
 
-  const {className, layout, src, alt, objectFit, width, height, ...rest} = props
+  const {className, layout, src, alt, objectFit, width, height, loader, ...rest} = props
 
   if (!src) {
     return null
   }
 
   return (
-    <NextImage height={height} width={width} alt={alt} src={src} className={className} layout={layout} objectFit={objectFit} {...rest}/>
+    <NextImage loader={loader} height={height} width={width} alt={alt} src={src} className={className} layout={layout} objectFit={objectFit} {...rest}/>
   )
 }
 

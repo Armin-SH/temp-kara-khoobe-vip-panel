@@ -5,7 +5,7 @@ import Head from 'next/head'
 import PropTypes from 'prop-types';
 import {ThemeProvider} from '@mui/material/styles';
 import {wrapper} from '@store/store'
-import Router from 'next/router'
+import Router, {useRouter} from 'next/router'
 import NProgress from 'nprogress';
 import {useDispatch, useSelector} from 'react-redux'
 import {SWRConfig} from 'swr';
@@ -16,6 +16,8 @@ import {ReducerTypes} from "@store/reducer";
 import {AuthActions} from "@store/auth/auth-actions";
 import {getFromCookie, sha1Hash} from "@utils";
 import {UserActions} from "@store/user/user-actions";
+import routes from "@routes";
+import {Div, LoadingIndicator} from '@elements'
 
 
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -36,7 +38,10 @@ const cache = createCache({
 
 function MyApp({fallback, Component, pageProps}: any) {
   const dispatch = useDispatch();
+  const router = useRouter()
   const {deviceId} = useSelector((state: ReducerTypes) => state.auth);
+  const {restrictionLevel, getInfoLoading} = useSelector((state: ReducerTypes) => state.user);
+  const token = getFromCookie("token");
 
   useEffect(() => {
     if (!deviceId) {
@@ -44,13 +49,18 @@ function MyApp({fallback, Component, pageProps}: any) {
       const hashId = sha1Hash(id)
       dispatch(AuthActions.setDeviceId({deviceId: hashId}))
     }
-    const token = getFromCookie("token");
-    console.log(token)
     if (!!token) {
       dispatch(UserActions.getUserInfo())
     }
   }, [])
 
+  useEffect(() => {
+    console.log(restrictionLevel)
+    if (restrictionLevel !== 'Vip' && restrictionLevel !== undefined) {
+      router.push(routes['route.profile.index'])
+    }
+
+  }, [restrictionLevel, token])
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -73,6 +83,21 @@ function MyApp({fallback, Component, pageProps}: any) {
         <SnackbarAlert/>
         {/*<Support/>*/}
         <SWRConfig value={{refreshInterval: 30000, fallback}}>
+          {getInfoLoading ? (
+            <Div style={{
+              flex: 1,
+              minHeight: '100vh',
+              position: "fixed",
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              justifyContent: 'center',
+              alignItems: 'center',
+              zIndex: 9999999999999999
+            }}>
+              <LoadingIndicator size={'60px'} color={'secondary'}/>
+            </Div>
+          ) : null}
           <Layout sideBar={Component.sideBar} hasHeader={Component.hasHeader} isAuthentication={Component.isAuthentication} hasNavigation={Component.hasNavigation}>
             <Component {...pageProps}/>
           </Layout>

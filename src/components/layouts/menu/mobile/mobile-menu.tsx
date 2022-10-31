@@ -4,9 +4,10 @@ import styles from './mobile-menu.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 import {HomeActions} from "@store/home/home-actions";
-import {AddRequestBlackIcon, AddRequestWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, MobileMenuIndicatorIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon} from "@icons";
+import {AddRequestBlackIcon, AddRequestWhiteIcon, AddressBlackIcon, AddressWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, MobileMenuIndicatorIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon} from "@icons";
 import {useRouter} from "next/router";
 import routes from "@routes";
+import {AlertActions} from "@store/alert/alert-action";
 
 
 const TopMenu = [
@@ -66,6 +67,13 @@ const TopMenu = [
     Icon: AddRequestWhiteIcon,
     route: routes['route.order.index'],
     subRoutes: []
+  },
+  {
+    name: 'آدرس های من',
+    activeIcon: AddressBlackIcon,
+    Icon: AddressWhiteIcon,
+    route: routes['route.address.index'],
+    subRoutes: []
   }
 ]
 
@@ -98,13 +106,26 @@ const MobileMenu = () => {
   const {mobileMenu} = useSelector((state: ReducerTypes) => state.home);
   const router = useRouter()
   const indicatorPosition = `${router.pathname.replaceAll('/', '')}IndicatorPosition`
+  const {restrictionLevel} = useSelector((state: ReducerTypes) => state.user);
 
   const handleClick = ({route}: { route: string }) => {
-    if (router.pathname === route) {
-      dispatch(HomeActions.setMobileMenu({mobileMenu: false}))
+    if (restrictionLevel === 'Pending' && routes['route.auth.login'] !== route) {
+      return dispatch(AlertActions.showAlert({
+        text: 'مشخصات شما در حالی بررسی می باشد. بعد از تایید مشخصات مجاز به استفاده از پنل خواهید بود',
+        severity: 'error',
+      }))
+    } else if (restrictionLevel !== "Vip" && routes['route.auth.login'] !== route) {
+      return dispatch(AlertActions.showAlert({
+        text: 'برای ادامه استفاده از پنل اطلاعات خود را تکمبل کنید',
+        severity: 'error',
+      }))
     } else {
-      dispatch(HomeActions.setMobileMenu({mobileMenu: false}))
-      router.push(route)
+      if (router.pathname === route) {
+        dispatch(HomeActions.setMobileMenu({mobileMenu: false}))
+      } else {
+        dispatch(HomeActions.setMobileMenu({mobileMenu: false}))
+        router.push(route)
+      }
     }
   }
 

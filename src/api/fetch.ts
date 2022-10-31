@@ -11,38 +11,37 @@ interface ConfigProps {
     query: object | any
   }
   payload?: any
-  userType?: 'auth' | 'user' | 'admin'
   withToken?: boolean
   responseType?: any
+  uploader?: boolean
 }
 
 const axiosClient = axios.create();
 
-export async function fetchApi({method, payload, withToken, URL, userType, responseType = 'json'}: ConfigProps): Promise<any> {
+export async function fetchApi({method, payload, withToken, URL, responseType = 'json', uploader}: ConfigProps): Promise<any> {
   const parseUrl = getParseUrl(URL);
   const axiosClient = getAxiosClient();
   const token = getFromCookie("token");
 
   const CatchFunction = async (error: any) => {
     if (error?.response?.status === 401) {
-      if (token) {
-        await removeFromCookie("token");
-        const refreshToken = await getFromCookie('refreshToken')
-        const id = navigator.userAgent;
-        const hashId = sha1Hash(id)
-        if (refreshToken) {
-          refreshTokenApi({token: refreshToken, deviceID: hashId}).then((response) => {
-            console.log(response)
-            saveToCookie('token', response?.data?.token)
-          }).catch((e) => {
-            console.log(e)
-            if (e.response.data.statusCode === 401) {
-              Router.push({pathname: routes['route.auth.login'], query: {redirect: encodeURIComponent(Router.asPath)}});
-              removeFromCookie('refreshToken')
-            }
-          })
-        }
-      }
+      // if (token) {
+      //   await removeFromCookie("token");
+      //   const refreshToken = await getFromCookie('refreshToken')
+      //   const id = navigator.userAgent;
+      //   const hashId = sha1Hash(id)
+      //   if (refreshToken) {
+      //     refreshTokenApi({token: refreshToken, deviceID: hashId}).then((response) => {
+      //       console.log(response)
+      //       saveToCookie('token', response?.data?.token)
+      //     }).catch((e) => {
+      //       if (e.response.data.statusCode === 401) {
+      //         Router.push({pathname: routes['route.auth.login'], query: {redirect: encodeURIComponent(Router.asPath)}});
+      //         removeFromCookie('refreshToken')
+      //       }
+      //     })
+      //   }
+      // }
     } else if (error?.response?.status === 404) {
       return {
         notFound: true
@@ -56,7 +55,13 @@ export async function fetchApi({method, payload, withToken, URL, userType, respo
   let headers = {};
   if (withToken) {
     headers = Object.assign({}, headers, {
-      Authorization: 'Bearer ' + token
+      'x-auth-token': token
+    })
+  }
+
+  if (uploader) {
+    headers = Object.assign({}, headers, {
+      'Content-Type': `multipart/form-data`
     })
   }
 
@@ -113,7 +118,7 @@ export async function fetchApi({method, payload, withToken, URL, userType, respo
 function getAxiosClient() {
   axiosClient.defaults.timeout = 100000;
   axiosClient.defaults.headers = {
-    'Content-Type': 'application/json',
+    'Content-Type': undefined,
     Accept: 'application/json',
   };
 

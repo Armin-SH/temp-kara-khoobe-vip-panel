@@ -33,6 +33,16 @@ import ArrowLeftIcon from './arrow-left.svg'
 import ArrowTopIcon from './arrow-top.svg'
 import ArrowBottomIcon from './arrow-buttom.svg'
 import ProfileGreyIcon from './profile-grey.svg'
+import CrossBlackIcon from './cross-black.svg'
+import UploadCloudIcon from './upload-cloud.svg'
+import GraySearchIcon from './gray-search.svg'
+import ArrowRightGreyIcon from './arrow-right-grey.svg'
+import LocationPrimaryIcon from './location-primary.svg'
+import LocIcon from './loc.svg'
+import LocationPinIcon from './location-pin.svg'
+import AddressWhiteIcon from './location-white.svg'
+import AddressBlackIcon from './location-black.svg'
+
 
 export {
   SupportIcon,
@@ -70,4 +80,13 @@ export {
   ArrowTopIcon,
   ArrowBottomIcon,
   ProfileGreyIcon,
+  UploadCloudIcon,
+  CrossBlackIcon,
+  GraySearchIcon,
+  ArrowRightGreyIcon,
+  LocationPrimaryIcon,
+  LocIcon,
+  LocationPinIcon,
+  AddressWhiteIcon,
+  AddressBlackIcon,
 }

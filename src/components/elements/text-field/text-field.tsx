@@ -12,7 +12,7 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
     "@media (min-width: 640px)": {
       fontSize: "14px"
     },
-    "@media (max-width: 1024px)": {
+    "@media (min-width: 1024px)": {
       fontSize: "19px",
     },
     fontSize: "12px",
@@ -30,7 +30,6 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
     border: 'none',
     borderRadius: props.search ? '55px' : '12px',
     paddingTop: props.search ? 0 : '16px',
-    paddingBottom: 0,
     paddingLeft: props.search ? 0 : '24px',
     paddingRight: props.search ? '21px' : '24px',
     height: props.search ? "48px" : 'auto',
@@ -39,20 +38,24 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
       height: props.search ? '53px' : 'auto'
     },
     "@media only screen and (min-width: 1024px)": {
-      height: props.search ?  '56px' : 'auto'
+      height: props.search ? '56px' : 'auto'
     }
   },
   "& .MuiFilledInput-root:before": {
-    border: 'none'
+    border: 'none',
+    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto'
   },
   "& .MuiFilledInput-root:hover": {
     border: 'none',
+    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto'
   },
   "& .MuiFilledInput-root:hover:not(.Mui-disabled):before": {
     border: 'none',
+    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto'
   },
   "& .MuiFilledInput-root:after": {
-    border: 'none'
+    border: 'none',
+    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto'
   },
   "& input::placeholder": {
     fontSize: props.placeholdermobilesize,

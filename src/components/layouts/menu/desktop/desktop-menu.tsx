@@ -1,12 +1,13 @@
 import React from 'react'
 import {Div, Image, Text} from '@elements'
 import styles from "./desktop-menu.module.css";
-import {AddRequestBlackIcon, AddRequestWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon, TabletMenuIndicatorIcon} from "@icons";
+import {AddRequestBlackIcon, AddRequestWhiteIcon, AddressBlackIcon, AddressWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon, TabletMenuIndicatorIcon} from "@icons";
 import routes from '@routes'
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 import {HomeActions} from "@store/home/home-actions";
+import {AlertActions} from "@store/alert/alert-action";
 
 const TopMenu = [
   {
@@ -65,6 +66,13 @@ const TopMenu = [
     Icon: AddRequestWhiteIcon,
     route: routes['route.order.index'],
     subRoutes: []
+  },
+  {
+    name: 'آدرس های من',
+    activeIcon: AddressBlackIcon,
+    Icon: AddressWhiteIcon,
+    route: routes['route.address.index'],
+    subRoutes: []
   }
 ]
 
@@ -96,6 +104,7 @@ const DesktopMenu = () => {
   const dispatch = useDispatch()
   const {expanded} = useSelector((state: ReducerTypes) => state.home);
   const router = useRouter()
+  const {restrictionLevel} = useSelector((state: ReducerTypes) => state.user);
 
   const indicatorClass = `${expanded}IndicatorContainer`
   const iconNameClass = `${expanded}IconName`
@@ -104,10 +113,22 @@ const DesktopMenu = () => {
   const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '')}IndicatorPosition`
 
   const handleClick = ({route}: { route: string }) => {
-    if (router.pathname === route) {
-      dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
+    if (restrictionLevel === 'Pending' && routes['route.auth.login'] !== route) {
+      return dispatch(AlertActions.showAlert({
+        text: 'مشخصات شما در حالی بررسی می باشد. بعد از تایید مشخصات مجاز به استفاده از پنل خواهید بود',
+        severity: 'error',
+      }))
+    } else if (restrictionLevel !== "Vip" && routes['route.auth.login'] !== route) {
+      return dispatch(AlertActions.showAlert({
+        text: 'برای ادامه استفاده از پنل اطلاعات خود را تکمبل کنید',
+        severity: 'error',
+      }))
     } else {
-      router.push(route)
+      if (router.pathname === route) {
+        dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
+      } else {
+        router.push(route)
+      }
     }
   }
 

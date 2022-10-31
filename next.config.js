@@ -11,7 +11,7 @@ module.exports = withBundleAnalyzer(withPWA({
     skipWaiting: true,
   },
   images: {
-    domains: [process.env.NEXT_PUBLIC_APP_SITE_URL],
+    domains: ["devil.karakhoobe.ir"],
   },
   reactStrictMode: true,
   typescript: {
@@ -26,6 +26,7 @@ module.exports = withBundleAnalyzer(withPWA({
     APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION,
     APP_SITE_URL: process.env.NEXT_PUBLIC_APP_SITE_URL,
     API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+    MAP_TOKEN: process.env.NEXT_PUBLIC_MAP_TOKEN,
   },
 }));
 

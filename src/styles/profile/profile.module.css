@@ -8,6 +8,10 @@
   min-height: 100vh;
 }
 
+.button {
+  width: 98%;
+}
+
 .backImage {
   position: absolute;
   height: 138px;
@@ -86,13 +90,14 @@
 
 .input {
   width: 100%;
+  margin-bottom: 16px;
 }
 
 .inputWrapper {
   background-color: #ffffff;
   align-items: center;
-  padding-right: 16px;
-  padding-left: 8px;
+  padding: 0 16px 0 8px;
+  border-radius: 4px;
 }
 
 .inputLabel {
@@ -107,6 +112,18 @@
 
 .selectTypeContainer {
   width: 100%;
+}
+
+.buttonContainer {
+  width: 100%;
+  margin-top: 42px;
+  margin-bottom: 36px;
+}
+
+.nationalCard {
+  position: relative;
+  width: 320px;
+  height: 300px;
 }
 
 @media only screen and (min-width: 640px) {
@@ -185,6 +202,6 @@
   }
 
   .profileInfo {
-    width: 40%;
+    width: 100%;
   }
 }

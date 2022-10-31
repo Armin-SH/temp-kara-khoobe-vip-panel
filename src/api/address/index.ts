@@ -1,11 +1,15 @@
-import deleteAddressApi from './delete-address'
-import getAddressApi from './get-address'
-import insertAddressApi from './insert-address'
-import updateAddressApi from './update-address'
+import mapReverseLocationApi from './map-reverse-location'
+import mapAutoCompleteApi from './map-auto-complete'
+import insertNewAddressApi from './insert-new-address'
+import updateNewAddressApi from './update-user-address'
+import deleteUserAddressApi from './delete-user-address'
+import userAddressListApi from './user-address-list'
 
 export {
-  deleteAddressApi,
-  insertAddressApi,
-  getAddressApi,
-  updateAddressApi,
+  mapReverseLocationApi,
+  mapAutoCompleteApi,
+  insertNewAddressApi,
+  updateNewAddressApi,
+  deleteUserAddressApi,
+  userAddressListApi,
 }

@@ -14,6 +14,8 @@ import MenuItem from './menu-item'
 import Select from './select'
 import Skeleton from './skeleton'
 import Popper from './popper'
+import IconButton from './icon-button'
+import ListItem from './list-item'
 
 export {
   Div,
@@ -32,4 +34,6 @@ export {
   Select,
   Skeleton,
   Popper,
+  IconButton,
+  ListItem,
 }

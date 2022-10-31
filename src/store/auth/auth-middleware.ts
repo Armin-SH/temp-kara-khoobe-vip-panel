@@ -72,7 +72,6 @@ function* loginWithPasswordWatcher() {
     const {mobile, password, deviceId}: AuthReducerTypes = yield select(authStore);
 
     const response: { data: { token: string, refreshToken: string } } = yield passwordLoginApi({mobile: mobile, password: password, deviceID: deviceId});
-    console.log(response)
     yield put({type: AuthActionTypes.SET_LOGIN_LOADING})
     yield saveToCookie("token", response?.data?.token)
     yield saveToCookie("refreshToken", response?.data?.refreshToken)
@@ -97,7 +96,6 @@ function* loginWithPasswordWatcher() {
 }
 
 function* checkRefreshTokenWatcher() {
-  console.log('middleware')
   try {
     const {deviceId}: AuthReducerTypes = yield select(authStore);
     const refreshToken = getFromCookie('refreshToken')
