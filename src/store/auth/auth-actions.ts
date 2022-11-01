@@ -12,7 +12,6 @@ export const AuthActionTypes = {
   LOGIN_WITH_PASSWORD: `${preType}LOGIN_WITH_PASSWORD`,
   SET_LOGIN_LOADING: `${preType}SET_LOGIN_LOADING`,
   SET_MOBILE_VALIDATION: `${preType}SET_MOBILE_VALIDATION`,
-  CHECK_REFRESH_TOKEN: `${preType}CHECK_REFRESH_TOKEN`,
   SET_COUNT_DOWN_RESET: `${preType}SET_COUNT_DOWN_RESET`,
 };
 
@@ -24,7 +23,6 @@ const verifyOtpCode = () => ({type: AuthActionTypes.VERIFY_OTP_CODE})
 const setUserPassword = (data: { password: string }) => ({type: AuthActionTypes.SET_USER_PASSWORD, data: data})
 const loginWithPassword = () => ({type: AuthActionTypes.LOGIN_WITH_PASSWORD})
 const setMobileValidation = (data: { isNumberValid: boolean }) => ({type: AuthActionTypes.SET_MOBILE_VALIDATION, data: data});
-const checkRefreshToken = () => ({type: AuthActionTypes.CHECK_REFRESH_TOKEN})
 const setCountDownReset = (data: { reset: boolean }) => ({type: AuthActionTypes.SET_COUNT_DOWN_RESET, data: data})
 
 export const AuthActions = {
@@ -36,6 +34,5 @@ export const AuthActions = {
   setUserPassword: setUserPassword,
   loginWithPassword: loginWithPassword,
   setMobileValidation: setMobileValidation,
-  checkRefreshToken: checkRefreshToken,
   setCountDownReset: setCountDownReset,
 };

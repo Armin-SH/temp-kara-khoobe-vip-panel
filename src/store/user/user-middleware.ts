@@ -36,12 +36,6 @@ function* getUserInfoWatcher() {
 
   } catch (error) {
     yield put({type: UserActionTypes.SET_USER_INFO})
-
-    yield put({
-      type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
-      severity: "error"
-    });
   }
 }
 
@@ -71,7 +65,7 @@ function* changeUserPasswordWatcher() {
     yield put({type: UserActionTypes.SET_NEW_PASSWORD_LOADING})
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در ذخیره سازی پسوورد مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -86,7 +80,7 @@ function* uploadUserFileWatcher() {
   } catch (error) {
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در ذخیره سازی فایل مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -110,7 +104,7 @@ function* updateUserInfoWatcher() {
     yield put({type: UserActionTypes.SET_UPDATE_LOADING})
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در ذخیره اطلاعات مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -132,7 +126,7 @@ function* setUserAddressWatcher() {
     yield put({type: UserActionTypes.SET_ADDRESS_LOADING});
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در ذخیره سازی آدرس شما مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -156,7 +150,7 @@ function* updateUserAddressWatcher() {
     yield put({type: UserActionTypes.SET_ADDRESS_LOADING});
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در ویرایش آدرس شما مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -177,7 +171,7 @@ function* deleteUserAddressWatcher() {
   } catch (error) {
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در حدف آدرس مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -198,7 +192,7 @@ function* getUserAddressWatcher() {
   } catch (error) {
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در دریافت لیست آدرس های شما مشکلی پیش آمده است. لطفا مجددا صفحه را بارگذاری کنید",
       severity: "error"
     });
   }

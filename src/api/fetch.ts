@@ -25,23 +25,22 @@ export async function fetchApi({method, payload, withToken, URL, responseType = 
 
   const CatchFunction = async (error: any) => {
     if (error?.response?.status === 401) {
-      // if (token) {
-      //   await removeFromCookie("token");
-      //   const refreshToken = await getFromCookie('refreshToken')
-      //   const id = navigator.userAgent;
-      //   const hashId = sha1Hash(id)
-      //   if (refreshToken) {
-      //     refreshTokenApi({token: refreshToken, deviceID: hashId}).then((response) => {
-      //       console.log(response)
-      //       saveToCookie('token', response?.data?.token)
-      //     }).catch((e) => {
-      //       if (e.response.data.statusCode === 401) {
-      //         Router.push({pathname: routes['route.auth.login'], query: {redirect: encodeURIComponent(Router.asPath)}});
-      //         removeFromCookie('refreshToken')
-      //       }
-      //     })
-      //   }
-      // }
+      if (token) {
+        await removeFromCookie("token");
+        const refreshToken = await getFromCookie('refreshToken')
+        const id = navigator.userAgent;
+        const hashId = sha1Hash(id)
+        if (refreshToken) {
+          refreshTokenApi({token: refreshToken, deviceID: hashId}).then((response) => {
+            saveToCookie('token', response?.data?.token)
+          }).catch((e) => {
+            if (e.response.data.statusCode === 401) {
+              Router.push({pathname: routes['route.auth.login'], query: {redirect: encodeURIComponent(Router.asPath)}});
+              removeFromCookie('refreshToken')
+            }
+          })
+        }
+      }
     } else if (error?.response?.status === 404) {
       return {
         notFound: true

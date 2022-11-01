@@ -3,10 +3,10 @@ import {all, put, select, takeLatest} from "redux-saga/effects";
 import {AlertActionType} from "@store/alert/alert-action";
 import {authStore} from "@store/auth/auth-store";
 import {AuthReducerTypes} from "@store/auth/auth";
-import {passwordLoginApi, refreshTokenApi, sendValidationCodeApi, verifyValidationCodeApi} from "@api/auth";
+import {passwordLoginApi, sendValidationCodeApi, verifyValidationCodeApi} from "@api/auth";
 import Router from "next/router";
 import routes from '@routes'
-import {getFromCookie, removeFromCookie, saveToCookie} from '@utils'
+import {saveToCookie} from '@utils'
 
 
 function* sendValidationCodeWatcher() {
@@ -32,7 +32,7 @@ function* sendValidationCodeWatcher() {
     })
     yield put({
       type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+      text: "در ارسال کد یکبار مصرف مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
       severity: "error"
     });
   }
@@ -60,7 +60,7 @@ function* verifyOtpCodeWatcher() {
     } else {
       yield put({
         type: AlertActionType.SHOW_ALERT,
-        text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
+        text: "در اعتبار سنجی کد ورود شما مشکلی پیش آمده است. لطفا مجددا تلاش کنید",
         severity: "error"
       });
     }
@@ -95,37 +95,11 @@ function* loginWithPasswordWatcher() {
   }
 }
 
-function* checkRefreshTokenWatcher() {
-  try {
-    const {deviceId}: AuthReducerTypes = yield select(authStore);
-    const refreshToken = getFromCookie('refreshToken')
-    console.log(refreshToken)
-    if (refreshToken) {
-      const response: { data: { token: string, refreshToken: string } } = yield refreshTokenApi({token: refreshToken, deviceID: deviceId});
-
-      yield saveToCookie("token", response?.data?.token)
-    }
-
-  } catch (e: any) {
-    if (e.response.data.statusCode === 401) {
-      removeFromCookie('refreshToken')
-      Router.push(routes['route.auth.login'])
-    }
-    yield put({
-      type: AlertActionType.SHOW_ALERT,
-      text: "در گرفتن اطلاعات شخصی شما مشکلی پیش آمده است، لطفا مجددا وارد سایت شوید.",
-      severity: "error"
-    });
-  }
-}
-
-
 function* authMiddleware() {
   yield all([
     takeLatest(AuthActionTypes.SEND_VALIDATION_CODE, sendValidationCodeWatcher),
     takeLatest(AuthActionTypes.VERIFY_OTP_CODE, verifyOtpCodeWatcher),
     takeLatest(AuthActionTypes.LOGIN_WITH_PASSWORD, loginWithPasswordWatcher),
-    takeLatest(AuthActionTypes.CHECK_REFRESH_TOKEN, checkRefreshTokenWatcher),
   ])
 }
 

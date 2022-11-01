@@ -12,7 +12,7 @@ const refreshTokenApi = ({token, deviceID}: RefreshTokenProps) => {
     URL: routes["api.auth.refresh-token"],
     payload: {
       token: token,
-      type: 'admin',
+      type: 'vipUser',
       deviceID: deviceID,
     }
   });

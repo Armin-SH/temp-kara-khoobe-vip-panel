@@ -6,7 +6,8 @@
 
 .addressListContainer {
   width: 100%;
-  gap: 24px;
+  gap: 16px;
+  justify-content: space-between;
 }
 
 .addressList {
