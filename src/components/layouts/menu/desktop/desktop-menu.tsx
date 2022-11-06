@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 import {HomeActions} from "@store/home/home-actions";
 import {AlertActions} from "@store/alert/alert-action";
+import {removeFromCookie} from "@utils";
 
 const TopMenu = [
   {
@@ -127,6 +128,10 @@ const DesktopMenu = () => {
       if (router.pathname === route) {
         dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
       } else {
+        if (route === routes['route.auth.login']) {
+          removeFromCookie('token')
+          removeFromCookie('refreshToken')
+        }
         router.push(route)
       }
     }

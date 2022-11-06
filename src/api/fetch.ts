@@ -94,7 +94,8 @@ export async function fetchApi({method, payload, withToken, URL, responseType = 
         axiosClient.delete(encodeURI(`/${parseUrl}`), {
           headers: {...headers},
           baseURL: baseURL,
-          responseType: responseType
+          responseType: responseType,
+          data: payload
         })
           .then(response => response)
           .catch(CatchFunction)

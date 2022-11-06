@@ -1,7 +1,7 @@
 import {all, put, select, takeLatest} from "redux-saga/effects";
 import {AlertActionType} from "@store/alert/alert-action";
 import {userStore} from "@store/user/user-store";
-import {UserReducerTypes} from "@store/user/user";
+import {AddressProps, UserReducerTypes} from "@store/user/user";
 import {changePasswordApi, updateUserProfileApi, uploadFileApi, userInfoApi} from "@api/user";
 import {deleteUserAddressApi, insertNewAddressApi, updateNewAddressApi, userAddressListApi} from '@api/address'
 import {UserActionTypes} from "@store/user/user-actions";
@@ -113,8 +113,13 @@ function* updateUserInfoWatcher() {
 function* setUserAddressWatcher() {
   const {address}: UserReducerTypes = yield select(userStore);
   try {
-    const response: { data: { status: string } } = yield insertNewAddressApi(address);
-    console.log(response)
+    const response: { data: AddressProps } = yield insertNewAddressApi(address);
+    yield put({
+      type: UserActionTypes.SET_USER_NEW_ADDRESS,
+      data: {
+        address: response?.data
+      }
+    });
     yield put({
       type: AlertActionType.SHOW_ALERT,
       text: "آدرس جدید با موفقیت اضافه شد",
@@ -135,15 +140,18 @@ function* setUserAddressWatcher() {
 function* updateUserAddressWatcher() {
   const {address, selectedAddressId}: UserReducerTypes = yield select(userStore);
   try {
-    const response: { data: { status: string } } = yield updateNewAddressApi({...address, id: selectedAddressId});
-    console.log({response})
+    const response: { data: any } = yield updateNewAddressApi({...address, _id: selectedAddressId});
+    yield put({
+      type: UserActionTypes.SET_EDITED_ADDRESS,
+      data: {
+        address: response.data
+      }
+    })
     yield put({
       type: AlertActionType.SHOW_ALERT,
       text: "آدرس جدید با موفقیت ویرایش شد",
       severity: "success"
     });
-
-    yield put({type: UserActionTypes.SET_ADDRESS_LOADING});
 
 
   } catch (error) {
@@ -160,7 +168,9 @@ function* deleteUserAddressWatcher() {
   const {selectedAddressId}: UserReducerTypes = yield select(userStore);
   try {
     const response: { data: { status: string } } = yield deleteUserAddressApi({id: selectedAddressId});
-    console.log({response})
+
+    yield put({type: UserActionTypes.SET_DELETED_ADDRESS, data: {id: selectedAddressId}})
+
     yield put({
       type: AlertActionType.SHOW_ALERT,
       text: "آدرس با موفقیت حذف شد",
@@ -179,12 +189,11 @@ function* deleteUserAddressWatcher() {
 
 function* getUserAddressWatcher() {
   try {
-    const response: { data: { data: Array<object> } } = yield userAddressListApi();
-    console.log({response})
+    const response: { data: { addresses: Array<object> } } = yield userAddressListApi();
     yield put({
       type: UserActionTypes.SET_USER_ADDRESS_LIST,
       data: {
-        addressList: response?.data?.data,
+        addressList: response?.data?.addresses,
       }
     });
 

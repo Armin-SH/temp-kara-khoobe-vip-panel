@@ -8,7 +8,7 @@ import MapAutoComplete from './map-auto-complete'
 import {AlertActions} from "@store/alert/alert-action";
 import {useDispatch} from "react-redux";
 import {mapReverseLocationApi} from '@api/address'
-import {UserActions, UserActionTypes} from "@store/user/user-actions";
+import {UserActions} from "@store/user/user-actions";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
@@ -68,6 +68,7 @@ const ParsiMap = (props: ParsiMapProps) => {
       setLocation({lat: map.current.getCenter().lat, lng: map.current.getCenter().lng})
       setZoom(parseFloat(map.current.getZoom().toFixed(2)));
     });
+    console.log(location)
 
     map.current.on('zoomend', () => {
       setLocation({lat: map.current.getCenter().lat, lng: map.current.getCenter().lng})
@@ -125,8 +126,8 @@ const ParsiMap = (props: ParsiMapProps) => {
             fullAddress: address,
             number: plate,
             unit: unit,
-            geoLat: location?.lat?.toString(),
-            geoLong: location?.lng?.toString()
+            geoLat: location?.lat,
+            geoLong: location?.lng
           },
           id: addressId,
         }));
@@ -137,8 +138,8 @@ const ParsiMap = (props: ParsiMapProps) => {
             fullAddress: address,
             number: plate,
             unit: unit,
-            geoLat: location?.lat?.toString(),
-            geoLong: location?.lng?.toString()
+            geoLat: location?.lat,
+            geoLong: location?.lng
           }
         }));
       }
@@ -222,7 +223,7 @@ const ParsiMap = (props: ParsiMapProps) => {
           </Button>
         </Media>
         <Media lessThan={"md"}>
-          <Button onClick={closeMap} className={styles.mobileReturnButton} color={"control"}>
+          <Button onClick={closeMap} size={'medium'} className={styles.mobileReturnButton} color={"tertiary"}>
             <Div className={styles.returnIcon}>
               <Image src={ArrowRightGreyIcon} alt={"بازگشت"}/>
             </Div>
@@ -260,9 +261,9 @@ const ParsiMap = (props: ParsiMapProps) => {
         </Text>
       </Button>
       {addressInfo ? (
-        <Div desktop={"column"} className={styles.addressInfoWrapper}>
+        <Div mobile={"column"} className={styles.addressInfoWrapper}>
           <Div onClick={() => handleAddressInfoModal({state: false})} className={styles.backgroundTransparent}/>
-          <Div desktop={"column"} className={styles.addressInfoContainer}>
+          <Div mobile={"column"} className={styles.addressInfoContainer}>
             <Text color={"grey.500"} typography={"small"}>
               آدرس
             </Text>

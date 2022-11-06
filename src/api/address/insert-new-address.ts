@@ -4,8 +4,8 @@ import {fetchApi} from '../fetch';
 
 interface InsertNewAddressProps {
   title: string,
-  geoLat: string,
-  geoLong: string,
+  geoLat: number,
+  geoLong: number,
   number: string,
   unit: string,
   fullAddress: string,
@@ -21,7 +21,7 @@ const insertNewAddressApi = ({unit, fullAddress, geoLat, geoLong, number, title}
       geoLong: geoLong,
       number: number,
       unit: unit,
-      fullAddress: fullAddress,
+      fullAddress: fullAddress
     },
     withToken: true,
   });

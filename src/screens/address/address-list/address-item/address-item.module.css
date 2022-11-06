@@ -15,7 +15,7 @@
   padding: 32px 16px;
   border-radius: 6px;
   gap: 24px;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-end;
   background-color: #ffffff;
 }
@@ -45,7 +45,7 @@
 
 @media only screen and (min-width: 1024px) {
   .container {
-    min-height: calc(100vh - 200px);
+    min-height: 100vh;
   }
 
   .buttonContainer {
@@ -58,7 +58,7 @@
     padding: 32px 16px;
     border-radius: 6px;
     gap: 24px;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-end;
     background-color: #ffffff;
   }

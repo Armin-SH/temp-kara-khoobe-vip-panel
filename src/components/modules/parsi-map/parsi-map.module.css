@@ -189,6 +189,7 @@
   margin-top: 40px;
   gap: 20px;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .buttonContainer {

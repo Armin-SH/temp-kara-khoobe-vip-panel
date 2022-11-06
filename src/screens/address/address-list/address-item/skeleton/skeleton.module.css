@@ -1,0 +1,25 @@
+.skeleton {
+  display: flex;
+  height: 180px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.container {
+  width: 100%;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 1024px) {
+  .skeleton {
+    flex: none;
+    height: 300px;
+    flex-basis: 48%;
+    border-radius: 6px;
+  }
+
+  .container {
+    flex-wrap: wrap;
+  }
+}

@@ -52,10 +52,9 @@ function MyApp({fallback, Component, pageProps}: any) {
     if (!!token) {
       dispatch(UserActions.getUserInfo())
     }
-  }, [])
+  }, [token])
 
   useEffect(() => {
-    console.log(restrictionLevel)
     if (restrictionLevel !== 'Vip' && restrictionLevel !== undefined) {
       router.push(routes['route.profile.index'])
     }

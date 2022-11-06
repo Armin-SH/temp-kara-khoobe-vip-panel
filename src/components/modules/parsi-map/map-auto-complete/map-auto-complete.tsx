@@ -50,7 +50,7 @@ const MapAutoComplete = ({locationCallback, clientLocation}: MapAutoCompleteProp
             <LoadingIndicator size={"25px"} color={"info"}/>
           </Div>
         ) : null}
-        <Div desktop={"column"} className={styles.autoComplete}>
+        <Div mobile={"column"} className={styles.autoComplete}>
           {/* @ts-ignore*/}
           {(predictions && predictions.length) ? predictions.map((suggestion: { address: string, geom: { coordinates: Array<number> } }, index: number) => {
             return (

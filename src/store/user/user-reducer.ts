@@ -26,8 +26,8 @@ const initialState: UserReducerTypes = {
   id: '',
   address: {
     title: '',
-    geoLat: '',
-    geoLong: '',
+    geoLat: 0,
+    geoLong: 0,
     number: '',
     unit: '',
     fullAddress: '',
@@ -150,7 +150,7 @@ function userReducer(state = initialState, action: any) {
       return {
         ...state,
         selectedAddressId: action?.data?.id,
-        addressLoading: true
+        addressLoading: true,
       }
 
     case UserActionTypes.SET_ADDRESS_LOADING:
@@ -170,7 +170,42 @@ function userReducer(state = initialState, action: any) {
       return {
         ...state,
         addressList: action?.data?.addressList,
+        addressListLoading: false,
       }
+
+    case UserActionTypes.SET_USER_NEW_ADDRESS: {
+      const tempAddressList: Array<any> = state.addressList;
+      tempAddressList.push(action?.data?.address)
+
+      return {
+        ...state,
+        addressList: tempAddressList,
+      }
+    }
+
+    case UserActionTypes.SET_DELETED_ADDRESS: {
+      const tempAddressList: Array<any> = state.addressList
+      const index = tempAddressList.findIndex((address) => address._id === action?.data?.id);
+      tempAddressList.splice(index, 1);
+
+      return {
+        ...state,
+        addressList: tempAddressList,
+        addressLoading: false,
+      }
+    }
+
+    case UserActionTypes.SET_EDITED_ADDRESS: {
+      const tempAddressList: Array<any> = state.addressList
+      const index = tempAddressList.findIndex((address) => address._id === action?.data?.address?._id);
+      tempAddressList[index] = action?.data?.address
+
+      return {
+        ...state,
+        addressList: tempAddressList,
+        addressLoading: false,
+      }
+    }
 
     default:
       return state

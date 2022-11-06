@@ -34,11 +34,15 @@ export interface UserReducerTypes {
 
 export interface AddressProps {
   title: string,
-  geoLat: string,
-  geoLong: string,
+  geoLat: number,
+  geoLong: number,
   number: string,
   unit: string,
   fullAddress: string,
+  _id?: string,
+  userInfo?: {
+    phonenumber: string
+  }
 }
 
 export interface UserInfoProps {

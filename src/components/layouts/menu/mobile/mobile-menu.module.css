@@ -194,3 +194,10 @@
   transition-property: top, right;
   transition-duration: 500ms;
 }
+
+.addressIndicatorPosition {
+  top: 800px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}

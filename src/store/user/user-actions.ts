@@ -21,6 +21,9 @@ export const UserActionTypes = {
   SET_ADDRESS_LOADING: `${preType}SET_ADDRESS_LOADING`,
   GET_USER_ADDRESS: `${preType}GET_USER_ADDRESS`,
   SET_USER_ADDRESS_LIST: `${preType}SET_USER_ADDRESS_LIST`,
+  SET_USER_NEW_ADDRESS: `${preType}SET_USER_NEW_ADDRESS`,
+  SET_DELETED_ADDRESS: `${preType}SET_DELETED_ADDRESS`,
+  SET_EDITED_ADDRESS: `${preType}SET_EDITED_ADDRESS`,
 };
 
 const getUserInfo = () => ({type: UserActionTypes.GET_USER_INFO});
