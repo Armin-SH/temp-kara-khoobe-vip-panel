@@ -5,6 +5,7 @@ import {SupportIcon} from '@icons'
 
 const Support = () => {
 
+  return null;
   return (
     <Div className={styles.supportContainer}>
       <Div className={styles.supportIcon}>
