@@ -56,7 +56,14 @@ const Table = (
         />
       </Media>
       <Media style={{width: '100%'}} lessThan={"md"}>
-        <MobileTable modal={modal} modalAction={modalAction} header={mobileHeader} data={data}/>
+        <MobileTable
+          nextCallback={nextPageHandler}
+          previousCallback={previousPageHandler}
+          modal={modal}
+          modalAction={modalAction}
+          header={mobileHeader}
+          data={data}
+        />
       </Media>
     </>
   )

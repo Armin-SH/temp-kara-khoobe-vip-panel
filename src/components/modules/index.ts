@@ -7,6 +7,7 @@ import ReportProgress from './report-progress'
 import Calendar from './calender'
 import Uploader from './uploader'
 import ParsiMap from './parsi-map'
+import InfiniteScroll from './infinite-scroll'
 
 export {
   SnackbarAlert,
@@ -18,4 +19,5 @@ export {
   Calendar,
   Uploader,
   ParsiMap,
+  InfiniteScroll,
 }

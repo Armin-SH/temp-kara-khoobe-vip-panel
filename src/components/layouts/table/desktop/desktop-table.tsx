@@ -214,7 +214,7 @@ const DesktopTable = (
         <TableBody/>
         {pagination ? (
           <Div className={styles.paginationContainer}>
-            <Button loading={extendedListLoading} disabled={extendedListLoading} onClick={handleNextPage} size={'medium'} className={styles.paginationButton}>
+            <Button loading={extendedListLoading} disabled={extendedListLoading || lastPage} onClick={handleNextPage} size={'medium'} className={styles.paginationButton}>
               صفحه بعد
             </Button>
             {extendedListLoading ? (
@@ -224,7 +224,7 @@ const DesktopTable = (
                 {state.page}
               </Text>
             )}
-            <Button loading={extendedListLoading} disabled={extendedListLoading} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
+            <Button loading={extendedListLoading} disabled={extendedListLoading || !lastPage && page === 2} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
               صفحه قبل
             </Button>
           </Div>
