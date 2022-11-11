@@ -34,6 +34,8 @@ export interface OrderReducerTypes {
   lastPage: boolean
 
   tablePage: number
+
+  storeOrderError: boolean
 }
 
 export interface SpecialityCategoryProps {

@@ -9,10 +9,11 @@ import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import AdapterJalaali from "@date-io/jalaali";
 import {DateTimePicker} from "@mui/x-date-pickers/DateTimePicker";
 import moment from "moment/moment";
+import {AlertActions} from "@store/alert/alert-action";
 
 
 const ReOrderModal = () => {
-  const {reOrderModal, orderItem, modalItem, storeOrderLoading} = useSelector((state: ReducerTypes) => state.order);
+  const {reOrderModal, orderItem, modalItem, storeOrderLoading, storeOrderError} = useSelector((state: ReducerTypes) => state.order);
   const {addressList} = useSelector((state: ReducerTypes) => state.user);
   const dispatch = useDispatch()
 
@@ -30,13 +31,20 @@ const ReOrderModal = () => {
   }
 
   const handleStoreOrder = () => {
-    dispatch(OrderActions.storeOrderRequest())
+    if (storeOrderError) {
+      dispatch(AlertActions.showAlert({
+        text: 'زمان مراجعه و آدرس خود را مشخص کنید',
+        severity: 'error'
+      }))
+    } else {
+      dispatch(OrderActions.storeOrderRequest())
+    }
   }
 
   return (
     <Modal closeAfterTransition={true} open={reOrderModal} onClose={() => handleModal({open: false})}>
       <Div mobile={'column'} className={styles.modalContainer}>
-        <Div className={styles.dataWrapper}>
+        <Div mobile={"column"} desktop={"row-reverse"} className={styles.dataWrapper}>
           <Div className={styles.text} mobile={"column"}>
             <Div className={styles.row}>
               <Text color={'grey.900'}>

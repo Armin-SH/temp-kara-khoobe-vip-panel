@@ -31,6 +31,7 @@ const initialState: OrderReducerTypes = {
     startDate: '',
     specialistsNumber: '',
   },
+  storeOrderError: true,
   specialityCategoryItem: " ",
   storeOrderLoading: false,
   live: true,
@@ -83,6 +84,7 @@ function orderReducer(state = initialState, action: any) {
         originalOrderList: apiOrderList,
         tableList: tempOrderList,
         extendedListLoading: false,
+        storeOrderError: true,
       };
     }
 
@@ -122,13 +124,19 @@ function orderReducer(state = initialState, action: any) {
       const key: OrderItemKeys = action?.data?.key
       const value: string | undefined | number | PaymentPeriodType = action?.data?.value
       const tempOrderItem: OrderItemProps = state.orderItem
+      let error = true
 
       // @ts-ignore
       tempOrderItem[key] = value
 
+      if (tempOrderItem.specialistsNumber && tempOrderItem.endDate && tempOrderItem.startDate && tempOrderItem.paymentPeriod !== " " && tempOrderItem.address !== " " && tempOrderItem.speciality !== " ") {
+        error = false
+      }
+
       return {
         ...state,
-        orderItem: tempOrderItem
+        orderItem: tempOrderItem,
+        storeOrderError: error,
       }
     }
 
@@ -182,6 +190,7 @@ function orderReducer(state = initialState, action: any) {
             endDate: moment(tempOriginalObject.endDate).toISOString(),
             speciality: tempOriginalObject.speciality._id,
           },
+          storeOrderError: true,
           modalItem: tempObject
         }
       }

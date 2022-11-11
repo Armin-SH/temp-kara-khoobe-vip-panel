@@ -9,10 +9,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {UserActions} from "@store/user/user-actions";
 import {ReducerTypes} from "@store/reducer";
 import {UserInfoFields} from "@store/user/user";
+import {AlertActions} from "@store/alert/alert-action";
 
 
 const Profile = () => {
-  const {file, uploadFileLoading, userInfo, updateUSerInfoLoading} = useSelector((state: ReducerTypes) => state.user);
+  const {file, uploadFileLoading, userInfo, updateUSerInfoLoading, userInfoError} = useSelector((state: ReducerTypes) => state.user);
   const dispatch = useDispatch()
 
 
@@ -33,7 +34,14 @@ const Profile = () => {
   }
 
   const handleUpdateUser = () => {
-    dispatch(UserActions.updateUserInfo())
+    if (userInfoError) {
+      dispatch(AlertActions.showAlert({
+        severity: 'error',
+        text: 'تمامی فیلد ها اجباری هستند'
+      }))
+    } else {
+      dispatch(UserActions.updateUserInfo())
+    }
   }
 
   useEffect(() => {

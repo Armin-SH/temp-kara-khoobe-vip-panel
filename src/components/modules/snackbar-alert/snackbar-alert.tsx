@@ -4,6 +4,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, {AlertProps} from '@mui/material/Alert';
 import {AlertActions} from "@store/alert/alert-action";
 import {ReducerTypes} from "@store/reducer";
+import {Text} from '@elements'
 
 
 const MaterialAlert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
@@ -31,7 +32,9 @@ function SnackbarAlert() {
       <MaterialAlert
         onClose={handleClose}
         severity={alert.severity}>
-        {alert.text}
+        <Text align={'right'} type={'medium'} typography={'tiny'} color={'common.white'}>
+          {alert.text}
+        </Text>
       </MaterialAlert>
     </Snackbar>
   );

@@ -22,6 +22,7 @@ const initialState: UserReducerTypes = {
     phoneNumber: '',
     ceoNationalCardUrl: ''
   },
+  userInfoError: false,
   updateUSerInfoLoading: false,
   id: '',
   address: {
@@ -47,7 +48,8 @@ function userReducer(state = initialState, action: any) {
         getInfoLoading: true,
       };
 
-    case UserActionTypes.SET_USER_INFO:
+    case UserActionTypes.SET_USER_INFO: {
+
       return {
         ...state,
         getInfoLoading: false,
@@ -65,6 +67,7 @@ function userReducer(state = initialState, action: any) {
         },
         uploadFileLoading: false,
       }
+    }
 
     case UserActionTypes.SET_USER_RESTRICTED_LEVEL:
       return {
@@ -115,9 +118,24 @@ function userReducer(state = initialState, action: any) {
       const key: UserInfoFields = action?.data?.key
       tempInfoObject[key] = action?.data?.value
 
+      let error = true
+
+      if (
+        tempInfoObject.corporationCode &&
+        tempInfoObject.internalNumber &&
+        tempInfoObject.firstName &&
+        tempInfoObject.phoneNumber &&
+        tempInfoObject.corporationTelephone &&
+        tempInfoObject.nationalCode &&
+        tempInfoObject.corporationName &&
+        tempInfoObject.lastName) {
+        error = false
+      }
+
       return {
         ...state,
-        userInfo: tempInfoObject
+        userInfo: tempInfoObject,
+        userInfoError: error
       }
     }
 

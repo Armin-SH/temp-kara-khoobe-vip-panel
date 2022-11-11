@@ -17,6 +17,8 @@ export interface UserReducerTypes {
 
   userInfo: UserInfoProps
 
+  userInfoError: boolean
+
   updateUSerInfoLoading: boolean
 
   id: string

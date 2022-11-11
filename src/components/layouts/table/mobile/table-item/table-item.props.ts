@@ -4,4 +4,5 @@ export interface TableItemProps {
   values: Array<string>
   modal?: boolean
   modalAction?: () => void
+  index: number
 }

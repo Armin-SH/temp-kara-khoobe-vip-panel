@@ -3,12 +3,14 @@ import {Accordion, AccordionDetails, AccordionSummary, Button, Div, Image, Poppe
 import {TableItemProps} from './table-item.props'
 import styles from './table-item.module.css'
 import {MoreIcon} from "@icons";
+import {OrderActions} from "@store/order/order-actions";
+import {useDispatch} from "react-redux";
 
 
-const TableItem = ({item, keys, values, modal, modalAction}: TableItemProps) => {
+const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemProps) => {
   const [expand, setExpand] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const dispatch = useDispatch()
   const topContainerClass = `${expand}TopContainer`
   const summaryClass = `${expand}Summary`
 
@@ -23,6 +25,12 @@ const TableItem = ({item, keys, values, modal, modalAction}: TableItemProps) => 
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
+
+  const handleReOrder = () => {
+    setAnchorEl(null);
+    dispatch(OrderActions.setReOrderModal({open: true, index: index}))
+  }
+
   return (
     <Div mobile={"column"} className={styles.container}>
       <Accordion className={styles.accordion} expanded={expand}>
@@ -48,12 +56,7 @@ const TableItem = ({item, keys, values, modal, modalAction}: TableItemProps) => 
                     حذف
                   </Text>
                 </Button>
-                <Button className={styles.actionButton} variant={"text"}>
-                  <Text color={"grey.900"} typography={'tiny'} align={"right"}>
-                    پین کردن
-                  </Text>
-                </Button>
-                <Button className={styles.actionButton} variant={"text"}>
+                <Button onClick={handleReOrder} className={styles.actionButton} variant={"text"}>
                   <Text color={"grey.900"} typography={'tiny'} align={"right"}>
                     درخواست مجدد
                   </Text>

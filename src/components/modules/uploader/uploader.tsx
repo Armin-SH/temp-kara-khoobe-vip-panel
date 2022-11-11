@@ -51,10 +51,7 @@ const Uploader = (props: UploaderProps) => {
         <Image alt={"آپلود فایل"} src={UploadCloudIcon} layout={"fill"} objectFit={"contain"}/>
       </Div>
       <Text color={"grey.500"} typography={"small"}>
-        تصویر نسخه خود را درون این فضا بکشید و رها کنید
-      </Text>
-      <Text color={"grey.500"} typography={"tiny"}>
-        حداکثر حجم تصویر جهت ارسال 4 مگابایت
+        تصویر کارت ملی خود را درون این فضا بکشید و رها کنید
       </Text>
     </Div>
   )

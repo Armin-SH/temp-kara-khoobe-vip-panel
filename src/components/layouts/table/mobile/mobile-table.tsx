@@ -29,6 +29,7 @@ const MobileAccountingTable = ({data, header, modal, modalAction, nextCallback, 
           modalAction={modalAction}
           keys={Keys}
           values={Values}
+          index={index}
           key={index}
           item={item}
         />

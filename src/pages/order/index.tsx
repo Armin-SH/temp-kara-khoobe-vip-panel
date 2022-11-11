@@ -10,6 +10,7 @@ import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DateTimePicker} from '@mui/x-date-pickers/DateTimePicker';
 import moment from "moment";
 import {UserActions} from "@store/user/user-actions";
+import {AlertActions} from "@store/alert/alert-action";
 
 const periodTime = [
   {_id: 'Daily', title: 'روزانه'},
@@ -19,7 +20,7 @@ const periodTime = [
 
 const Order = () => {
   const dispatch = useDispatch()
-  const {specialityCategoryList, specialityCategoryLoading, orderItem, specialityCategoryItem, specialityList, specialityLoading, storeOrderLoading} = useSelector((state: ReducerTypes) => state.order)
+  const {specialityCategoryList, specialityCategoryLoading, orderItem, specialityCategoryItem, specialityList, specialityLoading, storeOrderLoading, storeOrderError} = useSelector((state: ReducerTypes) => state.order)
   const {addressList} = useSelector((state: ReducerTypes) => state.user);
 
   useEffect(() => {
@@ -53,7 +54,14 @@ const Order = () => {
   }
 
   const handleStoreOrder = () => {
-    dispatch(OrderActions.storeOrderRequest())
+    if (storeOrderError) {
+      dispatch(AlertActions.showAlert({
+        text: 'کلیه فیلد ها اجباری هستند',
+        severity: 'error'
+      }))
+    } else {
+      dispatch(OrderActions.storeOrderRequest())
+    }
   }
 
   return (

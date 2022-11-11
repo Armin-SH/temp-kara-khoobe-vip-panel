@@ -55,6 +55,9 @@ function* changeUserPasswordWatcher() {
         text: "پسوورد با موفقیت تغییر پیدا کرد",
         severity: "success"
       });
+    }
+
+    if (response?.data?.status === "ok") {
       yield put({type: UserActionTypes.GET_USER_INFO});
     }
 
@@ -76,7 +79,11 @@ function* uploadUserFileWatcher() {
   try {
     const response: { data: { url: string } } = yield uploadFileApi({file: file});
     yield put({type: UserActionTypes.GET_USER_INFO});
-
+    yield put({
+      type: AlertActionType.SHOW_ALERT,
+      text: "عکس شما با موفقیت بارگذاری شد. لطفا منتظر تایید اطلاعات باشید",
+      severity: "success"
+    });
   } catch (error) {
     yield put({
       type: AlertActionType.SHOW_ALERT,

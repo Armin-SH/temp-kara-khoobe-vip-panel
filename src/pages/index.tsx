@@ -6,32 +6,32 @@ const Home = () => {
   return (
     <Div mobile={"column"} desktop={"row-reverse"} className={styles.container}>
       <RequestItem
-        doneCounter={11}
-        inProgressCounter={26}
+        doneCounter={0}
+        inProgressCounter={0}
         subTitle={'انجام شده'}
         title={'در حال انجام'}
-        totalCounter={45}
+        totalCounter={0}
         buttonTitle={'مشاهده درخواست های جاری'}
         header={'درخواست های جاری'}
       />
       <RequestItem
-        doneCounter={32}
-        inProgressCounter={85}
+        doneCounter={0}
+        inProgressCounter={0}
         subTitle={'پرداخت نشده'}
         title={'پرداخت شده'}
-        totalCounter={32}
+        totalCounter={0}
         buttonTitle={'مشاهده درخواست های گذشته'}
         header={'درخواست های گذشته'}
       />
-      <RequestItem
-        doneCounter={11}
-        inProgressCounter={26}
-        subTitle={'پرداخت نشده'}
-        title={'پرداخت شده'}
-        totalCounter={87}
-        buttonTitle={'مشاهده کل درخواست ها'}
-        header={'کل درخواست ها'}
-      />
+      {/*<RequestItem*/}
+      {/*  doneCounter={11}*/}
+      {/*  inProgressCounter={26}*/}
+      {/*  subTitle={'پرداخت نشده'}*/}
+      {/*  title={'پرداخت شده'}*/}
+      {/*  totalCounter={87}*/}
+      {/*  buttonTitle={'مشاهده کل درخواست ها'}*/}
+      {/*  header={'کل درخواست ها'}*/}
+      {/*/>*/}
     </Div>
   )
 }
