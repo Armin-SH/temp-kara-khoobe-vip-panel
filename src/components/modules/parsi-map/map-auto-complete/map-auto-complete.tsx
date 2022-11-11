@@ -15,7 +15,6 @@ const MapAutoComplete = ({locationCallback, clientLocation}: MapAutoCompleteProp
   const getPredictions = useDebouncedCallback(async ({address}: { address: string }) => {
     if (address) {
       const res = await mapAutoCompleteApi({text: address})
-      console.log({res})
       await setPredictions(res?.data?.value)
       await setSearchLoading(false)
     }

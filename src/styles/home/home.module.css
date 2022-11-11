@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   gap: 8px;
-  min-height: calc(100vh - 170px);
+  min-height: 100vh;
 }
 
 .textField {
@@ -20,7 +20,7 @@
 
 @media only screen and (min-width: 1024px) {
   .container {
-    min-height: calc(100vh - 200px);
+    min-height: 100vh;
     width: 100%;
     gap: 24px;
     justify-content: space-between;

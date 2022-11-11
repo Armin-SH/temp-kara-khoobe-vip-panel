@@ -2,6 +2,7 @@ import {DevicesImage, SecurityImage} from './auth'
 import {KishLogoImage, LogoImage} from './primary'
 import {Chart, Master, One, Three, Two} from './temp'
 import {ProfileBackBackImage, ProfileBackFrontImage, ProfileImage} from './profile'
+import {EmptyListImage} from './order'
 
 export {
   SecurityImage,
@@ -16,4 +17,5 @@ export {
   ProfileBackBackImage,
   ProfileBackFrontImage,
   ProfileImage,
+  EmptyListImage,
 }

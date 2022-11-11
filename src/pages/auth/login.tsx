@@ -13,7 +13,6 @@ const Login = () => {
   const dispatch = useDispatch()
   const {loginLoading, isNumberValid, mobile} = useSelector((state: ReducerTypes) => state.auth)
 
-  console.log({mobile})
   const inputRef = useAutofocus(null)
 
   const [checkbox, setCheckbox] = useState(false)

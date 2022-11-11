@@ -1,124 +1,42 @@
-.modalContainer {
-  width: 80%;
-  background-color: #ECEFFB;
-  border-radius: 24px;
-  justify-content: center;
-  align-items: center;
-  padding: 42px 0;
-  position: relative;
-}
-
 .wrapper {
-  min-height: calc(100vh - 170px);
+  min-height: 100vh;
+  gap: 32px
 }
 
-.modal {
-
-}
-
-.imageBorder {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 5px solid #24AFB6;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.profileImage {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-}
-
-.image {
-  border-radius: 50%;
-}
-
-.status {
-  height: 25px;
-  border-radius: 16px;
-  justify-content: center;
-  align-items: center;
-  padding: 0 8px;
-  background-color: #FCA600;
-  position: absolute;
-  bottom: -10px;
-}
-
-.infoContainer {
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.job {
-  gap: 12px
-}
-
-.buttonContainer {
-  gap: 32px;
-  margin-top: 56px;
+.fields {
   width: 100%;
-  align-items: center;
+}
+
+.timeContainer {
+  background-color: #ffffff;
+  height: 48px;
+  align-items: flex-start;
+  margin-right: 16px;
+  margin-left: 8px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.time {
+  width: 100%;
+}
+
+.timeInput {
+  padding-bottom: 12px;
+}
+
+.dropDown {
+  background-color: #ffffff;
+  height: 48px;
+  align-items: flex-start;
+  margin-right: 16px;
+  margin-left: 8px;
+  width: 100%;
+  border-radius: 8px;
 }
 
 .button {
-  width: 70%;
-}
-
-.closeButton {
-  width: 32px;
-  height: 32px;
-  position: relative;
-}
-
-.closeContainer {
-  position: absolute;
-  top: 35px;
-  left: 32px
-}
-
-@media only screen and (max-width: 640px) {
-  .modalContainer {
-    width: 100%;
-    align-self: flex-end;
-    border-radius: 16px 16px 0 0;
-    padding: 42px 26px;
-  }
-
-  .imageBorder {
-    width: 134px;
-    height: 134px;
-  }
-
-  .closeContainer {
-    top: 25px;
-    left: 25px
-  }
-
-  .profileImage {
-    width: 100px;
-    height: 100px;
-  }
-
-  .status {
-    height: 25px;
-    width: 142px;
-    position: absolute;
-    bottom: -17px;
-  }
-
-  .button {
-    width: 100%
-  }
-
-  .wrapper {
-    min-height: calc(100vh - 200px);
-  }
-
+  width: 80%;
+  margin-top: 120px;
+  align-self: center;
 }

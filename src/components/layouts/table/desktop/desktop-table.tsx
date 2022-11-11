@@ -1,10 +1,10 @@
-import React, {createContext, useReducer} from 'react'
-import {Div, Image, Text} from '@elements'
+import React, {createContext, useEffect, useReducer} from 'react'
+import {Button, Div, LoadingIndicator, Text} from '@elements'
 import {TableProps, TableState} from './desktop-table.props'
 import TableBody from './table-body'
 import styles from './desktop-table.module.css'
-import Pagination from '@mui/material/Pagination';
-import {ArrowBottomIcon, ArrowTopIcon} from '@icons'
+import {useSelector} from "react-redux";
+import {ReducerTypes} from "@store/reducer";
 
 const defaultValue = {
   state: {
@@ -25,6 +25,8 @@ const defaultValue = {
     expandedItem: null,
     expandableHeader: '',
     expandKey: '',
+    expandableData: [[]],
+    expandableDataKey: [],
     modalAction: () => {
     },
     modal: false
@@ -48,48 +50,38 @@ const DesktopTable = (
     modalAction = () => {
     },
     modal = false,
+    expandableDataKey = [],
+    previousCallback = (page: number) => {
+    },
+    nextCallback = (page: number) => {
+    },
+    page = 1
   }: TableProps) => {
+  const {lastPage, extendedListLoading} = useSelector((state: ReducerTypes) => state.order);
 
 
-  const tempCellNames: Array<string> = Object.keys(header)
-
-  const obj: any = {};
-
-  for (const key of tempCellNames) {
-    obj[key] = [];
-  }
-
-  for (const arrayKey in data) {
-    for (const objKey of tempCellNames) {
-      //@ts-ignore
-      obj[objKey].push(data[arrayKey][objKey])
-    }
-  }
-
-  const selectRowArray = new Array(data.length)
-  for (let i = 0; i < data.length; i++) {
-    selectRowArray[i] = false
-  }
-
-  obj['selectedRows'] = selectRowArray
   const initialState: TableState = {
-    selectRows: selectRows,
-    actions: actions,
-    data: obj,
-    pagination: pagination,
-    header: Object.values(header),
-    length: data.length,
-    cellKeys: tempCellNames,
-    expandArray: selectRowArray,
+    selectRows: false,
+    actions: false,
+    data: [],
+    pagination: false,
+    header: [],
+    length: 0,
+    cellKeys: [],
+    expandArray: [],
     showAction: {id: null, action: true},
     selectAll: false,
-    rows: 10,
+    rows: 1,
     expandedItem: null,
-    expandable: expandable,
-    expandableHeader: expandableHeader,
-    expandKey: expandKey,
-    modalAction: modalAction,
-    modal: modal,
+    expandable: false,
+    expandableHeader: '',
+    expandKey: '',
+    modalAction: () => {
+    },
+    modal: false,
+    expandableData: [],
+    expandableDataKey: [],
+    page: 1,
   };
 
   const reducer = (state: TableState, action: any) => {
@@ -98,6 +90,62 @@ const DesktopTable = (
     }
 
     switch (action.type) {
+      case "SET_DATA": {
+        const tempCellNames: Array<string> = Object.keys(header)
+
+        const obj: any = {};
+
+        for (const key of tempCellNames) {
+          obj[key] = [];
+        }
+
+        for (const arrayKey in data) {
+          for (const objKey of tempCellNames) {
+            //@ts-ignore
+            obj[objKey].push(data[arrayKey][objKey])
+          }
+        }
+        const tempExpandableParentData = []
+
+        for (const headerKey in expandableDataKey) {
+          const tempExpendableData = []
+          for (const dataKey in data) {
+            // @ts-ignore
+            tempExpendableData.push(data[dataKey][expandableDataKey[headerKey].key])
+          }
+          tempExpandableParentData.push(tempExpendableData)
+        }
+
+        const selectRowArray = new Array(data.length)
+        for (let i = 0; i < data.length; i++) {
+          selectRowArray[i] = false
+        }
+
+        obj['selectedRows'] = selectRowArray
+        return {
+          selectRows: selectRows,
+          actions: actions,
+          data: obj,
+          pagination: pagination,
+          header: Object.values(header),
+          length: data.length,
+          cellKeys: tempCellNames,
+          expandArray: selectRowArray,
+          showAction: {id: null, action: true},
+          selectAll: false,
+          rows: 10,
+          expandedItem: null,
+          expandable: expandable,
+          expandableHeader: expandableHeader,
+          expandKey: expandKey,
+          modalAction: modalAction,
+          modal: modal,
+          expandableData: tempExpandableParentData,
+          expandableDataKey: expandableDataKey,
+          page: lastPage ? page : page - 1,
+        }
+      }
+
       case "SELECT_ROW": {
         const tempSelectedRows = state.data?.selectedRows
         tempSelectedRows[action?.payload?.id] = action?.payload?.checked
@@ -132,18 +180,31 @@ const DesktopTable = (
           rows: state.rows + action?.payload?.rows
         }
       }
+
+      case "SET_PAGE": {
+        return {
+          ...state,
+          page: action?.payload?.page
+        }
+      }
       default:
         return state;
     }
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    dispatch({type: 'SET_DATA'})
+  }, [data])
 
-  const handleRows = (value: number) => {
-    if ((state.rows === 1 && value === -1) || (state.rows === data.length && value === +1)) {
-      return null
-    }
-    return dispatch({type: 'SET_ROWS', payload: {rows: value}})
+  const handleNextPage = () => {
+    nextCallback(state.page + 1)
+    dispatch({type: 'SET_PAGE', payload: {page: state.page + 1}})
+  }
+
+  const handlePreviousPage = () => {
+    previousCallback(state.page - 1)
+    dispatch({type: 'SET_PAGE', payload: {page: state.page - 1}})
   }
 
   return (
@@ -153,28 +214,19 @@ const DesktopTable = (
         <TableBody/>
         {pagination ? (
           <Div className={styles.paginationContainer}>
-            <Div className={styles.paginationRightContainer}>
-              <Div className={styles.button}>
-                <Div className={styles.arrowContainer} mobile={"column"}>
-                  <Div onClick={() => handleRows(+1)} className={styles.arrow}>
-                    <Image src={ArrowTopIcon}/>
-                  </Div>
-                  <Div onClick={() => handleRows(-1)} className={styles.arrow}>
-                    <Image src={ArrowBottomIcon}/>
-                  </Div>
-                </Div>
-                <Text className={styles.rows} color={"common.white"} typography={"tiny"}>
-                  {state.rows}
-                </Text>
-              </Div>
-              <Text color={"grey.500"} typography={"tiny"}>
-                مقدار نمایش
+            <Button loading={extendedListLoading} disabled={extendedListLoading} onClick={handleNextPage} size={'medium'} className={styles.paginationButton}>
+              صفحه بعد
+            </Button>
+            {extendedListLoading ? (
+              <LoadingIndicator size={'28px'} color={'primary'}/>
+            ) : (
+              <Text typography={'medium'} type={'bold'} color={'primary'}>
+                {state.page}
               </Text>
-              <Text color={"grey.500"} typography={"tiny"}>
-                {`( نمایش ${state.rows} از ${data.length} )`}
-              </Text>
-            </Div>
-            <Pagination color={'primary'} count={25} shape={'rounded'}/>
+            )}
+            <Button loading={extendedListLoading} disabled={extendedListLoading} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
+              صفحه قبل
+            </Button>
           </Div>
         ) : null}
       </Div>

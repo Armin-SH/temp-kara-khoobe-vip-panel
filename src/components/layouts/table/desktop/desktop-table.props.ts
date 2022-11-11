@@ -18,6 +18,14 @@ export interface TableProps {
   modalAction?: () => void
 
   modal?: boolean
+
+  expandableDataKey?: Array<object>
+
+  previousCallback: (page: number) => void,
+
+  nextCallback: (page: number) => void,
+
+  page: number
 }
 
 export interface TableState {
@@ -38,4 +46,7 @@ export interface TableState {
   expandKey: string
   modalAction: () => void
   modal: boolean
+  expandableData: Array<Array<string>>
+  expandableDataKey: Array<object>
+  page: number
 }

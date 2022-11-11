@@ -15,6 +15,7 @@ const Profile = () => {
   const {file, uploadFileLoading, userInfo, updateUSerInfoLoading} = useSelector((state: ReducerTypes) => state.user);
   const dispatch = useDispatch()
 
+
   const inputHandler = ({e, key}: { e: ChangeEvent<HTMLInputElement>, key: UserInfoFields }) => {
     dispatch(UserActions.setUserDetails({key: key, value: e.target.value}))
   }
@@ -85,7 +86,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               نام :
             </Text>
-            <TextField value={userInfo.firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'firstName'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'firstName'})} className={styles.input} variant={"filled"} size={'medium'} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'firstName'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -96,7 +97,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               نام خانوادگی :
             </Text>
-            <TextField value={userInfo.lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'lastName'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'lastName'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'lastName'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -107,7 +108,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               شماره همراه :
             </Text>
-            <TextField value={userInfo.phoneNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'phoneNumber'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.phoneNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'phoneNumber'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'phoneNumber'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -118,7 +119,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               تلفن داخلی :
             </Text>
-            <TextField className={styles.input} value={userInfo.internalNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'internalNumber'})} variant={"filled"} color={"common.white"}/>
+            <TextField className={styles.input} value={userInfo.internalNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'internalNumber'})} size={'medium'} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'internalNumber'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -129,7 +130,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               کد ملی :
             </Text>
-            <TextField value={userInfo.nationalCode} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'nationalCode'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.nationalCode} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'nationalCode'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'nationalCode'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -140,7 +141,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               نام شرکت :
             </Text>
-            <TextField value={userInfo.corporationName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationName'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.corporationName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationName'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'corporationName'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -151,7 +152,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               تلفن شرکت :
             </Text>
-            <TextField value={userInfo.corporationTelephone} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationTelephone'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.corporationTelephone} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationTelephone'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>
@@ -162,7 +163,7 @@ const Profile = () => {
             <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
               کد شرکت :
             </Text>
-            <TextField value={userInfo.corporationCode} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationCode'})} className={styles.input} variant={"filled"} color={"common.white"}/>
+            <TextField value={userInfo.corporationCode} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationCode'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
             <Button onClick={() => clearTextField({key: 'corporationCode'})} shape={"circle"} variant={"text"} size={"small"}>
               <Div className={styles.clearInput}>
                 <Image src={CloseGreyIcon}/>

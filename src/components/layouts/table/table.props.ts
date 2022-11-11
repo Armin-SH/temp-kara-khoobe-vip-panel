@@ -20,6 +20,8 @@ export interface TableProps {
   modalAction?: () => void
 
   modal: boolean
+
+  expandableDataKey: Array<object>
 }
 
 export interface TableState {

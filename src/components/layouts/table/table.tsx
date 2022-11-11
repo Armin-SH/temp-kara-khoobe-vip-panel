@@ -3,6 +3,10 @@ import {Media} from '@elements'
 import {TableProps} from './table.props'
 import DesktopTable from './desktop'
 import MobileTable from './mobile'
+import {useDispatch, useSelector} from "react-redux";
+import {OrderActions} from "@store/order/order-actions";
+import {ReducerTypes} from "@store/reducer";
+
 
 const Table = (
   {
@@ -12,20 +16,32 @@ const Table = (
     pagination = false,
     header = {},
     expandable = false,
-    expandableHeader = 'وضعیت درخواست',
+    expandableHeader = 'جزئیات سفارش',
     expandKey = '',
     mobileHeader = {},
     modalAction = () => {
     },
     modal = false,
+    expandableDataKey = []
   }: TableProps) => {
 
+  const dispatch = useDispatch()
+  const {live, page} = useSelector((state: ReducerTypes) => state.order);
+  const nextPageHandler = (newPage: number) => {
+    dispatch(OrderActions.getExtendedOrderList({live: live, page: newPage}))
+  }
+
+  const previousPageHandler = (newPage: number) => {
+    dispatch(OrderActions.getExtendedOrderList({live: live, page: newPage}))
+  }
 
   return (
     <>
       <Media style={{width: '100%'}} greaterThan={'sm'}>
-        <
-          DesktopTable
+        <DesktopTable
+          nextCallback={nextPageHandler}
+          previousCallback={previousPageHandler}
+          expandableDataKey={expandableDataKey}
           modal={modal}
           modalAction={modalAction}
           expandKey={expandKey}
@@ -36,6 +52,7 @@ const Table = (
           actions={actions}
           pagination={pagination}
           selectRows={selectRows}
+          page={page}
         />
       </Media>
       <Media style={{width: '100%'}} lessThan={"md"}>

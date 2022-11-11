@@ -4,10 +4,12 @@ import {TableCellProps} from './table-cell.props'
 import styles from './table-cell.module.css'
 import {TableContext} from '../desktop-table'
 import {MoreIcon} from '@icons'
+import {OrderActions} from "@store/order/order-actions";
+import {useDispatch} from "react-redux";
 
 const TableCell = ({data, id, index}: TableCellProps) => {
 
-
+  const dispatch = useDispatch()
   const state = useContext(TableContext)
   const [checked, setChecked] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -56,6 +58,17 @@ const TableCell = ({data, id, index}: TableCellProps) => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
 
+    const handleRequestClick = () => {
+      dispatch(OrderActions.setReOrderModal({open: true, index: index}))
+      state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
+      setAnchorEl(null);
+    }
+
+    const handleCancelOrder = () => {
+      state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
+      setAnchorEl(null);
+    }
+
     return (
       <Div className={styles[containerClassName]}>
         <Button onClick={handleClick} variant={'text'} size={"medium"} shape={'square'}>
@@ -63,21 +76,16 @@ const TableCell = ({data, id, index}: TableCellProps) => {
             <Image src={MoreIcon} alt={'...'}/>
           </Div>
         </Button>
-        <Popper className={styles.popperContainer} id={id} placement={'bottom'} open={open} anchorEl={anchorEl}>
+        <Popper className={styles.popperContainer} id={id} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
           <Div mobile={'column'} className={styles.popper}>
-            <Button className={styles.button} variant={"text"}>
-              <Text color={"grey.900"} typography={'tiny'} align={"right"}>
-                حذف
-              </Text>
-            </Button>
-            <Button className={styles.button} variant={"text"}>
-              <Text color={"grey.900"} typography={'tiny'} align={"right"}>
-                پین کردن
-              </Text>
-            </Button>
-            <Button className={styles.button} variant={"text"}>
-              <Text color={"grey.900"} typography={'tiny'} align={"right"}>
+            <Button onClick={handleRequestClick} className={styles.button} variant={"text"}>
+              <Text color={"grey.900"} type={'medium'} typography={'tiny'} align={"right"}>
                 درخواست مجدد
+              </Text>
+            </Button>
+            <Button onClick={handleCancelOrder} className={styles.button} variant={"text"}>
+              <Text color={"grey.900"} typography={'tiny'} type={'medium'} align={"right"}>
+                لغو
               </Text>
             </Button>
           </Div>

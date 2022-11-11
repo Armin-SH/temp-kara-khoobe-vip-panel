@@ -6,7 +6,6 @@ import {Calendar} from '@modules'
 const CalendarPage = () => {
 
   const handleSelectedDay = (date: string) => {
-    console.log(date)
   }
   return (
     <Div mobile={"column"} desktop={"row-reverse"} className={styles.container}>

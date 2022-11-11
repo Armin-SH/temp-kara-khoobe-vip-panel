@@ -14,7 +14,7 @@
 }
 
 .falseCellContainer {
-  transition-duration: 500ms;
+  transition-duration: 1000ms;
   transition-property: margin-bottom;
   height: 48px;
   align-items: center;
@@ -30,11 +30,12 @@
 .popper {
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #ECEFFB;
   justify-content: space-between;
   align-items: flex-end;
   z-index: 9999;
   padding-right: 8px;
+  border-radius: 8px;
 }
 
 .fadePopper {

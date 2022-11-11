@@ -33,6 +33,7 @@ export async function fetchApi({method, payload, withToken, URL, responseType = 
         if (refreshToken) {
           refreshTokenApi({token: refreshToken, deviceID: hashId}).then((response) => {
             saveToCookie('token', response?.data?.token)
+            window.location.reload();
           }).catch((e) => {
             if (e.response.data.statusCode === 401) {
               Router.push({pathname: routes['route.auth.login'], query: {redirect: encodeURIComponent(Router.asPath)}});

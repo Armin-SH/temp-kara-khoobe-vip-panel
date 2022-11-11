@@ -61,8 +61,9 @@ function userReducer(state = initialState, action: any) {
           nationalCode: action?.data?.nationalCode,
           phoneNumber: action?.data?.phoneNumber,
           ceoNationalCardUrl: action?.data?.ceoNationalCardUrl,
-          id: action?.data?._id
-        }
+          id: action?.data?._id,
+        },
+        uploadFileLoading: false,
       }
 
     case UserActionTypes.SET_USER_RESTRICTED_LEVEL:

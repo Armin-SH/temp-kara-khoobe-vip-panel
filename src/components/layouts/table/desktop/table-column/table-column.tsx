@@ -24,7 +24,7 @@ const TableColumn = ({columnData, headerData, cellName}: TableColumnProps) => {
 
   if (cellName === 'actions') {
     return (
-      <Div mobile={'column'} className={styles.container}>
+      <Div mobile={'column'} className={styles.actionContainer}>
         <TableHeader data={headerData}/>
         {columnData.map((item, index) => {
           return (
@@ -37,7 +37,7 @@ const TableColumn = ({columnData, headerData, cellName}: TableColumnProps) => {
 
   if (cellName === 'expandable') {
     return (
-      <Div mobile={'column'} className={styles.container}>
+      <Div mobile={'column'} className={styles.expandableContainer}>
         <TableHeader data={headerData}/>
         {columnData.map((item, index) => {
           return (

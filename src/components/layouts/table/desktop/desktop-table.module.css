@@ -10,8 +10,13 @@
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
   padding: 0 36px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 46px
+}
+
+.paginationButton {
+  width: 130px;
 }
 
 .button {

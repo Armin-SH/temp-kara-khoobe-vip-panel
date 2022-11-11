@@ -1,0 +1,18 @@
+.select {
+  width: 100%;
+}
+
+.degreeStyle {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropDownWrapper {
+  background-color: #ffffff;
+  height: 48px;
+  align-items: center;
+  margin-right: 16px;
+  margin-left: 8px;
+  width: 100%;
+  border-radius: 8px;
+}

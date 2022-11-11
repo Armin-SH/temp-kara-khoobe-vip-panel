@@ -30,4 +30,8 @@ export interface DivProps {
   ref?: any
 
   dataTestId?: string
+
+  onMouseOver?: () => void
+
+  onMouseLeave?: () => void
 }

@@ -32,7 +32,7 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
     paddingTop: props.search ? 0 : '16px',
     paddingLeft: props.search ? 0 : '24px',
     paddingRight: props.search ? '21px' : '24px',
-    height: props.search ? "48px" : 'auto',
+    height: props.size === 'medium' ? '48px' : 'auto',
     "@media only screen and (min-width: 640px)": {
       borderRadius: props.search ? '55px' : '8px',
       height: props.search ? '53px' : 'auto'

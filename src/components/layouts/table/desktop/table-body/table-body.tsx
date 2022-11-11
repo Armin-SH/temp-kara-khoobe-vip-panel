@@ -7,8 +7,6 @@ import {TableContext} from '../desktop-table'
 const TableBody = () => {
 
   const context = useContext(TableContext)
-
-
   return (
     <Div className={styles.container}>
       <Div className={styles.headerBackground}/>
@@ -28,6 +26,7 @@ const TableBody = () => {
 
             const expandClassName = `${item}ExpandContainer`
             const sectionClassName = `${item}SectionContainer`
+            const textStyle = `${item}Text`
             const topCalculator = 165 + (index * 48)
             return (
               <Div key={index} style={{top: `${topCalculator}px`}} className={styles[expandClassName]}>
@@ -39,48 +38,18 @@ const TableBody = () => {
                     </Text>
                   </Div>
                 ) : (
-                  <>
-                    <Div className={styles[sectionClassName]}>
-                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                        دسته تخصص :
-                      </Text>
-                      <Text color={"grey.900"} typography={"tiny"}>
-                        نظافت
-                      </Text>
-                    </Div>
-                    <Div className={styles[sectionClassName]}>
-                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                        تخصص :
-                      </Text>
-                      <Text color={"grey.900"} typography={"tiny"}>
-                        نظافت دوره ای
-                      </Text>
-                    </Div>
-                    <Div className={styles[sectionClassName]}>
-                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                        شماره تماس :
-                      </Text>
-                      <Text color={"grey.900"} typography={"tiny"}>
-                        09385450060
-                      </Text>
-                    </Div>
-                    <Div className={styles[sectionClassName]}>
-                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                        استان :
-                      </Text>
-                      <Text color={"grey.900"} typography={"tiny"}>
-                        تهران
-                      </Text>
-                    </Div>
-                    <Div className={styles[sectionClassName]}>
-                      <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
-                        شهر :
-                      </Text>
-                      <Text color={"grey.900"} typography={"tiny"}>
-                        تهران
-                      </Text>
-                    </Div>
-                  </>
+                  <Div className={styles.expandContainer}>
+                    {context?.state.expandableDataKey.map((innerItem: { key: string, value: string }, innerIndex) => (
+                      <Div key={index} className={styles[sectionClassName]}>
+                        <Text className={styles[textStyle]} color={"grey.900"} typography={"tiny"} type={'bold'}>
+                          {innerItem?.value} :
+                        </Text>
+                        <Text className={styles[textStyle]} color={"grey.900"} typography={"tiny"}>
+                          {context?.state.expandableData[innerIndex][index]}
+                        </Text>
+                      </Div>
+                    ))}
+                  </Div>
                 )}
 
               </Div>

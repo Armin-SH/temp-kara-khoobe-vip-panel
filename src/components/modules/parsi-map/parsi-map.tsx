@@ -68,7 +68,6 @@ const ParsiMap = (props: ParsiMapProps) => {
       setLocation({lat: map.current.getCenter().lat, lng: map.current.getCenter().lng})
       setZoom(parseFloat(map.current.getZoom().toFixed(2)));
     });
-    console.log(location)
 
     map.current.on('zoomend', () => {
       setLocation({lat: map.current.getCenter().lat, lng: map.current.getCenter().lng})
