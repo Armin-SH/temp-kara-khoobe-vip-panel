@@ -17,7 +17,7 @@ const DesktopHeader = () => {
         placeholder={"جستجو کن ..."}
         color={"tertiary"}
         variant={"filled"}
-        size={'medium'}
+        size={'large'}
         InputProps={{
           endAdornment: (
             <InputAdornment className={styles.searchIconContainer} position="end">

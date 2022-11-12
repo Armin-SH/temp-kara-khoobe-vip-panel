@@ -1,20 +1,16 @@
 .wrapper {
   min-height: 100vh;
-  gap: 32px
+  gap: 24px
 }
 
 .fields {
   width: 100%;
+  gap: 24px;
+  align-items: center;
 }
 
 .timeContainer {
-  background-color: #ffffff;
-  height: 48px;
-  align-items: flex-start;
-  margin-right: 16px;
-  margin-left: 8px;
   width: 100%;
-  border-radius: 8px;
 }
 
 .time {
@@ -26,17 +22,21 @@
 }
 
 .dropDown {
-  background-color: #ffffff;
-  height: 48px;
-  align-items: flex-start;
-  margin-right: 16px;
-  margin-left: 8px;
   width: 100%;
-  border-radius: 8px;
 }
 
 .button {
   width: 80%;
   margin-top: 120px;
   align-self: center;
+}
+
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    gap: 32px
+  }
+
+  .fields {
+    gap: 16px
+  }
 }

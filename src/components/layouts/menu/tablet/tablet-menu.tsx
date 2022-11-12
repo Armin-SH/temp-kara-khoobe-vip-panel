@@ -1,32 +1,38 @@
 import React from 'react'
 import {Div, Image, Text} from '@elements'
 import styles from "./tablet-menu.module.css";
-import {AddRequestBlackIcon, AddRequestWhiteIcon, AddressBlackIcon, AddressWhiteIcon, ContactBlackIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeWhiteIcon, LogoIcon, NotificationBlackIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsWhiteIcon, SettingBlackIcon, SettingWhiteIcon, TabletMenuIndicatorIcon} from "@icons";
+import {AddRequestBlackIcon, AddRequestGreyIcon, AddRequestWhiteIcon, AddressBlackIcon, AddressGreyIcon, AddressWhiteIcon, ContactBlackIcon, ContactGreyIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeGreyIcon, HomeWhiteIcon, LogoIcon, NotificationBlackIcon, NotificationGreyIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileGreyIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsGreyIcon, RequestsWhiteIcon, SettingBlackIcon, SettingGreyIcon, SettingWhiteIcon, TabletMenuIndicatorIcon} from "@icons";
 import routes from '@routes'
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 import {HomeActions} from "@store/home/home-actions";
 import {AlertActions} from "@store/alert/alert-action";
+import {removeFromCookie} from "@utils";
 
 const TopMenu = [
   {
     name: 'داشبورد',
     activeIcon: HomeBlackIcon,
     Icon: HomeWhiteIcon,
+    disabledIcon: HomeGreyIcon,
     route: routes['route.home.index'],
+    disabled: false,
     subRoutes: [
       {
         name: '. گزارش و آمار',
         route: routes["route.home.reports"],
+        disabled: true,
       },
       {
         name: '. حسابداری',
         route: routes['route.home.accounting'],
+        disabled: true,
       },
       {
         name: '. تقویم',
         route: routes['route.home.calendar'],
+        disabled: true,
       },
     ]
   },
@@ -34,15 +40,19 @@ const TopMenu = [
     name: 'درخواست ها',
     activeIcon: RequestsBlackIcon,
     Icon: RequestsWhiteIcon,
+    disabledIcon: RequestsGreyIcon,
     route: routes['route.request.index'],
+    disabled: true,
     subRoutes: [
       {
         name: '. جاری',
         route: routes['route.request.present'],
+        disabled: false,
       },
       {
         name: '. گذشته',
         route: routes['route.request.past'],
+        disabled: false,
       },
     ]
   },
@@ -50,29 +60,37 @@ const TopMenu = [
     name: 'پیام ها',
     activeIcon: NotificationBlackIcon,
     Icon: NotificationWhiteIcon,
+    disabledIcon: NotificationGreyIcon,
     route: routes['route.message.index'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: true,
   },
   {
     name: 'ارتباط با متخصصان',
     activeIcon: ContactBlackIcon,
     Icon: ContactWhiteIcon,
+    disabledIcon: ContactGreyIcon,
     route: routes['route.contact.index'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: true,
   },
   {
     name: 'افزودن درخواست',
     activeIcon: AddRequestBlackIcon,
     Icon: AddRequestWhiteIcon,
+    disabledIcon: AddRequestGreyIcon,
     route: routes['route.order.index'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: false,
   },
   {
     name: 'آدرس های من',
     activeIcon: AddressBlackIcon,
     Icon: AddressWhiteIcon,
+    disabledIcon: AddressGreyIcon,
     route: routes['route.address.index'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: false,
   }
 ]
 
@@ -81,22 +99,28 @@ const BottomMenu = [
     name: 'پروفایل',
     activeIcon: ProfileBlackIcon,
     Icon: ProfileWhiteIcon,
+    disabledIcon: ProfileGreyIcon,
     route: routes['route.profile.index'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: false,
   },
   {
     name: 'تنظیمات',
     activeIcon: SettingBlackIcon,
     Icon: SettingWhiteIcon,
+    disabledIcon: SettingGreyIcon,
     route: routes['route.setting.index'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: true,
   },
   {
     name: 'خروج',
     activeIcon: ExitIcon,
     Icon: ExitIcon,
+    disabledIcon: ExitIcon,
     route: routes['route.auth.login'],
-    subRoutes: []
+    subRoutes: [],
+    disabled: false,
   }
 ]
 
@@ -112,22 +136,30 @@ const TabletMenu = () => {
   const subItemClass = `${expanded}SubItem`
   const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '')}IndicatorPosition`
 
-  const handleClick = ({route}: { route: string }) => {
-    if (restrictionLevel === 'Pending' && routes['route.auth.login'] !== route) {
-      return dispatch(AlertActions.showAlert({
-        text: 'مشخصات شما در حالی بررسی می باشد. بعد از تایید مشخصات مجاز به استفاده از پنل خواهید بود',
-        severity: 'error',
-      }))
-    } else if (restrictionLevel !== "Vip" && routes['route.auth.login'] !== route) {
-      return dispatch(AlertActions.showAlert({
-        text: 'برای ادامه استفاده از پنل اطلاعات خود را تکمبل کنید',
-        severity: 'error',
-      }))
+  const handleClick = ({route, disabled}: { route: string, disabled: boolean }) => {
+    if (disabled) {
+      return null
     } else {
-      if (router.pathname === route) {
-        dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
+      if (restrictionLevel === 'Pending' && routes['route.auth.login'] !== route) {
+        return dispatch(AlertActions.showAlert({
+          text: 'مشخصات شما در حالی بررسی می باشد. بعد از تایید مشخصات مجاز به استفاده از پنل خواهید بود',
+          severity: 'error',
+        }))
+      } else if (restrictionLevel !== "Vip" && routes['route.auth.login'] !== route) {
+        return dispatch(AlertActions.showAlert({
+          text: 'برای ادامه استفاده از پنل اطلاعات خود را تکمبل کنید',
+          severity: 'error',
+        }))
       } else {
-        router.push(route)
+        if (router.pathname === route) {
+          dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
+        } else {
+          if (route === routes['route.auth.login']) {
+            removeFromCookie('token')
+            removeFromCookie('refreshToken')
+          }
+          router.push(route)
+        }
       }
     }
   }
@@ -146,17 +178,17 @@ const TabletMenu = () => {
         <Div className={styles[`${expanded}TopMenuContainer`]} mobile={"column"}>
           {TopMenu.map((item, index) => (
             <Div key={index} mobile={"column"} className={styles.itemWrapper}>
-              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
+              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route, disabled: item.disabled})}>
                 <Div className={styles.icon}>
-                  <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                  <Image src={item.disabled ? item.disabledIcon : router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                 </Div>
-                <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                <Text className={styles[iconNameClass]} color={item.disabled ? "grey.300" : router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
                   {item.name}
                 </Text>
               </Div>
-              {item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string }, index) => (
-                <Div onClick={() => handleClick({route: subItem.route})} key={item.name} className={styles[subItemClass]}>
-                  <Text className={styles[iconNameClass]} color={router.pathname === subItem.route ? "grey.900" : "common.white"} typography={"small"}>
+              {item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string, disabled: boolean }, index) => (
+                <Div onClick={() => handleClick({route: subItem.route, disabled: subItem.disabled})} key={item.name} className={styles[subItemClass]}>
+                  <Text className={styles[iconNameClass]} color={subItem.disabled ? 'grey.300' : router.pathname === subItem.route ? "grey.900" : "common.white"} typography={"small"}>
                     {subItem.name}
                   </Text>
                 </Div>
@@ -167,11 +199,11 @@ const TabletMenu = () => {
         <Div mobile={"column"} className={styles[`${expanded}BottomMenuContainer`]}>
           {BottomMenu.map((item, index) => (
             <Div key={index} mobile={"column"} className={styles.itemWrapper}>
-              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route})}>
+              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route, disabled: item.disabled})}>
                 <Div className={styles.icon}>
-                  <Image src={router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                  <Image src={item.disabled ? item.disabledIcon : router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                 </Div>
-                <Text className={styles[iconNameClass]} color={router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                <Text className={styles[iconNameClass]} color={item.disabled ? 'grey.300' : router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
                   {item.name}
                 </Text>
               </Div>

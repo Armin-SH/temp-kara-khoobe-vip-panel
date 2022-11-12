@@ -6,6 +6,7 @@ import {RadioPropsColorOverrides as RadioPropsColorOverridesMUI} from "@mui/mate
 import {CheckboxPropsColorOverrides as CheckboxPropsColorOverridesMUI} from "@mui/material/Checkbox/Checkbox";
 import {TextFieldPropsColorOverrides as TextFieldPropsColorOverridesMUI} from "@mui/material/TextField/TextField";
 import {ChipPropsColorOverrides as ChipPropsColorOverridesMUI} from '@mui/material/Chip/Chip'
+import {TextFieldPropsSizeOverrides as TextFieldPropsSizeOverridesMUI} from "@mui/material";
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides extends ButtonPropsColorOverridesMUI {
@@ -62,6 +63,10 @@ declare module '@mui/material/TextField' {
   interface TextFieldPropsColorOverrides extends TextFieldPropsColorOverridesMUI {
     control: true;
     tertiary: true;
+  }
+
+  interface TextFieldPropsSizeOverrides extends TextFieldPropsSizeOverridesMUI {
+    large: true;
   }
 }
 declare module '@mui/material/Chip' {

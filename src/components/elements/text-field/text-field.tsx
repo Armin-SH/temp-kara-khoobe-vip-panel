@@ -8,37 +8,31 @@ import {typography} from "@utils";
 const FilledTextField = styled(({color, borderWidth, backgroundColor, size, search, ...props}: TextFieldProps) =>
   <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => ({
   "& input": {
+    paddingBottom: '24px',
     direction: 'rtl',
     "@media (min-width: 640px)": {
       fontSize: "14px"
     },
     "@media (min-width: 1024px)": {
-      fontSize: "19px",
+      fontSize: "16px",
     },
     fontSize: "12px",
-    fontFamily: typography.regular,
+    fontFamily: typography.bold,
   },
-  "& .MuiFilledInput-input": {
-    paddingTop: 0,
-    paddingBottom: 0
-  },
+  "& .MuiFilledInput-input": {},
   "& .MuiFilledInput-root": {
+    height: props.size === 'large' ? '48px' : props.size === 'medium' ? "32px" : '28px',
     direction: props.inputMode === "email" || props.inputMode === "numeric" ? 'ltr' : "rtl",
     fontFamily: typography.regular,
     // @ts-ignore
     backgroundColor: props.color === 'common.white' ? paletteTheme.common?.white : paletteTheme[props.color || "primary"].main,
     border: 'none',
     borderRadius: props.search ? '55px' : '12px',
-    paddingTop: props.search ? 0 : '16px',
-    paddingLeft: props.search ? 0 : '24px',
-    paddingRight: props.search ? '21px' : '24px',
-    height: props.size === 'medium' ? '48px' : 'auto',
     "@media only screen and (min-width: 640px)": {
       borderRadius: props.search ? '55px' : '8px',
-      height: props.search ? '53px' : 'auto'
     },
     "@media only screen and (min-width: 1024px)": {
-      height: props.search ? '56px' : 'auto'
+      height: props.size === 'large' ? '56px' : props.size === 'medium' ? "48px" : '32px',
     }
   },
   "& .MuiFilledInput-root:before": {
@@ -47,7 +41,6 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
   },
   "& .MuiFilledInput-root:hover": {
     border: 'none',
-    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto'
   },
   "& .MuiFilledInput-root:hover:not(.Mui-disabled):before": {
     border: 'none',
@@ -71,23 +64,6 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
 }));
 // @ts-ignore
 const OutlinedTextField = styled(({fieldsetBackground, backgroundColor, padding, borderWidth, mobileLogin, variant, ...props}: TextFieldProps) => <MaterialTextField {...props}/>)<TextFieldProps>((props: TextFieldProps) => {
-  // let fieldsetOptions = {};
-  //
-  // // if (props.fieldsetBackground) {
-  // //   fieldsetOptions = Object.assign({}, fieldsetOptions, {
-  // //     backgroundPositionX: 'center',
-  // //     backgroundPositionY: 'center',
-  // //     backgroundAttachment: 'scroll',
-  // //     backgroundRepeat: 'no-repeat',
-  // //     backgroundImage: `url(${props.fieldsetBackground})`,
-  // //     backgroundSize: 'contain',
-  // //     height: '450px',
-  // //     width: 'auto',
-  // //     backgroundColor: 'white',
-  // //     zIndex: -1,
-  // //   })
-  // // }
-
   return ({
     "& .MuiOutlinedInput-root": {
       height: props.multiline ? 'auto' : '56px',

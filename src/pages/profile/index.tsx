@@ -10,6 +10,7 @@ import {UserActions} from "@store/user/user-actions";
 import {ReducerTypes} from "@store/reducer";
 import {UserInfoFields} from "@store/user/user";
 import {AlertActions} from "@store/alert/alert-action";
+import {InputAdornment} from '@mui/material'
 
 
 const Profile = () => {
@@ -90,97 +91,225 @@ const Profile = () => {
           </Div>
         </Div>
         <Div mobile={"column"} tablet={"row-reverse"} className={styles.inputFields}>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              نام :
-            </Text>
-            <TextField value={userInfo.firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'firstName'})} className={styles.input} variant={"filled"} size={'medium'} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'firstName'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              نام خانوادگی :
-            </Text>
-            <TextField value={userInfo.lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'lastName'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'lastName'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              شماره همراه :
-            </Text>
-            <TextField value={userInfo.phoneNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'phoneNumber'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'phoneNumber'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              تلفن داخلی :
-            </Text>
-            <TextField className={styles.input} value={userInfo.internalNumber} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'internalNumber'})} size={'medium'} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'internalNumber'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              کد ملی :
-            </Text>
-            <TextField value={userInfo.nationalCode} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'nationalCode'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'nationalCode'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              نام شرکت :
-            </Text>
-            <TextField value={userInfo.corporationName} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationName'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'corporationName'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              تلفن شرکت :
-            </Text>
-            <TextField value={userInfo.corporationTelephone} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationTelephone'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
-          <Div className={styles.inputWrapper}>
-            <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-              کد شرکت :
-            </Text>
-            <TextField value={userInfo.corporationCode} onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationCode'})} size={'medium'} className={styles.input} variant={"filled"} color={"common.white"}/>
-            <Button onClick={() => clearTextField({key: 'corporationCode'})} shape={"circle"} variant={"text"} size={"small"}>
-              <Div className={styles.clearInput}>
-                <Image src={CloseGreyIcon}/>
-              </Div>
-            </Button>
-          </Div>
+          <TextField
+            size={"large"}
+            value={userInfo.firstName}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'firstName'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'firstName'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    نام :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.lastName}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'lastName'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'lastName'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    نام خانوادگی :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.phoneNumber}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'phoneNumber'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'phoneNumber'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    شماره همراه :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.internalNumber}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'internalNumber'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'internalNumber'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    تلفن داخلی :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.nationalCode}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'nationalCode'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'nationalCode'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    کد ملی :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.corporationName}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationName'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'corporationName'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    نام شرکت :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.corporationTelephone}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationTelephone'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    تلفن شرکت :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
+            value={userInfo.corporationCode}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationCode'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'corporationCode'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    کد شرکت :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
           <Div className={styles.buttonContainer}>
             <Button disabled={updateUSerInfoLoading} loading={updateUSerInfoLoading} onClick={handleUpdateUser} className={styles.button}>
-              دخیره اطلاعات
+              ذخیره اطلاعات
             </Button>
           </Div>
           {userInfo.ceoNationalCardUrl ? (

@@ -79,7 +79,7 @@ const ReOrderModal = () => {
                   className={styles.time}
                   minDate={Date.now()}
                   // @ts-ignore
-                  renderInput={(params) => <TextField className={styles.timeInput} color={"common.white"} placeholder={'تاریخ مورد نیاز'} variant={'filled'} {...params} />}
+                  renderInput={(params) => <TextField size={'medium'} className={styles.timeInput} color={"common.white"} placeholder={'تاریخ مورد نیاز'} variant={'filled'} {...params} />}
                   value={orderItem.startDate}
                   onChange={(newValue) => {
                     handleTime({value: newValue});

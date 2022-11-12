@@ -35,6 +35,6 @@ export interface TextFieldProps {
   onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void
   inputRef?: RefObject<HTMLInputElement>
   InputLabelProps?: any
-  size?: 'small' | 'medium'
+  size?: 'small' | 'medium' | 'large'
   search?: boolean
 }

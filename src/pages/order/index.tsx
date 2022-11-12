@@ -66,8 +66,12 @@ const Order = () => {
 
   return (
     <Div mobile={'column'} className={styles.wrapper}>
-      <Div className={styles.fields}>
+      <Div mobile={'column'} desktop={'row-reverse'} className={styles.fields}>
         <DropDown loading={specialityCategoryLoading} placeholder={'انتخاب دسته تخصص'} value={specialityCategoryItem} data={specialityCategoryList} onChange={specialityCategoryHandler}/>
+        <DropDown loading={specialityLoading} disabled={!specialityList.length} placeholder={"تخصص"} value={orderItem.speciality} data={specialityList} onChange={specialityHandler}/>
+        <DropDown placeholder={"آدرس"} value={orderItem.address} data={addressList} onChange={handleAddress}/>
+      </Div>
+      <Div mobile={'column'} desktop={'row-reverse'} className={styles.fields}>
         <Div className={styles.timeContainer}>
           <LocalizationProvider dateAdapter={AdapterJalaali}>
             <DateTimePicker
@@ -75,7 +79,17 @@ const Order = () => {
               className={styles.time}
               minDate={Date.now()}
               // @ts-ignore
-              renderInput={(params) => <TextField className={styles.timeInput} color={"common.white"} placeholder={'تاریخ مورد نیاز'} variant={'filled'} {...params} />}
+              renderInput={(params) => <TextField
+                size={'large'}
+                className={styles.timeInput}
+                color={"common.white"}
+                placeholder={'تاریخ مورد نیاز'}
+                variant={'filled'}
+                placeholderdesktopsize={"16px"}
+                placeholdertabletsize={"16px"}
+                placeholdermobilesize={"14px"}
+                {...params}
+              />}
               value={orderItem.startDate}
               onChange={(newValue) => {
                 handleTime({value: newValue});
@@ -83,24 +97,22 @@ const Order = () => {
             />
           </LocalizationProvider>
         </Div>
-        <DropDown placeholder={"آدرس"} value={orderItem.address} data={addressList} onChange={handleAddress}/>
-      </Div>
-      <Div className={styles.fields}>
-        <DropDown loading={specialityLoading} disabled={!specialityList.length} placeholder={"تخصص"} value={orderItem.speciality} data={specialityList} onChange={specialityHandler}/>
         <DropDown placeholder={"دوره تسویه حساب"} value={orderItem.paymentPeriod} data={periodTime} onChange={periodCashOutHandler}/>
-        <Div className={styles.dropDown}>
-          <TextField
-            placeholder={'تعداد متخصصین'}
-            value={orderItem.specialistsNumber}
-            inputMode={"numeric"}
-            type={'numeric'}
-            onChange={handleSpecialistNumber}
-            inputProps={{inputMode: 'numeric'}}
-            variant={'filled'}
-            color={"common.white"}
-            placeholderdesktopsize={'16px'}
-          />
-        </Div>
+        <TextField
+          placeholder={'تعداد متخصصین'}
+          value={orderItem.specialistsNumber}
+          inputMode={"numeric"}
+          type={'numeric'}
+          size={'large'}
+          onChange={handleSpecialistNumber}
+          inputProps={{inputMode: 'numeric'}}
+          variant={'filled'}
+          color={"common.white"}
+          placeholderdesktopsize={'16px'}
+          placeholdermobilesize={'14px'}
+          placeholdertabletsize={'16px'}
+          className={styles.dropDown}
+        />
       </Div>
       <Button loading={storeOrderLoading} disabled={storeOrderLoading} onClick={handleStoreOrder} className={styles.button}>
         ثبت سفارش
