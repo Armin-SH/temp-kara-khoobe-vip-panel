@@ -65,7 +65,7 @@ export async function fetchApi({method, payload, withToken, URL, responseType = 
     })
   }
 
-  let baseURL: string = `${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_VERSION}/`;
+  let baseURL: string = 'https://devil.karakhoobe.ir/v0.0.1/';
 
   switch (method) {
     case "GET": {
