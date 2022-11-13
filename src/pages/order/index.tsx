@@ -12,6 +12,7 @@ import moment from "moment";
 import {UserActions} from "@store/user/user-actions";
 import {AlertActions} from "@store/alert/alert-action";
 
+const numRegex = /^[+-]?\d*(?:[.,]\d*)?$/
 const periodTime = [
   {_id: 'Daily', title: 'روزانه'},
   {_id: 'Weekly', title: 'هفتگی'},
@@ -50,7 +51,9 @@ const Order = () => {
   }
 
   const handleSpecialistNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(OrderActions.setOrderItem({key: 'specialistsNumber', value: parseInt(e.target.value)}))
+    if (numRegex.test(e.target.value)) {
+      dispatch(OrderActions.setOrderItem({key: 'specialistsNumber', value: e.target.value}))
+    }
   }
 
   const handleStoreOrder = () => {
@@ -69,7 +72,7 @@ const Order = () => {
       <Div mobile={'column'} desktop={'row-reverse'} className={styles.fields}>
         <DropDown loading={specialityCategoryLoading} placeholder={'انتخاب دسته تخصص'} value={specialityCategoryItem} data={specialityCategoryList} onChange={specialityCategoryHandler}/>
         <DropDown loading={specialityLoading} disabled={!specialityList.length} placeholder={"تخصص"} value={orderItem.speciality} data={specialityList} onChange={specialityHandler}/>
-        <DropDown placeholder={"آدرس"} value={orderItem.address} data={addressList} onChange={handleAddress}/>
+        <DropDown address={true} placeholder={"آدرس"} value={orderItem.address} data={addressList} onChange={handleAddress}/>
       </Div>
       <Div mobile={'column'} desktop={'row-reverse'} className={styles.fields}>
         <Div className={styles.timeContainer}>

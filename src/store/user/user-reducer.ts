@@ -9,7 +9,8 @@ const initialState: UserReducerTypes = {
   oldPassword: '',
   passwordFlag: false,
   changePasswordLoading: false,
-  file: null,
+  nationalIdFile: null,
+  identifierFile: null,
   uploadFileLoading: false,
   userInfo: {
     corporationCode: '',
@@ -20,7 +21,8 @@ const initialState: UserReducerTypes = {
     internalNumber: '',
     nationalCode: '',
     phoneNumber: '',
-    ceoNationalCardUrl: ''
+    ceoNationalCardUrl: '',
+    corporationIdentifierUrl: '',
   },
   userInfoError: false,
   updateUSerInfoLoading: false,
@@ -36,7 +38,8 @@ const initialState: UserReducerTypes = {
   selectedAddressId: '',
   addressLoading: false,
   addressListLoading: false,
-  addressList: []
+  addressList: [],
+  uploadKey: '',
 };
 
 function userReducer(state = initialState, action: any) {
@@ -104,13 +107,15 @@ function userReducer(state = initialState, action: any) {
     case UserActionTypes.SET_USER_FILE:
       return {
         ...state,
-        file: action?.data?.file,
+        nationalIdFile: action?.data?.key === 'ceoNationalCard' ? action?.data?.file : state.nationalIdFile,
+        identifierFile: action?.data?.key === 'corporationIdentifier' ? action?.data?.file : state.nationalIdFile,
       }
 
     case UserActionTypes.UPLOAD_USER_FILE:
       return {
         ...state,
         uploadFileLoading: true,
+        uploadKey: action?.data?.key,
       }
 
     case UserActionTypes.SET_USER_DETAILS: {

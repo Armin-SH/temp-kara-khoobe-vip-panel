@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Button, Div, Text, TextField} from '@elements'
 import styles from '@styles/settings/settings.module.css'
+import {useRouter} from "next/router";
+import routes from "@routes";
 
 const tempData = ['200،000', '500،000', '1،000،000', '2،000،000', '5،000،000', '5،000،000']
 
 const Settings = () => {
+
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace(routes['route.request.present'])
+  }, [])
   return (
     <Div mobile={'column'} className={styles.wrapper}>
       <Text className={styles.title} color={'grey.900'} typography={'medium'} type={'bold'}>

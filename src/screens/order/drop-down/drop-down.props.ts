@@ -10,4 +10,6 @@ export interface DropDownProps {
   placeholder: string
 
   loading?: boolean
+
+  address?: boolean
 }

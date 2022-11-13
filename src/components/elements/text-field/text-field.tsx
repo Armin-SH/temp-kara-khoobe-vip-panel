@@ -85,6 +85,7 @@ const OutlinedTextField = styled(({fieldsetBackground, backgroundColor, padding,
     "& .MuiOutlinedInput-notchedOutline": {
       borderWidth: props.error ? '1px' : props.borderWidth ? props.borderWidth : '1px !important',
       textAlign: 'right',
+      direction: 'rtl',
     },
     "& input::placeholder": {
       fontSize: props.placeholdermobilesize,

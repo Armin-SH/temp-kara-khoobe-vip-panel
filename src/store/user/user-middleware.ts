@@ -75,9 +75,9 @@ function* changeUserPasswordWatcher() {
 }
 
 function* uploadUserFileWatcher() {
-  const {file}: UserReducerTypes = yield select(userStore);
+  const {nationalIdFile, identifierFile, uploadKey}: UserReducerTypes = yield select(userStore);
   try {
-    const response: { data: { url: string } } = yield uploadFileApi({file: file});
+    const response: { data: { url: string } } = yield uploadFileApi({file: uploadKey === 'ceoNationalCard' ? nationalIdFile : identifierFile, key: uploadKey});
     yield put({type: UserActionTypes.GET_USER_INFO});
     yield put({
       type: AlertActionType.SHOW_ALERT,

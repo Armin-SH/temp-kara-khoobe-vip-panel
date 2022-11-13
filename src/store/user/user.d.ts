@@ -11,7 +11,9 @@ export interface UserReducerTypes {
 
   changePasswordLoading: boolean
 
-  file: any
+  nationalIdFile: any,
+
+  identifierFile: any,
 
   uploadFileLoading: boolean
 
@@ -32,6 +34,8 @@ export interface UserReducerTypes {
   addressListLoading: boolean
 
   addressList: Array<any>
+
+  uploadKey: string
 }
 
 export interface AddressProps {
@@ -65,6 +69,8 @@ export interface UserInfoProps {
   corporationCode: string,
 
   ceoNationalCardUrl: string,
+
+  corporationIdentifierUrl: string,
 }
 
 export type UserInfoFields = | 'firstName' | 'lastName' | 'phoneNumber' | 'internalNumber' | 'nationalCode' | 'corporationName' | 'corporationTelephone' | 'corporationCode' | 'ceoNationalCardUrl'

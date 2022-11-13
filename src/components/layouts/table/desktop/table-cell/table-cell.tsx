@@ -78,12 +78,12 @@ const TableCell = ({data, id, index}: TableCellProps) => {
         </Button>
         <Popper className={styles.popperContainer} id={id} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
           <Div mobile={'column'} className={styles.popper}>
-            <Button onClick={handleRequestClick} className={styles.button} variant={"text"}>
+            <Button size={'medium'} onClick={handleRequestClick} className={styles.button} variant={"text"}>
               <Text color={"grey.900"} type={'medium'} typography={'tiny'} align={"right"}>
                 درخواست مجدد
               </Text>
             </Button>
-            <Button onClick={handleCancelOrder} className={styles.button} variant={"text"}>
+            <Button size={'medium'} onClick={handleCancelOrder} className={styles.button} variant={"text"}>
               <Text color={"grey.900"} typography={'tiny'} type={'medium'} align={"right"}>
                 لغو
               </Text>

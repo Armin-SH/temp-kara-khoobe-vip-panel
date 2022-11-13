@@ -2,7 +2,7 @@ import React, {ChangeEvent, useEffect} from 'react'
 import {Button, Div, Image, Text, TextField} from '@elements'
 import styles from '@styles/profile/profile.module.css'
 import {ProfileBackBackImage, ProfileBackFrontImage, ProfileImage} from '@images'
-import {CameraIcon, CloseGreyIcon, StarIcon} from '@icons'
+import {CloseGreyIcon, StarIcon} from '@icons'
 import {PasswordModal} from '@screens/profile'
 import {Uploader} from '@modules'
 import {useDispatch, useSelector} from "react-redux";
@@ -14,7 +14,7 @@ import {InputAdornment} from '@mui/material'
 
 
 const Profile = () => {
-  const {file, uploadFileLoading, userInfo, updateUSerInfoLoading, userInfoError} = useSelector((state: ReducerTypes) => state.user);
+  const {identifierFile, nationalIdFile, uploadFileLoading, userInfo, updateUSerInfoLoading, userInfoError} = useSelector((state: ReducerTypes) => state.user);
   const dispatch = useDispatch()
 
 
@@ -26,12 +26,20 @@ const Profile = () => {
     dispatch(UserActions.setUserDetails({key: key, value: ''}))
   }
 
-  const handleUploadFileApi = () => {
-    dispatch(UserActions.uploadUserFile())
+  const handleUploadNationalCardFileApi = () => {
+    dispatch(UserActions.uploadUserFile({key: 'ceoNationalCard'}))
   }
 
-  const handleUploadFile = (state: any) => {
-    dispatch(UserActions.setUserFile({file: state}))
+  const handleUploadNationalCardFile = (state: any) => {
+    dispatch(UserActions.setUserFile({file: state, key: 'ceoNationalCard'}))
+  }
+
+  const handleUploadIdentifierFileApi = () => {
+    dispatch(UserActions.uploadUserFile({key: 'corporationIdentifier'}))
+  }
+
+  const handleUploadIdentifierFile = (state: any) => {
+    dispatch(UserActions.setUserFile({file: state, key: 'corporationIdentifier'}))
   }
 
   const handleUpdateUser = () => {
@@ -66,24 +74,14 @@ const Profile = () => {
               <Image src={ProfileImage}/>
             </Div>
           </Div>
-          <Button className={styles.cameraButton} shape={"circle"} size={"small"}>
-            <Div className={styles.camera}>
-              <Image src={CameraIcon}/>
-            </Div>
-          </Button>
           <Div mobile={"column"} className={styles.names}>
             <Text color={'grey.500'} typography={"small"}>
               شرکت
             </Text>
             <Div className={styles.companyName}>
               <Text color={'grey.900'} type={"bold"} typography={"large"}>
-                ساختمانی البرز
+                {userInfo.corporationName || ''}
               </Text>
-              <Button variant={"text"}>
-                <Text color={'primary'} typography={"small"}>
-                  ویرایش
-                </Text>
-              </Button>
             </Div>
             <Div className={styles.starIcon}>
               <Image src={StarIcon}/>
@@ -165,7 +163,7 @@ const Profile = () => {
               startAdornment: (
                 <InputAdornment sx={{marginLeft: "8px"}} position="end">
                   <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-                    شماره همراه :
+                    شماره همراه مدیر عامل :
                   </Text>
                 </InputAdornment>
               ),
@@ -192,7 +190,7 @@ const Profile = () => {
               startAdornment: (
                 <InputAdornment sx={{marginLeft: "8px"}} position="end">
                   <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-                    تلفن داخلی :
+                    تلفن ثابت شرکت :
                   </Text>
                 </InputAdornment>
               ),
@@ -228,6 +226,33 @@ const Profile = () => {
           />
           <TextField
             size={"large"}
+            value={userInfo.corporationTelephone}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationTelephone'})}
+            className={styles.textInput}
+            variant={"filled"}
+            color={"common.white"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment sx={{marginLeft: "6px"}} position="end">
+                  <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"} variant={"text"} size={"small"}>
+                    <Div className={styles.clearInput}>
+                      <Image src={CloseGreyIcon}/>
+                    </Div>
+                  </Button>
+                </InputAdornment>
+              ),
+              startAdornment: (
+                <InputAdornment sx={{marginLeft: "8px"}} position="end">
+                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
+                    داخلی مدیر عامل :
+                  </Text>
+                </InputAdornment>
+              ),
+              className: styles.input,
+            }}
+          />
+          <TextField
+            size={"large"}
             value={userInfo.corporationName}
             onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationName'})}
             className={styles.textInput}
@@ -255,33 +280,6 @@ const Profile = () => {
           />
           <TextField
             size={"large"}
-            value={userInfo.corporationTelephone}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationTelephone'})}
-            className={styles.textInput}
-            variant={"filled"}
-            color={"common.white"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"} variant={"text"} size={"small"}>
-                    <Div className={styles.clearInput}>
-                      <Image src={CloseGreyIcon}/>
-                    </Div>
-                  </Button>
-                </InputAdornment>
-              ),
-              startAdornment: (
-                <InputAdornment sx={{marginLeft: "8px"}} position="end">
-                  <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-                    تلفن شرکت :
-                  </Text>
-                </InputAdornment>
-              ),
-              className: styles.input,
-            }}
-          />
-          <TextField
-            size={"large"}
             value={userInfo.corporationCode}
             onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler({e: e, key: 'corporationCode'})}
             className={styles.textInput}
@@ -300,32 +298,58 @@ const Profile = () => {
               startAdornment: (
                 <InputAdornment sx={{marginLeft: "8px"}} position="end">
                   <Text className={styles.inputLabel} color={"grey.900"} typography={'tiny'} type={"bold"}>
-                    کد شرکت :
+                    شناسه ثبت شرکت :
                   </Text>
                 </InputAdornment>
               ),
               className: styles.input,
             }}
           />
+          <Div mobile={'column'} desktop={'row-reverse'} className={styles.uploaderContainer}>
+            <Div mobile={'column'} className={styles.uploaderWrapper}>
+              <Text color={'grey.900'} typography={'small'} type={'bold'}>
+                تصویر کارت ملی مدیر عامل
+              </Text>
+              {userInfo.ceoNationalCardUrl ? (
+                <Div className={styles.nationalCard}>
+                  <Image loader={() => `${userInfo.ceoNationalCardUrl}?mobile=true`} src={`${userInfo.ceoNationalCardUrl}?mobile=true`}/>
+                </Div>
+              ) : (
+                <>
+                  <Uploader file={nationalIdFile} fileCallback={handleUploadNationalCardFile}/>
+                  {nationalIdFile ? (
+                    <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button} onClick={handleUploadNationalCardFileApi}>
+                      بارگذاری تصویر
+                    </Button>
+                  ) : null}
+                </>
+              )}
+            </Div>
+            <Div mobile={'column'} className={styles.uploaderWrapper}>
+              <Text color={'grey.900'} typography={'small'} type={'bold'}>
+                تصویر آخرین روزنامه رسمی
+              </Text>
+              {userInfo.corporationIdentifierUrl ? (
+                <Div className={styles.nationalCard}>
+                  <Image loader={() => `${userInfo.ceoNationalCardUrl}?mobile=true`} src={`${userInfo.ceoNationalCardUrl}?mobile=true`}/>
+                </Div>
+              ) : (
+                <>
+                  <Uploader file={identifierFile} fileCallback={handleUploadIdentifierFile}/>
+                  {identifierFile ? (
+                    <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button} onClick={handleUploadIdentifierFileApi}>
+                      بارگذاری تصویر
+                    </Button>
+                  ) : null}
+                </>
+              )}
+            </Div>
+          </Div>
           <Div className={styles.buttonContainer}>
             <Button disabled={updateUSerInfoLoading} loading={updateUSerInfoLoading} onClick={handleUpdateUser} className={styles.button}>
               ذخیره اطلاعات
             </Button>
           </Div>
-          {userInfo.ceoNationalCardUrl ? (
-            <Div className={styles.nationalCard}>
-              <Image loader={() => userInfo.ceoNationalCardUrl} src={userInfo.ceoNationalCardUrl}/>
-            </Div>
-          ) : (
-            <>
-              <Uploader file={file} fileCallback={handleUploadFile}/>
-              {file ? (
-                <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button} onClick={handleUploadFileApi}>
-                  بارگذاری تصویر
-                </Button>
-              ) : null}
-            </>
-          )}
         </Div>
       </Div>
       <PasswordModal/>

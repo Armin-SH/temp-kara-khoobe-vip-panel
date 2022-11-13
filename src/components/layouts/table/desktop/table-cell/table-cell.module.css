@@ -34,8 +34,9 @@
   justify-content: space-between;
   align-items: flex-end;
   z-index: 9999;
-  padding-right: 8px;
+  padding: 8px;
   border-radius: 8px;
+  gap: 16px
 }
 
 .fadePopper {

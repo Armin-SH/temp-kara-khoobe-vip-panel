@@ -1,11 +1,17 @@
 import React from 'react'
 import styles from './drop-down.module.css'
-import {Div, MenuItem, Select, Skeleton, Text} from '@elements'
+import {Button, Div, MenuItem, Select, Skeleton, Text} from '@elements'
 import {DropDownProps} from './drop-down.props'
+import {useRouter} from "next/router";
+import routes from "@routes";
 
 
-const DropDown = ({value, onChange, data, disabled, placeholder, loading = false}: DropDownProps) => {
+const DropDown = ({value, onChange, data, disabled, placeholder, loading = false, address}: DropDownProps) => {
+  const router = useRouter()
 
+  const handleAddAddress = () => {
+    router.push(routes['route.address.index'])
+  }
 
   if (loading) {
     return (
@@ -25,7 +31,7 @@ const DropDown = ({value, onChange, data, disabled, placeholder, loading = false
         className={styles.select}
       >
         <MenuItem style={{display: 'none'}} value={" "}>
-          <Text color={"grey.900"} typography={"tiny"}>
+          <Text color={"grey.300"} typography={"tiny"}>
             {placeholder}
           </Text>
         </MenuItem>
@@ -39,7 +45,16 @@ const DropDown = ({value, onChange, data, disabled, placeholder, loading = false
               {item.title}
             </Text>
           </MenuItem>
-        )) : null}
+        )) : address ? (
+          <Div mobile={'column'} className={styles.buttonContainer}>
+            <Text align={"center"} color={'error.main'} typography={"tiny"}>
+              آدرسی برای شما ثبت نشده است
+            </Text>
+            <Button onClick={handleAddAddress} variant={"contained"} className={styles.button}>
+              افزودن آدرس
+            </Button>
+          </Div>
+        ) : null}
       </Select>
     </Div>
   )

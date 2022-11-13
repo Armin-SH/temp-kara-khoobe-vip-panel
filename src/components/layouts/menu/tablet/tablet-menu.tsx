@@ -17,7 +17,7 @@ const TopMenu = [
     Icon: HomeWhiteIcon,
     disabledIcon: HomeGreyIcon,
     route: routes['route.home.index'],
-    disabled: false,
+    disabled: true,
     subRoutes: [
       {
         name: '. گزارش و آمار',

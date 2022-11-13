@@ -47,7 +47,7 @@ function* verifyOtpCodeWatcher() {
     yield put({type: AuthActionTypes.SET_VERIFY_LOADING,})
     yield saveToCookie("token", response?.data?.token)
     yield saveToCookie("refreshToken", response?.data?.refreshToken)
-    yield Router.push(routes['route.home.index'])
+    yield Router.push(routes['route.request.present'])
 
   } catch (error: any) {
     yield put({type: AuthActionTypes.SET_VERIFY_LOADING,})
@@ -75,7 +75,7 @@ function* loginWithPasswordWatcher() {
     yield put({type: AuthActionTypes.SET_LOGIN_LOADING})
     yield saveToCookie("token", response?.data?.token)
     yield saveToCookie("refreshToken", response?.data?.refreshToken)
-    yield Router.push(routes['route.home.index'])
+    yield Router.push(routes['route.request.present'])
 
   } catch (e: any) {
     yield put({type: AuthActionTypes.SET_LOGIN_LOADING})

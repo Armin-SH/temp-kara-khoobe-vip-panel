@@ -1,8 +1,18 @@
 import styles from '@styles/home/home.module.css'
 import {Div} from '@elements'
 import {RequestItem} from '@screens/home'
+import {useEffect} from "react";
+import {useRouter} from "next/router";
+import routes from "@routes";
 
 const Home = () => {
+
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace(routes['route.request.present'])
+  }, [])
+
   return (
     <Div mobile={"column"} desktop={"row-reverse"} className={styles.container}>
       <RequestItem

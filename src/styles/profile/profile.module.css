@@ -126,6 +126,22 @@
   height: 300px;
 }
 
+.uploaderContainer {
+  width: 100%;
+  gap: 16px
+}
+
+.uploaderWrapper {
+  width: 100%;
+  min-height: 250px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px
+}
+
 @media only screen and (min-width: 640px) {
   .cameraButton {
     min-width: 40px;
@@ -163,6 +179,11 @@
 }
 
 @media only screen and (min-width: 1024px) {
+  .uploaderWrapper {
+    width: 48%;
+    min-height: 400px;
+  }
+
   .textInput {
     width: 48%;
   }

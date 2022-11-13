@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Button, Div, Text} from '@elements'
 import styles from '@styles/home/calendar.module.css'
 import {Calendar} from '@modules'
+import {useRouter} from "next/router";
+import routes from "@routes";
 
 const CalendarPage = () => {
+  const router = useRouter()
 
+  useEffect(() => {
+    router.replace(routes['route.request.present'])
+  }, [])
   const handleSelectedDay = (date: string) => {
   }
   return (

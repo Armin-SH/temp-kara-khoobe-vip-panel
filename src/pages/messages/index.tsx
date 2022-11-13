@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Div} from '@elements'
 import styles from '@styles/messages/messages.module.css'
+import {useRouter} from "next/router";
+import routes from "@routes";
 
 
 const Messages = () => {
+  const router = useRouter()
 
+  useEffect(() => {
+    router.replace(routes['route.request.present'])
+  }, [])
   return (
     <Div className={styles.wrapper}>
 

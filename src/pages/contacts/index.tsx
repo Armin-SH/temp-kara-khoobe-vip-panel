@@ -1,18 +1,25 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Div, Text, Button, TextField, Media} from '@elements'
 import styles from '@styles/contacts/contacts.module.css'
+import {useRouter} from "next/router";
+import routes from "@routes";
 
 const Contacts = () => {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace(routes['route.request.present'])
+  }, [])
   return (
-      <Div className={styles.wrapper} mobile={'column'}>
-        <Text align={'right'} typography={'medium'} type={"bold"} color={"grey.900"}>
-          ارسال پیام
+    <Div className={styles.wrapper} mobile={'column'}>
+      <Text align={'right'} typography={'medium'} type={"bold"} color={"grey.900"}>
+        ارسال پیام
+      </Text>
+      <Media greaterThan={'sm'}>
+        <Text align={'right'} color={'grey.500'} typography={'medium'}>
+          این پیام برای همه گروه ها و یا گروه های متخصص فیلتر شده ارسال خواهد شد
         </Text>
-        <Media greaterThan={'sm'}>
-          <Text align={'right'} color={'grey.500'} typography={'medium'}>
-            این پیام برای همه گروه ها و یا گروه های متخصص فیلتر شده ارسال خواهد شد
-          </Text>
-        </Media>
+      </Media>
         <Div mobile={'column'} className={styles.container}>
           <TextField
               className={styles.textField}
