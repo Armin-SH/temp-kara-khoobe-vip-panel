@@ -215,7 +215,9 @@ const DesktopTable = (
         {pagination ? (
           <Div className={styles.paginationContainer}>
             <Button loading={extendedListLoading} disabled={extendedListLoading || lastPage} onClick={handleNextPage} size={'medium'} className={styles.paginationButton}>
-              صفحه بعد
+              <Text color={'common.white'} typography={'small'} type={'bold'}>
+                صفحه بعد
+              </Text>
             </Button>
             {extendedListLoading ? (
               <LoadingIndicator size={'28px'} color={'primary'}/>
@@ -225,7 +227,9 @@ const DesktopTable = (
               </Text>
             )}
             <Button loading={extendedListLoading} disabled={extendedListLoading || !lastPage && page === 2} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
-              صفحه قبل
+              <Text color={'common.white'} typography={'small'} type={'bold'}>
+                صفحه قبل
+              </Text>
             </Button>
           </Div>
         ) : null}

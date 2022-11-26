@@ -281,6 +281,20 @@
   transition-duration: 500ms;
 }
 
+.trueaddressIndicatorPosition {
+  top: 830px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.falseaddressIndicatorPosition {
+  top: 575px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
 .truereportsSubItem {
   width: 100%;
   justify-content: flex-start;

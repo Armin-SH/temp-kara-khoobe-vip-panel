@@ -36,6 +36,18 @@ export interface OrderReducerTypes {
   tablePage: number
 
   storeOrderError: boolean
+
+  cancelOrderId: string
+
+  cancelOrderLoading: boolean
+
+  hasChildren: boolean
+
+  subSpecialityList: Array<any>,
+
+  subSpecialityItem: string,
+
+  subSpecialityLoading: boolean,
 }
 
 export interface SpecialityCategoryProps {

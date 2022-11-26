@@ -16,6 +16,10 @@ export const OrderActionTypes = {
   SET_RE_ORDER_MODAL: `${preType}SET_RE_ORDER_MODAL`,
   GET_EXTENDED_ORDER_LIST: `${preType}GET_EXTENDED_ORDER_LIST`,
   SET_PREVIOUS_PAGE: `${preType}SET_PREVIOUS_PAGE`,
+  CANCEL_USER_ORDER: `${preType}CANCEL_USER_ORDER`,
+  SET_CANCEL_ORDER: `${preType}SET_CANCEL_ORDER`,
+  SET_SUB_CATEGORY: `${preType}SET_SUB_CATEGORY`,
+  SET_SUB_CATEGORY_ITEM: `${preType}SET_SUB_CATEGORY_ITEM`,
 };
 
 const getOrderList = (data: { live: boolean, page: number }) => ({type: OrderActionTypes.GET_ORDER_LIST, data: data});
@@ -27,6 +31,8 @@ const setInitialOrder = (data: { success: boolean }) => ({type: OrderActionTypes
 const setReOrderModal = (data: { open: boolean, index?: number }) => ({type: OrderActionTypes.SET_RE_ORDER_MODAL, data: data})
 const getExtendedOrderList = (data: { live: boolean, page: number }) => ({type: OrderActionTypes.GET_EXTENDED_ORDER_LIST, data: data})
 const setPreviousPage = (data: { page: number }) => ({type: OrderActionTypes.SET_PREVIOUS_PAGE, data: data})
+const cancelUserOrder = (data: { id: number }) => ({type: OrderActionTypes.CANCEL_USER_ORDER, data: data})
+const setSubCategoryItem = (data: { value: string }) => ({type: OrderActionTypes.SET_SUB_CATEGORY_ITEM, data: data})
 
 export const OrderActions = {
   getOrderList: getOrderList,
@@ -38,4 +44,6 @@ export const OrderActions = {
   setReOrderModal: setReOrderModal,
   getExtendedOrderList: getExtendedOrderList,
   setPreviousPage: setPreviousPage,
+  cancelUserOrder: cancelUserOrder,
+  setSubCategoryItem: setSubCategoryItem,
 };

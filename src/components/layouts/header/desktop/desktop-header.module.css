@@ -96,3 +96,8 @@
   justify-content: center;
   border: 2px solid #FCA600;
 }
+
+.input input::placeholder {
+  color: #121212;
+  opacity: 1
+}

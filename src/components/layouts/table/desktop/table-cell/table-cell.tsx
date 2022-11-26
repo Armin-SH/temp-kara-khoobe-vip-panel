@@ -56,7 +56,7 @@ const TableCell = ({data, id, index}: TableCellProps) => {
 
 
     const open = Boolean(anchorEl);
-    const id = open ? 'simple-popper' : undefined;
+    const dropId = open ? 'simple-popper' : undefined;
 
     const handleRequestClick = () => {
       dispatch(OrderActions.setReOrderModal({open: true, index: index}))
@@ -65,6 +65,7 @@ const TableCell = ({data, id, index}: TableCellProps) => {
     }
 
     const handleCancelOrder = () => {
+      dispatch(OrderActions.cancelUserOrder({id: index}))
       state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
       setAnchorEl(null);
     }
@@ -76,7 +77,7 @@ const TableCell = ({data, id, index}: TableCellProps) => {
             <Image src={MoreIcon} alt={'...'}/>
           </Div>
         </Button>
-        <Popper className={styles.popperContainer} id={id} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
+        <Popper className={styles.popperContainer} id={dropId} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
           <Div mobile={'column'} className={styles.popper}>
             <Button size={'medium'} onClick={handleRequestClick} className={styles.button} variant={"text"}>
               <Text color={"grey.900"} type={'medium'} typography={'tiny'} align={"right"}>

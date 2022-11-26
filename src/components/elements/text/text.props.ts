@@ -28,4 +28,6 @@ export interface TextProps {
   type?: "medium" | "bold" | "light" | "regular"
 
   dataTestId?: string
+
+  fontWeight?: string
 }

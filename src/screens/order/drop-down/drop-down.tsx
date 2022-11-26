@@ -31,7 +31,7 @@ const DropDown = ({value, onChange, data, disabled, placeholder, loading = false
         className={styles.select}
       >
         <MenuItem style={{display: 'none'}} value={" "}>
-          <Text color={"grey.300"} typography={"tiny"}>
+          <Text color={"grey.900"} typography={"tiny"} type={'bold'}>
             {placeholder}
           </Text>
         </MenuItem>

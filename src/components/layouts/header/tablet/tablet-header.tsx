@@ -33,35 +33,6 @@ const TabletHeader = () => {
           inputMode: 'numeric', pattern: '[0-9]*'
         }}
       />
-      <Div>
-        <Div className={styles.addButton}>
-          <Div className={styles.addButtonIcon}>
-            <Image src={PlusWhiteIcon} alt={'افزودن'}/>
-          </Div>
-        </Div>
-        <Div className={styles.profilePicContainer}>
-          <Div className={styles.profileIconOne}>
-            <Div className={styles.profileIconPic}>
-              <Image src={One} alt={''}/>
-            </Div>
-          </Div>
-          <Div className={styles.profileIconTwo}>
-            <Div className={styles.profileIconPic}>
-              <Image src={Two} alt={''}/>
-            </Div>
-          </Div>
-          <Div className={styles.profileIconThree}>
-            <Div className={styles.profileIconPic}>
-              <Image src={Three} alt={''}/>
-            </Div>
-          </Div>
-          <Div className={styles.profileIconMaster}>
-            <Div className={styles.profileIconPic}>
-              <Image src={Master} alt={''}/>
-            </Div>
-          </Div>
-        </Div>
-      </Div>
     </Div>
   )
 }

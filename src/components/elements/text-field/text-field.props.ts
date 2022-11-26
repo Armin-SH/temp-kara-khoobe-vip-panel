@@ -37,4 +37,5 @@ export interface TextFieldProps {
   InputLabelProps?: any
   size?: 'small' | 'medium' | 'large'
   search?: boolean
+  sx?: any
 }

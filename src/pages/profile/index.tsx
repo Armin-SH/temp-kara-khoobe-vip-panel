@@ -357,6 +357,4 @@ const Profile = () => {
   )
 }
 
-Profile.hasHeader = false;
-
 export default Profile

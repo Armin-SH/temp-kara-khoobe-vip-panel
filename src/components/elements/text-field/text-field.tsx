@@ -48,12 +48,11 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
   },
   "& .MuiFilledInput-root:after": {
     border: 'none',
-    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto'
+    backgroundColor: props.color === 'common.white' ? 'transparent' : 'auto',
   },
   "& input::placeholder": {
     fontSize: props.placeholdermobilesize,
     textAlign: props.placeholderalign,
-    color: '#595858',
     "@media (min-width: 640px)": {
       fontSize: props.placeholdertabletsize,
     },
@@ -135,6 +134,7 @@ const TextField = (props: TextFieldProps) => {
     onKeyPress,
     inputRef,
     InputLabelProps,
+    sx,
     ...rest
   } = props;
 
@@ -165,6 +165,7 @@ const TextField = (props: TextFieldProps) => {
       onKeyPress={onKeyPress}
       inputRef={inputRef}
       InputLabelProps={label ? {shrink: true} : InputLabelProps}
+      sx={sx}
       {...rest}/>
   );
 };

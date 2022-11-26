@@ -23,6 +23,8 @@ const initialState: OrderReducerTypes = {
   specialityList: [],
   specialityLoading: false,
   specialityCategoryLoading: false,
+  subSpecialityList: [],
+  subSpecialityItem: ' ',
   orderItem: {
     paymentPeriod: ' ',
     address: " ",
@@ -43,6 +45,10 @@ const initialState: OrderReducerTypes = {
   tableList: [],
   lastPage: false,
   tablePage: 1,
+  cancelOrderId: '',
+  cancelOrderLoading: false,
+  hasChildren: false,
+  subSpecialityLoading: false,
 };
 
 function orderReducer(state = initialState, action: any) {
@@ -140,17 +146,26 @@ function orderReducer(state = initialState, action: any) {
       }
     }
 
-    case OrderActionTypes.SET_SPECIALITY_CATEGORY_VALUE:
+    case OrderActionTypes.SET_SPECIALITY_CATEGORY_VALUE: {
+
+      const item = state.specialityCategoryList.find((value) => {
+        return value._id === action?.data?.value;
+      });
+
       return {
         ...state,
+        hasChildren: !!item.childrenCount,
         specialityList: initialState.specialityList,
         orderItem: {
           ...state.orderItem,
           speciality: ' ',
         },
         specialityCategoryItem: action?.data?.value,
-        specialityLoading: true,
+        specialityLoading: !item.childrenCount,
+        subSpecialityLoading: !!item.childrenCount,
+        subSpecialityItem: ' ',
       }
+    }
 
     case OrderActionTypes.SET_SPECIALITY_LIST:
       return {
@@ -171,6 +186,8 @@ function orderReducer(state = initialState, action: any) {
         storeOrderLoading: false,
         orderItem: action?.data?.success ? initialState.orderItem : state.orderItem,
         specialityCategoryItem: action?.data?.success ? initialState.specialityCategoryItem : state.specialityCategoryItem,
+        subSpecialityItem: ' ',
+        hasChildren: false,
       }
 
     case OrderActionTypes.SET_RE_ORDER_MODAL: {
@@ -210,6 +227,33 @@ function orderReducer(state = initialState, action: any) {
       }
     }
 
+    case OrderActionTypes.CANCEL_USER_ORDER:
+      return {
+        ...state,
+        cancelOrderId: state.orderList[action?.data?.id]._id,
+        cancelOrderLoading: true,
+      }
+
+    case OrderActionTypes.SET_CANCEL_ORDER:
+      return {
+        ...state,
+        cancelOrderId: '',
+        cancelOrderLoading: false,
+      }
+
+    case OrderActionTypes.SET_SUB_CATEGORY:
+      return {
+        ...state,
+        subSpecialityList: action?.data?.subSpecialityList,
+        subSpecialityLoading: false,
+      }
+
+    case OrderActionTypes.SET_SUB_CATEGORY_ITEM:
+      return {
+        ...state,
+        subSpecialityItem: action?.data?.value,
+        specialityLoading: true,
+      }
 
     default:
       return state

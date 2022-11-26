@@ -65,7 +65,9 @@ const Otp = () => {
         mobileLogin={true}
       />
       <Button loading={validationCodeLoading} disabled={validationCodeLoading} onClick={handleSendValidationCode} className={styles.getCodeButton}>
-        دریافت کد
+        <Text color={'common.white'} typography={'small'} type={'bold'}>
+          دریافت کد
+        </Text>
       </Button>
       <Text color={"grey.900"} align={"right"} typography={"tiny"}>
         کد یکبار مصرف از طریق پیامک برای شما ارسال خواهد شد

@@ -3,7 +3,6 @@ import {Div, Image, Media, Text} from '@elements'
 import {LayoutProps} from "./layout.props";
 import styles from './layout.module.css'
 import {AuthLayout, Header, Menu} from '@layouts'
-import {KishLogoImage} from '@images'
 import {ProfileGreyIcon} from '@icons'
 
 const Layout = ({children, isAuthentication, hasHeader, sideBar}: LayoutProps) => {
@@ -91,9 +90,6 @@ const Layout = ({children, isAuthentication, hasHeader, sideBar}: LayoutProps) =
         ) : (
           <Div className={styles.leftMenu}>
             <Div mobile={'column'} className={styles.leftMenuContainer}>
-              <Div className={styles.logoContainer}>
-                <Image src={KishLogoImage} alt={'تیسا کیش'}/>
-              </Div>
             </Div>
           </Div>
         )}

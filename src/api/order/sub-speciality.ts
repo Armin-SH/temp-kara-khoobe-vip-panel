@@ -2,17 +2,18 @@ import routes from "@routes";
 import {fetchApi} from '../fetch';
 
 
-const specialityCategoryApi = () => {
+const subSpecialityApi = ({parentId}: { parentId?: string }) => {
   return fetchApi({
     method: "GET",
     URL: {
-      pathname: routes["api.order.speciality-category"],
+      pathname: routes["api.order.sub-speciality-category"],
       query: {
         city: "تهران",
+        parent: parentId,
       }
     },
     withToken: true,
   });
 }
 
-export default specialityCategoryApi;
+export default subSpecialityApi;

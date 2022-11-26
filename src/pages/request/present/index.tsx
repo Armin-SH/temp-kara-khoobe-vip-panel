@@ -12,7 +12,7 @@ import {UserActions} from "@store/user/user-actions";
 
 
 const PastRequest = () => {
-  const {orderList, orderListLoading} = useSelector((state: ReducerTypes) => state.order);
+  const {orderList, orderListLoading, originalOrderList} = useSelector((state: ReducerTypes) => state.order);
 
   const dispatch = useDispatch()
   const router = useRouter()
@@ -20,7 +20,7 @@ const PastRequest = () => {
     dispatch(OrderActions.getOrderList({live: true, page: 1}))
     dispatch(UserActions.getUserAddress())
   }, [])
-
+  console.log({originalOrderList})
   const handleNewRequest = () => {
     router.push(routes['route.order.index'])
   }
@@ -35,10 +35,10 @@ const PastRequest = () => {
 
   if (orderList && orderList.length) {
     return (
-      <>
+      <Div mobile={'column'} className={styles.container}>
         <RequestList/>
         <ReOrderModal/>
-      </>
+      </Div>
     )
   }
 

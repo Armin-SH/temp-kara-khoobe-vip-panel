@@ -1,7 +1,7 @@
 import {all, put, select, takeLatest} from "redux-saga/effects";
 import {orderStore} from "./order-store";
 import {OrderReducerTypes, SpecialityCategoryProps} from "./order";
-import {orderListApi, specialitiesApi, specialityCategoryApi, storeOrderApi} from "@api/order";
+import {cancelOrderListApi, orderListApi, specialitiesApi, specialityCategoryApi, storeOrderApi, subSpecialityApi} from "@api/order";
 import {OrderActionTypes} from "./order-actions";
 import {AlertActionType} from "@store/alert/alert-action";
 import Router from "next/router";
@@ -26,15 +26,25 @@ function* getSpecialityCategoryWatcher() {
 
 function* getOrderSpecialitiesWatcher() {
 
-  const {specialityCategoryItem}: OrderReducerTypes = yield select(orderStore);
+  const {specialityCategoryItem, hasChildren, subSpecialityItem}: OrderReducerTypes = yield select(orderStore);
   try {
-    const response: { data: { specialitiesSummery: Array<SpecialityCategoryProps> } } = yield specialitiesApi({specialityCategory: specialityCategoryItem});
-    yield put({
-      type: OrderActionTypes.SET_SPECIALITY_LIST,
-      data: {
-        specialityList: response?.data?.specialitiesSummery,
-      }
-    })
+    if (hasChildren && subSpecialityItem === ' ') {
+      const response: { data: { categories: Array<SpecialityCategoryProps> } } = yield subSpecialityApi({parentId: specialityCategoryItem});
+      yield put({
+        type: OrderActionTypes.SET_SUB_CATEGORY,
+        data: {
+          subSpecialityList: response?.data?.categories,
+        }
+      })
+    } else {
+      const response: { data: { specialitiesSummery: Array<SpecialityCategoryProps> } } = yield specialitiesApi({specialityCategory: hasChildren ? subSpecialityItem : specialityCategoryItem});
+      yield put({
+        type: OrderActionTypes.SET_SPECIALITY_LIST,
+        data: {
+          specialityList: response?.data?.specialitiesSummery,
+        }
+      })
+    }
 
   } catch (error) {
     yield put({type: OrderActionTypes.SET_SPECIALITY_LIST})
@@ -91,6 +101,18 @@ function* getOrderListWatcher() {
   }
 }
 
+function* cancelUserOrderWatcher() {
+
+  const {cancelOrderId}: OrderReducerTypes = yield select(orderStore);
+  try {
+    const response: { data: { vipOrders: Array<any>, nextPage: number } } = yield cancelOrderListApi({id: cancelOrderId});
+    console.log(response)
+    yield put({type: OrderActionTypes.SET_CANCEL_ORDER});
+  } catch (error) {
+    yield put({type: OrderActionTypes.SET_CANCEL_ORDER});
+  }
+}
+
 
 function* orderMiddleware() {
   yield all([
@@ -99,6 +121,8 @@ function* orderMiddleware() {
     takeLatest(OrderActionTypes.STORE_ORDER_REQUEST, storeOrderRequestWatcher),
     takeLatest(OrderActionTypes.GET_ORDER_LIST, getOrderListWatcher),
     takeLatest(OrderActionTypes.GET_EXTENDED_ORDER_LIST, getOrderListWatcher),
+    takeLatest(OrderActionTypes.CANCEL_USER_ORDER, cancelUserOrderWatcher),
+    takeLatest(OrderActionTypes.SET_SUB_CATEGORY_ITEM, getOrderSpecialitiesWatcher),
   ])
 }
 

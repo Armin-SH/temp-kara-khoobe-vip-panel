@@ -87,10 +87,14 @@ const Login = () => {
         کلمه عبور خود را فراموش کرده ام
       </Button>
       <Button loading={loginLoading} disabled={loginLoading || !isNumberValid} onClick={handleLogIn} className={styles.loginButton}>
-        ورود
+        <Text color={'common.white'} typography={'small'} type={'bold'}>
+          ورود
+        </Text>
       </Button>
       <Button loading={loginLoading} disabled={loginLoading} href={routes['route.auth.otp']} className={styles.signUpButton}>
-        ثبت نام
+        <Text color={'common.white'} typography={'small'} type={'bold'}>
+          ثبت نام
+        </Text>
       </Button>
     </Div>
   )

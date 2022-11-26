@@ -79,7 +79,9 @@ const Verify = () => {
         label={'کد تایید'}
       />
       <Button onClick={handleVerifyCode} loading={verifyLoading || validationCodeLoading} disabled={verifyLoading || otpCode.length < 6 || validationCodeLoading} className={styles.getCodeButton}>
-        تایید کد
+        <Text color={'common.white'} typography={'small'} type={'bold'}>
+          تایید کد
+        </Text>
       </Button>
       <Div mobile={"column-reverse"} tablet={"row-reverse"} className={styles.countDownContainer}>
         <Text color={"grey.900"} align={"right"} typography={"tiny"}>
@@ -88,7 +90,9 @@ const Verify = () => {
         <CountDown parentCallback={handleCountDown} reset={countDownReset} variant={"outlined"} sec={120}/>
       </Div>
       <Button onClick={handleValidationCode} className={styles[resendCodeClassName]} color={'primary'} variant={'contained'}>
-        دریافت مجدد کد اعتبار سنجی
+        <Text color={'common.white'} typography={'small'} type={'bold'}>
+          دریافت مجدد کد اعتبار سنجی
+        </Text>
       </Button>
       <Button href={routes['route.auth.otp']} size={"small"} className={styles.changeMobile} color={"secondary"} variant={"text"}>
         ویرایش شماره موبایل

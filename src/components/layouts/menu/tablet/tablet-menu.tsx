@@ -42,7 +42,7 @@ const TopMenu = [
     Icon: RequestsWhiteIcon,
     disabledIcon: RequestsGreyIcon,
     route: routes['route.request.index'],
-    disabled: true,
+    disabled: false,
     subRoutes: [
       {
         name: '. جاری',
@@ -137,6 +137,9 @@ const TabletMenu = () => {
   const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '')}IndicatorPosition`
 
   const handleClick = ({route, disabled}: { route: string, disabled: boolean }) => {
+    if (route === routes['route.request.index']) {
+      return dispatch(HomeActions.setExpandedMenu({expand: !expanded}))
+    }
     if (disabled) {
       return null
     } else {

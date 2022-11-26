@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useEffect} from 'react'
-import {Button, Div, TextField} from '@elements'
+import {Button, Div, Text, TextField} from '@elements'
 import {DropDown} from '@screens/order'
 import styles from '@styles/order/order.module.css'
 import {useDispatch, useSelector} from "react-redux";
@@ -19,9 +19,10 @@ const periodTime = [
   {_id: 'Monthly', title: 'ماهانه'},
 ]
 
+
 const Order = () => {
   const dispatch = useDispatch()
-  const {specialityCategoryList, specialityCategoryLoading, orderItem, specialityCategoryItem, specialityList, specialityLoading, storeOrderLoading, storeOrderError} = useSelector((state: ReducerTypes) => state.order)
+  const {specialityCategoryList, specialityCategoryLoading, orderItem, specialityCategoryItem, specialityList, specialityLoading, storeOrderLoading, storeOrderError, hasChildren, subSpecialityList, subSpecialityItem, subSpecialityLoading} = useSelector((state: ReducerTypes) => state.order)
   const {addressList} = useSelector((state: ReducerTypes) => state.user);
 
   useEffect(() => {
@@ -52,9 +53,13 @@ const Order = () => {
 
   const handleSpecialistNumber = (e: ChangeEvent<HTMLInputElement>) => {
     if (numRegex.test(e.target.value)) {
-      dispatch(OrderActions.setOrderItem({key: 'specialistsNumber', value: e.target.value}))
+      dispatch(OrderActions.setOrderItem({key: 'specialistsNumber', value: parseInt(e.target.value)}))
     }
   }
+
+  const subSpecialityCategoryHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(OrderActions.setSubCategoryItem({value: e.target.value}))
+  };
 
   const handleStoreOrder = () => {
     if (storeOrderError) {
@@ -70,7 +75,12 @@ const Order = () => {
   return (
     <Div mobile={'column'} className={styles.wrapper}>
       <Div mobile={'column'} desktop={'row-reverse'} className={styles.fields}>
-        <DropDown loading={specialityCategoryLoading} placeholder={'انتخاب دسته تخصص'} value={specialityCategoryItem} data={specialityCategoryList} onChange={specialityCategoryHandler}/>
+        <Div mobile={'column'} className={styles.category}>
+          <DropDown loading={specialityCategoryLoading} placeholder={'انتخاب دسته تخصص'} value={specialityCategoryItem} data={specialityCategoryList} onChange={specialityCategoryHandler}/>
+          {hasChildren ? (
+            <DropDown loading={subSpecialityLoading} value={subSpecialityItem} onChange={subSpecialityCategoryHandler} data={subSpecialityList} placeholder={'انتخاب زیر دسته تخصص'}/>
+          ) : null}
+        </Div>
         <DropDown loading={specialityLoading} disabled={!specialityList.length} placeholder={"تخصص"} value={orderItem.speciality} data={specialityList} onChange={specialityHandler}/>
         <DropDown address={true} placeholder={"آدرس"} value={orderItem.address} data={addressList} onChange={handleAddress}/>
       </Div>
@@ -91,6 +101,7 @@ const Order = () => {
                 placeholderdesktopsize={"16px"}
                 placeholdertabletsize={"16px"}
                 placeholdermobilesize={"14px"}
+                InputProps={{className: styles.input}}
                 {...params}
               />}
               value={orderItem.startDate}
@@ -115,10 +126,13 @@ const Order = () => {
           placeholdermobilesize={'14px'}
           placeholdertabletsize={'16px'}
           className={styles.dropDown}
+          InputProps={{className: styles.input}}
         />
       </Div>
       <Button loading={storeOrderLoading} disabled={storeOrderLoading} onClick={handleStoreOrder} className={styles.button}>
-        ثبت سفارش
+        <Text color={'common.white'} typography={'small'} type={'bold'}>
+          ثبت سفارش
+        </Text>
       </Button>
     </Div>
   )

@@ -64,7 +64,7 @@
   height: 100%;
   align-items: flex-end;
   width: 100%;
-  padding-right: 47px;
+  padding-right: 67px;
   transition-property: all;
   transition-duration: 500ms;
   transition-delay: 100ms;
@@ -73,70 +73,44 @@
 .falseBottomMenuContainer {
   justify-content: flex-end;
   height: 100%;
-  align-items: flex-end;
-  padding-right: 60px;
+  align-items: center;
   width: 100%;
   transition-property: all;
   transition-duration: 500ms;
   transition-delay: 100ms;
 }
 
+.trueIconName {
+  white-space: nowrap;
+}
 
-.closedMenuContainer {
+.falseIconName {
+  display: none;
+}
+
+.falseTopMenuContainer {
   width: 100%;
   align-items: center;
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
 }
 
-.closedMenuWrapper {
-  position: absolute;
-}
-
-.openedMenuWrapper {
-  position: absolute;
-}
-
-.transitionWrapper {
-  position: relative;
-  justify-content: center;
-  width: 100%;
-}
-
-.closedBottomMenuContainer {
-  width: 100%;
-  align-items: center;
-  margin-top: 46px;
-}
-
-
-.openedMenuContainer {
+.trueTopMenuContainer {
   width: 100%;
   align-items: flex-end;
-  padding-right: 47px;
-}
-
-.openedBottomMenuContainer {
-  width: 100%;
-  align-items: flex-end;
-  padding-right: 47px;
-  margin-top: 167px;
+  padding-right: 67px;
+  transition-property: all;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
 }
 
 .iconContainer {
   cursor: pointer;
   width: 100%;
   align-self: center;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 26px;
-}
-
-.openedIconContainer {
-  cursor: pointer;
-  width: 100%;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  gap: 16px
+  justify-content: flex-start;
+  gap: 16px;
 }
 
 .falseIndicatorPosition {
@@ -336,10 +310,14 @@
   margin-bottom: 54px;
 }
 
-.openSubItem {
+.trueSubItem {
   cursor: pointer;
   width: 100%;
   justify-content: flex-start;
   margin-top: 21px;
   padding-right: 32px;
+}
+
+.falseSubItem {
+  display: none;
 }
