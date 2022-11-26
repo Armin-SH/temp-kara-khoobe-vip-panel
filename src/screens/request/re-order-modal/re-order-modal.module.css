@@ -1,14 +1,15 @@
 .modalContainer {
   background-color: #ECEFFB;
-  width: 100%;
-  align-self: flex-end;
+  width: 90%;
+  border-radius: 24px;
+  padding: 86px 64px;
+  align-self: center;
   justify-content: center;
   align-items: center;
-  border-radius: 16px 16px 0 0;
-  padding: 42px 26px;
   position: relative;
   gap: 16px;
 }
+
 
 .row {
   align-items: center;
@@ -27,6 +28,7 @@
 }
 
 .timeInput {
+  width: 100%;
 }
 
 .dataWrapper {
@@ -49,11 +51,33 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (max-width: 1024px) {
   .modalContainer {
-    width: 90%;
-    border-radius: 24px;
-    padding: 86px 64px;
-    align-self: center;
+    width: 100%;
+    align-self: flex-end;
+    border-radius: 16px 16px 0 0;
+    padding: 42px 24px;
+  }
+
+  .row {
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .dataWrapper {
+    width: 100%;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
+  .timeContainer {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
   }
 }
