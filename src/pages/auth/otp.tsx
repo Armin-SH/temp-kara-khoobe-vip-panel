@@ -9,21 +9,26 @@ import {KeyboardEvent} from "react";
 import {pressEnterKey, validMobileNumber} from "@utils";
 import {useAutofocus} from "@hooks";
 
+const numRegex = /^[+-]?\d*(?:[.,]\d*)?$/
+
 const Otp = () => {
-  const {validationCodeLoading, isNumberValid} = useSelector((state: ReducerTypes) => state.auth);
+  const {validationCodeLoading, isNumberValid, mobile} = useSelector((state: ReducerTypes) => state.auth);
   const dispatch = useDispatch()
   const inputRef = useAutofocus(null)
 
   const handleSetMobile = (e: { target: { value: string } }) => {
-    const value = e.target.value
-    if (value.length >= 10) {
-      const validMobile = validMobileNumber(value);
-      dispatch(AuthActions.setMobileValidation({isNumberValid: validMobile.isValid}))
-      if (validMobile.isValid) {
-        dispatch(AuthActions.setMobileNumber({mobile: `0${validMobile.mobile}`}))
+    const value = e.target.value;
+    if (numRegex.test(e.target.value)) {
+      dispatch(dispatch(AuthActions.setMobileNumber({mobile: value})))
+      if (value.length >= 10) {
+        const validMobile = validMobileNumber(value);
+        dispatch(AuthActions.setMobileValidation({isNumberValid: validMobile.isValid}))
+        if (validMobile.isValid) {
+          dispatch(AuthActions.setMobileNumber({mobile: `0${validMobile.mobile}`}))
+        }
+      } else if (isNumberValid) {
+        dispatch(AuthActions.setMobileValidation({isNumberValid: false}))
       }
-    } else if (isNumberValid) {
-      dispatch(AuthActions.setMobileValidation({isNumberValid: false}))
     }
   }
 
@@ -61,10 +66,11 @@ const Otp = () => {
         inputProps={{inputMode: 'numeric'}}
         placeholder={"(98+) - - - - - - - -"}
         placeholderalign={"center"}
+        value={mobile}
         label={'شماره همراه خود را وارد کنید'}
         mobileLogin={true}
       />
-      <Button loading={validationCodeLoading} disabled={validationCodeLoading} onClick={handleSendValidationCode} className={styles.getCodeButton}>
+      <Button loading={validationCodeLoading} disabled={validationCodeLoading || !isNumberValid} onClick={handleSendValidationCode} className={styles.getCodeButton}>
         <Text color={'common.white'} typography={'small'} type={'bold'}>
           دریافت کد
         </Text>

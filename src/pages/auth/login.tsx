@@ -9,9 +9,11 @@ import {AuthActions} from "@store/auth/auth-actions";
 import {useDebouncedCallback} from "use-debounce";
 import {useAutofocus} from '@hooks'
 
+const numRegex = /^[+-]?\d*(?:[.,]\d*)?$/
+
 const Login = () => {
   const dispatch = useDispatch()
-  const {loginLoading, isNumberValid, mobile} = useSelector((state: ReducerTypes) => state.auth)
+  const {loginLoading, isNumberValid, mobile, password} = useSelector((state: ReducerTypes) => state.auth)
 
   const inputRef = useAutofocus(null)
 
@@ -35,18 +37,21 @@ const Login = () => {
     dispatch(AuthActions.setUserPassword({password: e.target.value}))
   }, 500)
 
-  const handleMobileNumber = useDebouncedCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleMobileNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (value.length >= 10) {
-      const validMobile = validMobileNumber(value);
-      dispatch(AuthActions.setMobileValidation({isNumberValid: validMobile.isValid}))
-      if (validMobile.isValid) {
-        dispatch(AuthActions.setMobileNumber({mobile: `0${validMobile.mobile}`}))
+    if (numRegex.test(e.target.value)) {
+      dispatch(dispatch(AuthActions.setMobileNumber({mobile: value})))
+      if (value.length >= 10) {
+        const validMobile = validMobileNumber(value);
+        dispatch(AuthActions.setMobileValidation({isNumberValid: validMobile.isValid}))
+        if (validMobile.isValid) {
+          dispatch(AuthActions.setMobileNumber({mobile: `0${validMobile.mobile}`}))
+        }
+      } else if (isNumberValid) {
+        dispatch(AuthActions.setMobileValidation({isNumberValid: false}))
       }
-    } else if (isNumberValid) {
-      dispatch(AuthActions.setMobileValidation({isNumberValid: false}))
     }
-  }, 500)
+  }
 
   return (
     <Div className={styles.container} mobile={"column"}>
@@ -65,6 +70,7 @@ const Login = () => {
         inputProps={{inputMode: 'numeric'}}
         label={'شماره همراه خود را وارد کنید'}
         mobileLogin={true}
+        value={mobile}
       />
       <TextField
         type={"password"}
@@ -86,7 +92,7 @@ const Login = () => {
       <Button href={routes['route.auth.otp']} size={"small"} className={styles.forgetPasswordButton} variant={"text"} color={"warning"}>
         کلمه عبور خود را فراموش کرده ام
       </Button>
-      <Button loading={loginLoading} disabled={loginLoading || !isNumberValid} onClick={handleLogIn} className={styles.loginButton}>
+      <Button loading={loginLoading} disabled={loginLoading || !isNumberValid || !password} onClick={handleLogIn} className={styles.loginButton}>
         <Text color={'common.white'} typography={'small'} type={'bold'}>
           ورود
         </Text>

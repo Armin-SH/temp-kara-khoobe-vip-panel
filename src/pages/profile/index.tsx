@@ -14,9 +14,8 @@ import {InputAdornment} from '@mui/material'
 
 
 const Profile = () => {
-  const {identifierFile, nationalIdFile, uploadFileLoading, userInfo, updateUSerInfoLoading, userInfoError} = useSelector((state: ReducerTypes) => state.user);
+  const {identifierFile, nationalIdFile, uploadFileLoading, userInfo, updateUSerInfoLoading, userInfoError, userError} = useSelector((state: ReducerTypes) => state.user);
   const dispatch = useDispatch()
-
 
   const inputHandler = ({e, key}: { e: ChangeEvent<HTMLInputElement>, key: UserInfoFields }) => {
     dispatch(UserActions.setUserDetails({key: key, value: e.target.value}))
@@ -96,6 +95,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.firstNameError}
+            helperText={userError.firstNameError ? 'نام الزامی است' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -123,6 +124,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.lastNameError}
+            helperText={userError.lastNameError ? 'نام خانوادگی الزامی است' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -150,6 +153,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.phoneNumberError}
+            helperText={userError.phoneNumberError ? 'شماره همراه مدیر عامل معتبر نمی باشد' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -177,6 +182,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.internalNumberError}
+            helperText={userError.internalNumberError ? 'تلفن ثابت شرکت الزامی است' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -204,6 +211,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.nationalCodeError}
+            helperText={userError.nationalCodeError ? 'کد ملی معتبر نمی باشد' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -231,6 +240,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.corporationTelephoneError}
+            helperText={userError.corporationTelephoneError ? 'داخلی مدیر عامل الزامی است' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -258,6 +269,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.corporationNameError}
+            helperText={userError.corporationNameError ? 'نام شرکت الزامی است' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
@@ -285,6 +298,8 @@ const Profile = () => {
             className={styles.textInput}
             variant={"filled"}
             color={"common.white"}
+            error={userError.corporationCodeError}
+            helperText={userError.corporationCodeError ? 'شناسه ثبت شرکت الزامی است' : undefined}
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">

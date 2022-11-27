@@ -36,6 +36,17 @@ export interface UserReducerTypes {
   addressList: Array<any>
 
   uploadKey: string
+
+  userError: {
+    corporationCodeError: boolean,
+    corporationNameError: boolean,
+    firstNameError: boolean,
+    corporationTelephoneError: boolean,
+    lastNameError: boolean,
+    internalNumberError: boolean,
+    nationalCodeError: boolean,
+    phoneNumberError: boolean,
+  }
 }
 
 export interface AddressProps {

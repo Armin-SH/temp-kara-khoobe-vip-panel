@@ -1,5 +1,6 @@
 import {UserActionTypes} from './user-actions';
 import {UserInfoFields, UserReducerTypes} from "./user";
+import {nationalIdValidation, validMobileNumber} from "@utils";
 
 
 const initialState: UserReducerTypes = {
@@ -40,6 +41,16 @@ const initialState: UserReducerTypes = {
   addressListLoading: false,
   addressList: [],
   uploadKey: '',
+  userError: {
+    corporationCodeError: false,
+    corporationNameError: false,
+    firstNameError: false,
+    corporationTelephoneError: false,
+    lastNameError: false,
+    internalNumberError: false,
+    nationalCodeError: false,
+    phoneNumberError: false,
+  }
 };
 
 function userReducer(state = initialState, action: any) {
@@ -52,6 +63,20 @@ function userReducer(state = initialState, action: any) {
       };
 
     case UserActionTypes.SET_USER_INFO: {
+      let error = true
+
+      if (
+        action?.data?.corporationCode &&
+        action?.data?.corporationName &&
+        action?.data?.firstName &&
+        action?.data?.corporationTelephone &&
+        action?.data?.internalNumber &&
+        action?.data?.lastName &&
+        action?.data?.nationalCode &&
+        action?.data?.phoneNumber
+      ) {
+        error = false
+      }
 
       return {
         ...state,
@@ -69,6 +94,7 @@ function userReducer(state = initialState, action: any) {
           id: action?.data?._id,
         },
         uploadFileLoading: false,
+        userInfoError: error,
       }
     }
 
@@ -120,11 +146,21 @@ function userReducer(state = initialState, action: any) {
 
     case UserActionTypes.SET_USER_DETAILS: {
       const tempInfoObject = state.userInfo
+      const tempInfoErrorObject = state.userError
       const key: UserInfoFields = action?.data?.key
       tempInfoObject[key] = action?.data?.value
 
+
       let error = true
 
+      if (key === 'nationalCode') {
+        tempInfoErrorObject.nationalCodeError = !nationalIdValidation(action?.data?.value)
+      } else if (key === 'phoneNumber') {
+        tempInfoErrorObject.phoneNumberError = !validMobileNumber(action?.data?.value).isValid
+      } else {
+        //@ts-ignore
+        tempInfoErrorObject[`${key}Error`] = !action?.data?.value
+      }
       if (
         tempInfoObject.corporationCode &&
         tempInfoObject.internalNumber &&
@@ -133,14 +169,23 @@ function userReducer(state = initialState, action: any) {
         tempInfoObject.corporationTelephone &&
         tempInfoObject.nationalCode &&
         tempInfoObject.corporationName &&
-        tempInfoObject.lastName) {
+        tempInfoObject.lastName &&
+        !tempInfoErrorObject.corporationCodeError &&
+        !tempInfoErrorObject.internalNumberError &&
+        !tempInfoErrorObject.firstNameError &&
+        !tempInfoErrorObject.phoneNumberError &&
+        !tempInfoErrorObject.corporationTelephoneError &&
+        !tempInfoErrorObject.nationalCodeError &&
+        !tempInfoErrorObject.corporationNameError &&
+        !tempInfoErrorObject.lastNameError) {
         error = false
       }
 
       return {
         ...state,
         userInfo: tempInfoObject,
-        userInfoError: error
+        userInfoError: error,
+        userError: tempInfoErrorObject
       }
     }
 
