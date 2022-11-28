@@ -274,7 +274,7 @@ const ParsiMap = (props: ParsiMapProps) => {
               error={errorAddress}
               value={address}
             />
-            <Div className={styles.addressPlateContainer}>
+            <Div mobile={'column'} tablet={'row-reverse'} className={styles.addressPlateContainer}>
               <TextField
                 color={"info"}
                 onChange={plateInputHandler}
