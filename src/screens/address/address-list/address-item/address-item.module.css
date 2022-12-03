@@ -1,5 +1,4 @@
 .container {
-  min-height: calc(100vh - 170px);
   width: 100%;
   gap: 32px;
 }
@@ -44,9 +43,6 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .container {
-    min-height: 100vh;
-  }
 
   .buttonContainer {
     gap: 24px;

@@ -20,7 +20,6 @@ const PastRequest = () => {
     dispatch(OrderActions.getOrderList({live: true, page: 1}))
     dispatch(UserActions.getUserAddress())
   }, [])
-  console.log({originalOrderList})
   const handleNewRequest = () => {
     router.push(routes['route.order.index'])
   }

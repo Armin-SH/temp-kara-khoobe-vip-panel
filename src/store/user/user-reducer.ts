@@ -91,6 +91,7 @@ function userReducer(state = initialState, action: any) {
           nationalCode: action?.data?.nationalCode,
           phoneNumber: action?.data?.phoneNumber,
           ceoNationalCardUrl: action?.data?.ceoNationalCardUrl,
+          corporationIdentifierUrl: action?.data?.corporationIdentifierUrl,
           id: action?.data?._id,
         },
         uploadFileLoading: false,

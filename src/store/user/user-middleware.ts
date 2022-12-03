@@ -10,7 +10,7 @@ import {UserActionTypes} from "@store/user/user-actions";
 function* getUserInfoWatcher() {
   try {
     const {}: UserReducerTypes = yield select(userStore);
-    const response: { data: { ceoNationalCardUrl: string, authorizeState: string, ceoFirstname: string, ceoLastname: string, ceoPhonenumber: string, ceoInternalNumber: string, ceoNationalCode: string, corporationName: string, corporationTelephone: string, corporationCode: string, _id: string } } = yield userInfoApi();
+    const response: { data: { ceoNationalCardUrl: string, authorizeState: string, ceoFirstname: string, ceoLastname: string, ceoPhonenumber: string, ceoInternalNumber: string, ceoNationalCode: string, corporationName: string, corporationTelephone: string, corporationCode: string, _id: string, corporationIdentifierUrl: string } } = yield userInfoApi();
     yield put({
       type: UserActionTypes.SET_USER_RESTRICTED_LEVEL,
       data: {
@@ -30,6 +30,7 @@ function* getUserInfoWatcher() {
         nationalCode: response?.data?.ceoNationalCode,
         phoneNumber: response?.data?.ceoPhonenumber,
         ceoNationalCardUrl: response?.data?.ceoNationalCardUrl,
+        corporationIdentifierUrl: response?.data?.corporationIdentifierUrl,
         id: response?.data?._id
       }
     })

@@ -76,6 +76,7 @@ function orderReducer(state = initialState, action: any) {
           // @ts-ignore
           state: Status[apiOrderList[key].state],
           specialistsNumber: `${apiOrderList[key].specialistsNumber} نفر`,
+          id: apiOrderList[key]._id,
         }
         tempOrderList.push(tempObject)
       }
@@ -228,9 +229,10 @@ function orderReducer(state = initialState, action: any) {
     }
 
     case OrderActionTypes.CANCEL_USER_ORDER:
+      console.log(state.orderList[action?.data?.id])
       return {
         ...state,
-        cancelOrderId: state.orderList[action?.data?.id]._id,
+        cancelOrderId: state.orderList[action?.data?.id].id,
         cancelOrderLoading: true,
       }
 

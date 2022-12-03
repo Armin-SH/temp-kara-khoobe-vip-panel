@@ -1,8 +1,6 @@
 .wrapper {
   padding: 0 10px;
   background-color: #F6F7FB;
-  min-height: 100vh;
-  height: 100%;
   position: relative;
 }
 
@@ -120,7 +118,7 @@
     border-bottom-right-radius: 29px;
     border-top-right-radius: 29px;
     background-color: #F6F7FB;
-    padding: 0 24px 100px 24px;
+    padding: 0 24px 32px 24px;
     transition-property: width;
     transition-duration: 500ms;
   }

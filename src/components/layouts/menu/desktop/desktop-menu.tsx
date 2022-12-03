@@ -127,7 +127,6 @@ const BottomMenu = [
 
 const DesktopMenu = () => {
   const dispatch = useDispatch()
-  const [delayHandler, setDelayHandler] = useState<any>(null)
   const [expanded, setExpanded] = useState(false)
   const router = useRouter()
   const {restrictionLevel} = useSelector((state: ReducerTypes) => state.user);
@@ -185,77 +184,79 @@ const DesktopMenu = () => {
         <Div className={styles.menuIcon}>
           <Image src={LogoIcon} alt={"کاراخوبه"}/>
         </Div>
-        <Div className={styles[`${expanded}TopMenuContainer`]} mobile={"column"}>
-          {TopMenu.map((item, index) => (
-            <Div key={index} mobile={"column"} className={styles.itemWrapper}>
-              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route, disabled: item.disabled})}>
-                <Div className={styles.icon}>
-                  <Image src={item.disabled ? item.disabledIcon : router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
-                </Div>
-                <CSSTransition
-                  in={expanded}
-                  timeout={1000}
-                  unmountOnExit
-                  onExit={handleMouseLeave}
-                  onEnter={handleMouseOver}
-                  classNames={{
-                    enterActive: `animate__animated animate__zoomIn`,
-                    exitActive: `animate__animated animate__zoomOut`,
-                  }}
-                >
-                  <Text className={styles[iconNameClass]} color={item.disabled ? "grey.300" : router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
-                    {item.name}
-                  </Text>
-                </CSSTransition>
-              </Div>
-              {item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string, disabled: boolean }, index) => (
-                <CSSTransition
-                  in={expanded}
-                  timeout={1000}
-                  unmountOnExit
-                  onExit={handleMouseLeave}
-                  onEnter={handleMouseOver}
-                  classNames={{
-                    enterActive: `animate__animated animate__zoomIn`,
-                    exitActive: `animate__animated animate__zoomOut`,
-                  }}
-                  key={item.name}
-                >
-                  <Div onClick={() => handleClick({route: subItem.route, disabled: subItem.disabled})} className={styles[subItemClass]}>
-                    <Text className={styles[iconNameClass]} color={subItem.disabled ? 'grey.300' : router.pathname === subItem.route ? "grey.900" : "common.white"} typography={"small"}>
-                      {subItem.name}
-                    </Text>
+        <Div className={styles.menu} mobile={"column"}>
+          <Div className={styles[`${expanded}TopMenuContainer`]} mobile={"column"}>
+            {TopMenu.map((item, index) => (
+              <Div key={index} mobile={"column"} className={styles.itemWrapper}>
+                <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route, disabled: item.disabled})}>
+                  <Div className={styles.icon}>
+                    <Image src={item.disabled ? item.disabledIcon : router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
                   </Div>
-                </CSSTransition>
-              )) : null}
-            </Div>
-          ))}
-        </Div>
-        <Div mobile={"column"} className={styles[`${expanded}BottomMenuContainer`]}>
-          {BottomMenu.map((item, index) => (
-            <Div key={item.name} mobile={"column"} className={styles.itemWrapper}>
-              <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route, disabled: item.disabled})}>
-                <Div className={styles.icon}>
-                  <Image src={item.disabled ? item.disabledIcon : router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                  <CSSTransition
+                    in={expanded}
+                    timeout={1000}
+                    unmountOnExit
+                    onExit={handleMouseLeave}
+                    onEnter={handleMouseOver}
+                    classNames={{
+                      enterActive: `animate__animated animate__zoomIn`,
+                      exitActive: `animate__animated animate__zoomOut`,
+                    }}
+                  >
+                    <Text className={styles[iconNameClass]} color={item.disabled ? "grey.300" : router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                      {item.name}
+                    </Text>
+                  </CSSTransition>
                 </Div>
-                <CSSTransition
-                  in={expanded}
-                  timeout={1000}
-                  unmountOnExit
-                  onExit={handleMouseLeave}
-                  onEnter={handleMouseOver}
-                  classNames={{
-                    enterActive: `animate__animated animate__zoomIn`,
-                    exitActive: `animate__animated animate__zoomOut`,
-                  }}
-                >
-                  <Text className={styles[iconNameClass]} color={item.disabled ? 'grey.300' : router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
-                    {item.name}
-                  </Text>
-                </CSSTransition>
+                {item.subRoutes.length ? item.subRoutes.map((subItem: { name: string, route: string, disabled: boolean }, index) => (
+                  <CSSTransition
+                    in={expanded}
+                    timeout={1000}
+                    unmountOnExit
+                    onExit={handleMouseLeave}
+                    onEnter={handleMouseOver}
+                    classNames={{
+                      enterActive: `animate__animated animate__zoomIn`,
+                      exitActive: `animate__animated animate__zoomOut`,
+                    }}
+                    key={item.name}
+                  >
+                    <Div onClick={() => handleClick({route: subItem.route, disabled: subItem.disabled})} className={styles[subItemClass]}>
+                      <Text className={styles[iconNameClass]} color={subItem.disabled ? 'grey.300' : router.pathname === subItem.route ? "grey.900" : "common.white"} typography={"small"}>
+                        {subItem.name}
+                      </Text>
+                    </Div>
+                  </CSSTransition>
+                )) : null}
               </Div>
-            </Div>
-          ))}
+            ))}
+          </Div>
+          <Div mobile={"column"} className={styles[`${expanded}BottomMenuContainer`]}>
+            {BottomMenu.map((item, index) => (
+              <Div key={item.name} mobile={"column"} className={styles.itemWrapper}>
+                <Div className={styles.iconContainer} onClick={() => handleClick({route: item.route, disabled: item.disabled})}>
+                  <Div className={styles.icon}>
+                    <Image src={item.disabled ? item.disabledIcon : router.pathname === item.route ? item.activeIcon : item.Icon} alt={item.name}/>
+                  </Div>
+                  <CSSTransition
+                    in={expanded}
+                    timeout={1000}
+                    unmountOnExit
+                    onExit={handleMouseLeave}
+                    onEnter={handleMouseOver}
+                    classNames={{
+                      enterActive: `animate__animated animate__zoomIn`,
+                      exitActive: `animate__animated animate__zoomOut`,
+                    }}
+                  >
+                    <Text className={styles[iconNameClass]} color={item.disabled ? 'grey.300' : router.pathname === item.route ? "grey.900" : "common.white"} typography={"small"}>
+                      {item.name}
+                    </Text>
+                  </CSSTransition>
+                </Div>
+              </Div>
+            ))}
+          </Div>
         </Div>
       </Div>
     </Div>

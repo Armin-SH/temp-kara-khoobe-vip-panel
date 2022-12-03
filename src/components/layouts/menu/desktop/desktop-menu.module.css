@@ -1,8 +1,10 @@
 .rightMenu {
   z-index: 1;
   background-color: #24AFB6;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
-  min-height: 100vh;
 }
 
 .trueRightMenuContainer {
@@ -26,6 +28,9 @@
   transition-duration: 500ms;
   position: absolute;
   right: 135px;
+}
+
+.menu {
 }
 
 .trueIndicatorContainer {
