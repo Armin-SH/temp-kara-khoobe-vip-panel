@@ -2,7 +2,9 @@
   z-index: 1;
   background-color: #24AFB6;
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .trueRightMenuContainer {

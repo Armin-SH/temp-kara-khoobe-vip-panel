@@ -184,7 +184,6 @@ const DesktopMenu = () => {
         <Div className={styles.menuIcon}>
           <Image src={LogoIcon} alt={"کاراخوبه"}/>
         </Div>
-        <Div className={styles.menu} mobile={"column"}>
           <Div className={styles[`${expanded}TopMenuContainer`]} mobile={"column"}>
             {TopMenu.map((item, index) => (
               <Div key={index} mobile={"column"} className={styles.itemWrapper}>
@@ -257,7 +256,6 @@ const DesktopMenu = () => {
               </Div>
             ))}
           </Div>
-        </Div>
       </Div>
     </Div>
   )
