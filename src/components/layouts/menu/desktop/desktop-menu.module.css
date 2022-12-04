@@ -1,9 +1,17 @@
-.rightMenu {
+.trueRightMenu {
   z-index: 1;
   background-color: #24AFB6;
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: hidden;
+  position: relative;
+}
+
+.falseRightMenu {
+  z-index: 1;
+  background-color: #24AFB6;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
 }
 
@@ -27,7 +35,7 @@
   transition-property: right;
   transition-duration: 500ms;
   position: absolute;
-  right: 135px;
+  left: -43px;
 }
 
 .menu {
@@ -37,7 +45,7 @@
   transition-property: right;
   transition-duration: 500ms;
   position: absolute;
-  right: 280px;
+  left: -43px;
 }
 
 .tabletIndicator {

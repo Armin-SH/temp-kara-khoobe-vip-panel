@@ -108,6 +108,13 @@ function* cancelUserOrderWatcher() {
     const response: { data: { vipOrders: Array<any>, nextPage: number } } = yield cancelOrderListApi({id: cancelOrderId});
     console.log(response)
     yield put({type: OrderActionTypes.SET_CANCEL_ORDER});
+    yield put({
+      type: OrderActionTypes.GET_ORDER_LIST,
+      data: {
+        live: true,
+        page: 1
+      }
+    })
   } catch (error) {
     yield put({type: OrderActionTypes.SET_CANCEL_ORDER});
   }

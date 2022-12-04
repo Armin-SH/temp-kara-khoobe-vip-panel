@@ -5,7 +5,8 @@ import styles from './table-cell.module.css'
 import {TableContext} from '../desktop-table'
 import {MoreIcon} from '@icons'
 import {OrderActions} from "@store/order/order-actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {ReducerTypes} from "@store/reducer";
 
 const TableCell = ({data, id, index}: TableCellProps) => {
 
@@ -13,6 +14,7 @@ const TableCell = ({data, id, index}: TableCellProps) => {
   const state = useContext(TableContext)
   const [checked, setChecked] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {cancelOrderLoading} = useSelector((state: ReducerTypes) => state.order);
 
   useEffect(() => {
     if (state.state.selectAll) {
@@ -64,10 +66,15 @@ const TableCell = ({data, id, index}: TableCellProps) => {
       setAnchorEl(null);
     }
 
+    useEffect(() => {
+      if (!cancelOrderLoading) {
+        state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
+        setAnchorEl(null);
+      }
+    }, [cancelOrderLoading])
+
     const handleCancelOrder = () => {
       dispatch(OrderActions.cancelUserOrder({id: index}))
-      state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
-      setAnchorEl(null);
     }
 
     return (
@@ -79,12 +86,12 @@ const TableCell = ({data, id, index}: TableCellProps) => {
         </Button>
         <Popper className={styles.popperContainer} id={dropId} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
           <Div mobile={'column'} className={styles.popper}>
-            <Button size={'medium'} onClick={handleRequestClick} className={styles.button} variant={"text"}>
+            <Button size={'medium'} onClick={handleRequestClick} disabled={cancelOrderLoading} className={styles.button} variant={"text"}>
               <Text color={"grey.900"} type={'medium'} typography={'tiny'} align={"right"}>
                 درخواست مجدد
               </Text>
             </Button>
-            <Button size={'medium'} onClick={handleCancelOrder} className={styles.button} variant={"text"}>
+            <Button loading={cancelOrderLoading} disabled={cancelOrderLoading} size={'medium'} onClick={handleCancelOrder} className={styles.button} variant={"text"}>
               <Text color={"grey.900"} typography={'tiny'} type={'medium'} align={"right"}>
                 لغو
               </Text>

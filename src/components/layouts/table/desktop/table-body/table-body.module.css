@@ -6,7 +6,7 @@
   position: relative;
   padding-right: 16px;
   padding-left: 16px;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
 }
 
