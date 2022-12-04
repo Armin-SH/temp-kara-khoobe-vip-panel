@@ -207,6 +207,8 @@ const DesktopTable = (
     dispatch({type: 'SET_PAGE', payload: {page: state.page - 1}})
   }
 
+  console.log(lastPage, page)
+
   return (
     // @ts-ignore
     <TableContext.Provider value={{state: state, dispatch: dispatch}}>
@@ -226,7 +228,7 @@ const DesktopTable = (
                 {state.page}
               </Text>
             )}
-            <Button loading={extendedListLoading} disabled={extendedListLoading || !lastPage && page === 2} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
+            <Button loading={extendedListLoading} disabled={extendedListLoading || (!lastPage && page === 2) || page === 1} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
               <Text color={'common.white'} typography={'small'} type={'bold'}>
                 صفحه قبل
               </Text>

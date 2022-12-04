@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Accordion, AccordionDetails, AccordionSummary, Button, Div, Image, Popper, Text} from '@elements'
 import {TableItemProps} from './table-item.props'
 import styles from './table-item.module.css'
 import {MoreIcon} from "@icons";
 import {OrderActions} from "@store/order/order-actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {ReducerTypes} from "@store/reducer";
 
 
 const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemProps) => {
@@ -13,6 +14,9 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
   const dispatch = useDispatch()
   const topContainerClass = `${expand}TopContainer`
   const summaryClass = `${expand}Summary`
+
+  const {cancelOrderLoading, live} = useSelector((state: ReducerTypes) => state.order);
+
 
   const handleAccordionChange = () => {
     setExpand(!expand)
@@ -29,6 +33,16 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
   const handleReOrder = () => {
     setAnchorEl(null);
     dispatch(OrderActions.setReOrderModal({open: true, index: index}))
+  }
+
+  useEffect(() => {
+    if (!cancelOrderLoading) {
+      setAnchorEl(null);
+    }
+  }, [cancelOrderLoading])
+
+  const handleCancelOrder = () => {
+    dispatch(OrderActions.cancelUserOrder({id: index}))
   }
 
   return (
@@ -51,16 +65,18 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
             </Button>
             <Popper className={styles.popperContainer} id={id} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
               <Div mobile={'column'} className={styles.popper}>
-                <Button className={styles.actionButton} variant={"text"}>
-                  <Text color={"grey.900"} typography={'tiny'} align={"right"}>
-                    حذف
-                  </Text>
-                </Button>
-                <Button onClick={handleReOrder} className={styles.actionButton} variant={"text"}>
+                <Button disabled={cancelOrderLoading} onClick={handleReOrder} className={styles.actionButton} variant={"text"}>
                   <Text color={"grey.900"} typography={'tiny'} align={"right"}>
                     درخواست مجدد
                   </Text>
                 </Button>
+                {live ? (
+                  <Button disabled={cancelOrderLoading} loading={cancelOrderLoading} onClick={handleCancelOrder} className={styles.actionButton} variant={"text"}>
+                    <Text color={"grey.900"} typography={'tiny'} align={"right"}>
+                      لغو
+                    </Text>
+                  </Button>
+                ) : null}
               </Div>
             </Popper>
           </Div>

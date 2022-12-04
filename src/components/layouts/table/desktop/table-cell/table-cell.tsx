@@ -14,7 +14,7 @@ const TableCell = ({data, id, index}: TableCellProps) => {
   const state = useContext(TableContext)
   const [checked, setChecked] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const {cancelOrderLoading} = useSelector((state: ReducerTypes) => state.order);
+  const {cancelOrderLoading, live} = useSelector((state: ReducerTypes) => state.order);
 
   useEffect(() => {
     if (state.state.selectAll) {
@@ -91,11 +91,13 @@ const TableCell = ({data, id, index}: TableCellProps) => {
                 درخواست مجدد
               </Text>
             </Button>
-            <Button loading={cancelOrderLoading} disabled={cancelOrderLoading} size={'medium'} onClick={handleCancelOrder} className={styles.button} variant={"text"}>
-              <Text color={"grey.900"} typography={'tiny'} type={'medium'} align={"right"}>
-                لغو
-              </Text>
-            </Button>
+            {live ? (
+              <Button loading={cancelOrderLoading} disabled={cancelOrderLoading} size={'medium'} onClick={handleCancelOrder} className={styles.button} variant={"text"}>
+                <Text color={"grey.900"} typography={'tiny'} type={'medium'} align={"right"}>
+                  لغو
+                </Text>
+              </Button>
+            ) : null}
           </Div>
         </Popper>
       </Div>
