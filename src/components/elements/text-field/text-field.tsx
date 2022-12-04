@@ -25,7 +25,7 @@ const FilledTextField = styled(({color, borderWidth, backgroundColor, size, sear
     direction: props.inputMode === "email" || props.inputMode === "numeric" ? 'ltr' : "rtl",
     fontFamily: typography.regular,
     // @ts-ignore
-    backgroundColor: props.error ? paletteTheme.error.light : props.color === 'common.white' ? paletteTheme.common?.white : paletteTheme[props.color || "primary"].main,
+    backgroundColor: props.error && props.helperText ? paletteTheme.error.light : props.color === 'common.white' ? paletteTheme.common?.white : paletteTheme[props.color || "primary"].main,
     border: 'none',
     borderRadius: props.search ? '55px' : '12px',
     "@media only screen and (min-width: 640px)": {
@@ -137,6 +137,8 @@ const TextField = (props: TextFieldProps) => {
     sx,
     ...rest
   } = props;
+
+  console.log({error})
 
   let CssTextField = variant === "filled" ? FilledTextField : OutlinedTextField;
 
