@@ -89,6 +89,7 @@ const Order = () => {
           <LocalizationProvider dateAdapter={AdapterJalaali}>
             <DateTimePicker
               mask="____/__/__"
+              inputFormat="تاریخ مورد نیاز"
               className={styles.time}
               minDate={Date.now()}
               // @ts-ignore
@@ -100,6 +101,10 @@ const Order = () => {
                 variant={'filled'}
                 placeholderdesktopsize={"16px"}
                 placeholdertabletsize={"16px"}
+                inputProps={{
+                  ...params.inputProps,
+                  placeholder: "تاریخ مورد نیاز"
+                }}
                 placeholdermobilesize={"14px"}
                 InputProps={{className: styles.input}}
                 {...params}
