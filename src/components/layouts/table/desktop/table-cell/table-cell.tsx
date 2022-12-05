@@ -17,6 +17,13 @@ const TableCell = ({data, id, index}: TableCellProps) => {
   const {cancelOrderLoading, live} = useSelector((state: ReducerTypes) => state.order);
 
   useEffect(() => {
+    if (!cancelOrderLoading) {
+      state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
+      setAnchorEl(null);
+    }
+  }, [cancelOrderLoading])
+
+  useEffect(() => {
     if (state.state.selectAll) {
       setChecked(true)
     } else {
@@ -65,13 +72,6 @@ const TableCell = ({data, id, index}: TableCellProps) => {
       state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
       setAnchorEl(null);
     }
-
-    useEffect(() => {
-      if (!cancelOrderLoading) {
-        state.dispatch({type: "SET_ACTION", payload: {showAction: false, id: index}});
-        setAnchorEl(null);
-      }
-    }, [cancelOrderLoading])
 
     const handleCancelOrder = () => {
       dispatch(OrderActions.cancelUserOrder({id: index}))
