@@ -63,6 +63,7 @@ const Table = (
           modalAction={modalAction}
           header={mobileHeader}
           data={data}
+          page={page}
         />
       </Media>
     </>

@@ -25,6 +25,18 @@
   border-bottom: 1px solid #DEDEE5;
 }
 
+.specialistButtonContainer {
+  padding: 16px 0;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #DEDEE5;
+}
+
+.specialistButton {
+  width: 70%;
+  align-self: center;
+}
+
 .detailsInfo {
   width: 60%;
 }
@@ -39,6 +51,7 @@
   justify-content: space-between;
   background-color: #ECEFFB;
   padding-top: 12px;
+  padding-right: 12px;
 }
 
 .falseTopContainer {
@@ -46,6 +59,11 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 12px;
+  padding-right: 12px;
+}
+
+.detailsContainer {
+  padding-right: 12px;
 }
 
 .trueSummary {

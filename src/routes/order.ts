@@ -6,5 +6,5 @@ export const orderRoutes = {
   'api.order.specialities': 'speciality/summery?categoryID=[categoryID]',
   'api.order.speciality-category': 'category?city=[city]',
   'api.order.sub-speciality-category': 'category?city=[city]&parent=[parent]',
-  'api.order.cancel': 'vipOrder/cancelVipOrder?_id=[id]'
+  'api.order.cancel': 'vipOrder/cancelVipOrder?_id=[id]',
 };

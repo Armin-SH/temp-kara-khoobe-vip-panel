@@ -207,8 +207,6 @@ const DesktopTable = (
     dispatch({type: 'SET_PAGE', payload: {page: state.page - 1}})
   }
 
-  console.log(lastPage, page)
-
   return (
     // @ts-ignore
     <TableContext.Provider value={{state: state, dispatch: dispatch}}>

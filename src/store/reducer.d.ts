@@ -3,6 +3,7 @@ import {AlertReducerTypes} from "@store/alert/alert";
 import {HomeReducerTypes} from "@store/home/home";
 import {UserReducerTypes} from '@store/user/user'
 import {OrderReducerTypes} from './order/order'
+import {SpecialistTableReducerTypes} from './specialist-table/specialist-table'
 
 export interface ReducerTypes {
   auth: AuthReducerTypes
@@ -10,4 +11,5 @@ export interface ReducerTypes {
   home: HomeReducerTypes
   user: UserReducerTypes
   order: OrderReducerTypes
+  specialistTable: SpecialistTableReducerTypes
 }

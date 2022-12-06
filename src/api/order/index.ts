@@ -4,6 +4,7 @@ import storeOrderApi from './store-order'
 import orderListApi from './order-list'
 import cancelOrderListApi from './cancel-order'
 import subSpecialityApi from './sub-speciality'
+import orderSpecialistListApi from './order-specialist-list'
 
 export {
   specialityCategoryApi,
@@ -12,4 +13,5 @@ export {
   orderListApi,
   cancelOrderListApi,
   subSpecialityApi,
+  orderSpecialistListApi,
 }

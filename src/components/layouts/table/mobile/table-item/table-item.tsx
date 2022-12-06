@@ -45,6 +45,10 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
     dispatch(OrderActions.cancelUserOrder({id: index}))
   }
 
+  const handleSpecialist = () => {
+    dispatch(OrderActions.getOrderSpecialist({index: index}))
+  }
+
   return (
     <Div mobile={"column"} className={styles.container}>
       <Accordion className={styles.accordion} expanded={expand}>
@@ -98,6 +102,13 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
                 </Div>
               )
             })}
+            <Div key={index} className={styles.specialistButtonContainer}>
+              <Button className={styles.specialistButton} variant={'contained'} onClick={handleSpecialist}>
+                <Text color={"common.white"} typography={"tiny"}>
+                  مشاهده متخصصین
+                </Text>
+              </Button>
+            </Div>
             {modal ? (
               <Div className={styles.modalContainer}>
                 <Text align={'right'} color={'grey.900'}>

@@ -1,7 +1,7 @@
 import {all, put, select, takeLatest} from "redux-saga/effects";
 import {orderStore} from "./order-store";
 import {OrderReducerTypes, SpecialityCategoryProps} from "./order";
-import {cancelOrderListApi, orderListApi, specialitiesApi, specialityCategoryApi, storeOrderApi, subSpecialityApi} from "@api/order";
+import {cancelOrderListApi, orderListApi, orderSpecialistListApi, specialitiesApi, specialityCategoryApi, storeOrderApi, subSpecialityApi} from "@api/order";
 import {OrderActionTypes} from "./order-actions";
 import {AlertActionType} from "@store/alert/alert-action";
 import Router from "next/router";
@@ -120,6 +120,26 @@ function* cancelUserOrderWatcher() {
   }
 }
 
+function* getSpecialitiesWatcher() {
+  const {specialistOrderId}: OrderReducerTypes = yield select(orderStore);
+
+  yield Router.push({pathname: routes["route.request.specialist"], query: {orderId: specialistOrderId}})
+}
+
+function* getOrderSpecialistWatcher() {
+  const {specialistOrderId}: OrderReducerTypes = yield select(orderStore);
+  try {
+    const response: { data: { specialists: Array<any> } } = yield orderSpecialistListApi({id: specialistOrderId});
+    yield put({
+      type: OrderActionTypes.SET_ORDER_SPECIALIST_LIST, data: {
+        orderSpecialist: response?.data?.specialists
+      }
+    });
+  } catch (error) {
+    yield put({type: OrderActionTypes.SET_ORDER_SPECIALIST_LIST});
+  }
+}
+
 
 function* orderMiddleware() {
   yield all([
@@ -130,6 +150,8 @@ function* orderMiddleware() {
     takeLatest(OrderActionTypes.GET_EXTENDED_ORDER_LIST, getOrderListWatcher),
     takeLatest(OrderActionTypes.CANCEL_USER_ORDER, cancelUserOrderWatcher),
     takeLatest(OrderActionTypes.SET_SUB_CATEGORY_ITEM, getOrderSpecialitiesWatcher),
+    takeLatest(OrderActionTypes.GET_ORDER_SPECIALIST, getSpecialitiesWatcher),
+    takeLatest(OrderActionTypes.GET_ORDER_SPECIALIST_LIST, getOrderSpecialistWatcher),
   ])
 }
 

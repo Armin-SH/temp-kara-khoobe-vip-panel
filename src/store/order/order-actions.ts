@@ -20,6 +20,9 @@ export const OrderActionTypes = {
   SET_CANCEL_ORDER: `${preType}SET_CANCEL_ORDER`,
   SET_SUB_CATEGORY: `${preType}SET_SUB_CATEGORY`,
   SET_SUB_CATEGORY_ITEM: `${preType}SET_SUB_CATEGORY_ITEM`,
+  GET_ORDER_SPECIALIST: `${preType}GET_ORDER_SPECIALIST`,
+  GET_ORDER_SPECIALIST_LIST: `${preType}GET_ORDER_SPECIALIST_LIST`,
+  SET_ORDER_SPECIALIST_LIST: `${preType}SET_ORDER_SPECIALIST_LIST`,
 };
 
 const getOrderList = (data: { live: boolean, page: number }) => ({type: OrderActionTypes.GET_ORDER_LIST, data: data});
@@ -33,6 +36,8 @@ const getExtendedOrderList = (data: { live: boolean, page: number }) => ({type: 
 const setPreviousPage = (data: { page: number }) => ({type: OrderActionTypes.SET_PREVIOUS_PAGE, data: data})
 const cancelUserOrder = (data: { id: number }) => ({type: OrderActionTypes.CANCEL_USER_ORDER, data: data})
 const setSubCategoryItem = (data: { value: string }) => ({type: OrderActionTypes.SET_SUB_CATEGORY_ITEM, data: data})
+const getOrderSpecialist = (data: { index: number }) => ({type: OrderActionTypes.GET_ORDER_SPECIALIST, data: data})
+const getSpecialistsList = (data: { id: string }) => ({type: OrderActionTypes.GET_ORDER_SPECIALIST_LIST, data: data})
 
 export const OrderActions = {
   getOrderList: getOrderList,
@@ -46,4 +51,6 @@ export const OrderActions = {
   setPreviousPage: setPreviousPage,
   cancelUserOrder: cancelUserOrder,
   setSubCategoryItem: setSubCategoryItem,
+  getOrderSpecialist: getOrderSpecialist,
+  getSpecialistsList: getSpecialistsList,
 };

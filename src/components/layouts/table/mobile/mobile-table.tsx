@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TableItem from './table-item'
 import styles from './mobile-table.module.css'
 import {Button, Div, LoadingIndicator, Text} from '@elements'
@@ -6,18 +6,21 @@ import {useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 
 
-const MobileAccountingTable = ({data, header, modal, modalAction, nextCallback, previousCallback}: { data: Array<any>, header: object, modal?: boolean, modalAction?: () => void, previousCallback: (page: number) => void, nextCallback: (page: number) => void }) => {
-  const {extendedListLoading, lastPage, page} = useSelector((state: ReducerTypes) => state.order);
+const MobileAccountingTable = ({data, header, modal, modalAction, nextCallback, previousCallback, page}: { data: Array<any>, header: object, modal?: boolean, modalAction?: () => void, previousCallback: (page: number) => void, nextCallback: (page: number) => void, page: number }) => {
+  const {extendedListLoading, lastPage} = useSelector((state: ReducerTypes) => state.order);
+  const [tablePage, setTablePage] = useState(lastPage ? page : page - 1)
   const Keys = Object.keys(header)
 
   const Values = Object.values(header)
 
   const handleNextPage = () => {
-    nextCallback(page)
+    nextCallback(tablePage + 1)
+    setTablePage(prevState => prevState + 1)
   }
 
   const handlePreviousPage = () => {
-    previousCallback(page - 1)
+    previousCallback(tablePage - 1)
+    setTablePage(prevState => prevState - 1)
   }
 
 
@@ -45,7 +48,7 @@ const MobileAccountingTable = ({data, header, modal, modalAction, nextCallback, 
             {lastPage ? page : page - 1}
           </Text>
         )}
-        <Button loading={extendedListLoading} disabled={extendedListLoading || (!lastPage && page === 2)} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
+        <Button loading={extendedListLoading} disabled={extendedListLoading || (!lastPage && page === 2) || page === 1} onClick={handlePreviousPage} size={'medium'} className={styles.paginationButton}>
           صفحه قبل
         </Button>
       </Div>

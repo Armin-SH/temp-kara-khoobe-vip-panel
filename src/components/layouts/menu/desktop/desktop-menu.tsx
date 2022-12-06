@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Div, Image, Text} from '@elements'
 import styles from "./desktop-menu.module.css";
 import {AddRequestBlackIcon, AddRequestGreyIcon, AddRequestWhiteIcon, AddressBlackIcon, AddressGreyIcon, AddressWhiteIcon, ContactBlackIcon, ContactGreyIcon, ContactWhiteIcon, ExitIcon, HomeBlackIcon, HomeGreyIcon, HomeWhiteIcon, LogoIcon, NotificationBlackIcon, NotificationGreyIcon, NotificationWhiteIcon, ProfileBlackIcon, ProfileGreyIcon, ProfileWhiteIcon, RequestsBlackIcon, RequestsGreyIcon, RequestsWhiteIcon, SettingBlackIcon, SettingGreyIcon, SettingWhiteIcon, TabletMenuIndicatorIcon} from "@icons";
@@ -130,13 +130,12 @@ const DesktopMenu = () => {
   const [expanded, setExpanded] = useState(false)
   const router = useRouter()
   const {restrictionLevel} = useSelector((state: ReducerTypes) => state.user);
-  const scrollRef = useRef<HTMLDivElement>(null)
   const indicatorClass = `${expanded}IndicatorContainer`
   const iconNameClass = `${expanded}IconName`
   const rightContainer = `${expanded}RightMenuContainer`
   const subItemClass = `${expanded}SubItem`
-  const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '')}IndicatorPosition`
-
+  const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '').replaceAll(']', '').replaceAll('[', '')}IndicatorPosition`
+  console.log(indicatorPosition)
   useEffect(() => {
     if (!expanded) {
       const el: any = document.getElementById('scroll');

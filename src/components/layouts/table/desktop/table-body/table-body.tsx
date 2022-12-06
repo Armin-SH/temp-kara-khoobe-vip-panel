@@ -1,12 +1,19 @@
 import React, {useContext} from 'react'
-import {Div, Text} from '@elements'
+import {Button, Div, Text} from '@elements'
 import TableColumn from '../table-column'
 import styles from './table-body.module.css'
 import {TableContext} from '../desktop-table'
+import {useDispatch} from "react-redux";
+import {OrderActions} from "@store/order/order-actions";
 
 const TableBody = () => {
 
   const context = useContext(TableContext)
+  const dispatch = useDispatch()
+
+  const handleSpecialistDetails = (index: any) => {
+    dispatch(OrderActions.getOrderSpecialist({index: index}))
+  }
   return (
     <Div className={styles.container}>
       <Div className={styles.headerBackground}/>
@@ -26,6 +33,7 @@ const TableBody = () => {
 
             const expandClassName = `${item}ExpandContainer`
             const sectionClassName = `${item}SectionContainer`
+            const buttonClassName = `${item}Button`
             const textStyle = `${item}Text`
             const topCalculator = 165 + (index * 48)
             return (
@@ -38,17 +46,22 @@ const TableBody = () => {
                     </Text>
                   </Div>
                 ) : (
-                  <Div className={styles.expandContainer}>
-                    {context?.state.expandableDataKey.map((innerItem: { key: string, value: string }, innerIndex) => (
-                      <Div key={index} className={styles[sectionClassName]}>
-                        <Text className={styles[textStyle]} color={"grey.900"} typography={"tiny"} type={'bold'}>
-                          {innerItem?.value} :
-                        </Text>
-                        <Text className={styles[textStyle]} color={"grey.900"} typography={"tiny"}>
-                          {context?.state.expandableData[innerIndex][index]}
-                        </Text>
-                      </Div>
-                    ))}
+                  <Div className={styles.expandWrapper} mobile={"column"}>
+                    <Div className={styles.expandContainer}>
+                      {context?.state.expandableDataKey.map((innerItem: { key: string, value: string }, innerIndex) => (
+                        <Div key={index} className={styles[sectionClassName]}>
+                          <Text className={styles[textStyle]} color={"grey.900"} typography={"tiny"} type={'bold'}>
+                            {innerItem?.value} :
+                          </Text>
+                          <Text className={styles[textStyle]} color={"grey.900"} typography={"tiny"}>
+                            {context?.state.expandableData[innerIndex][index]}
+                          </Text>
+                        </Div>
+                      ))}
+                    </Div>
+                    <Button size={'small'} className={styles[buttonClassName]} onClick={() => handleSpecialistDetails(index)}>
+                      مشاهده متخصص ها
+                    </Button>
                   </Div>
                 )}
 

@@ -49,6 +49,9 @@ const initialState: OrderReducerTypes = {
   cancelOrderLoading: false,
   hasChildren: false,
   subSpecialityLoading: false,
+  specialistOrderId: '',
+  specialistListLoading: false,
+  orderSpecialist: [],
 };
 
 function orderReducer(state = initialState, action: any) {
@@ -256,6 +259,31 @@ function orderReducer(state = initialState, action: any) {
         subSpecialityItem: action?.data?.value,
         specialityLoading: true,
       }
+
+    case OrderActionTypes.GET_ORDER_SPECIALIST: {
+      return {
+        ...state,
+        specialistOrderId: state.orderList[action?.data?.index].id,
+      }
+    }
+
+    case OrderActionTypes.GET_ORDER_SPECIALIST_LIST: {
+      return {
+        ...state,
+        specialistListLoading: true,
+        specialistOrderId: action?.data?.id,
+      }
+    }
+
+    case OrderActionTypes.SET_ORDER_SPECIALIST_LIST: {
+
+      return {
+        ...state,
+        specialistOrderId: initialState.specialistOrderId,
+        orderSpecialist: action?.data?.orderSpecialist,
+        specialistListLoading: false,
+      };
+    }
 
     default:
       return state

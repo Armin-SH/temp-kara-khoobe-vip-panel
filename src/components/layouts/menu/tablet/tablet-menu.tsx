@@ -134,7 +134,7 @@ const TabletMenu = () => {
   const iconNameClass = `${expanded}IconName`
   const rightContainer = `${expanded}RightMenuContainer`
   const subItemClass = `${expanded}SubItem`
-  const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '')}IndicatorPosition`
+  const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '').replaceAll(']', '').replaceAll('[', '')}IndicatorPosition`
 
   const handleClick = ({route, disabled}: { route: string, disabled: boolean }) => {
     if (route === routes['route.request.index']) {

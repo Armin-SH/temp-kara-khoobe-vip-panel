@@ -269,6 +269,20 @@
   transition-duration: 500ms;
 }
 
+.falserequestpresentorderIdIndicatorPosition {
+  top: 230px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
+.truerequestpresentorderIdIndicatorPosition {
+  top: 440px;
+  bottom: unset;
+  transition-property: top, right;
+  transition-duration: 500ms;
+}
+
 .truerequestpastIndicatorPosition {
   top: 490px;
   bottom: unset;

@@ -48,6 +48,12 @@ export interface OrderReducerTypes {
   subSpecialityItem: string,
 
   subSpecialityLoading: boolean,
+
+  specialistOrderId: string
+
+  specialistListLoading: boolean
+
+  orderSpecialist: Array<any>
 }
 
 export interface SpecialityCategoryProps {
