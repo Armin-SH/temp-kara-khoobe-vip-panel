@@ -3,13 +3,20 @@ import {Accordion, AccordionDetails, AccordionSummary, Button, Div, Text} from '
 import {TableItemProps} from './table-item.props'
 import styles from './table-item.module.css'
 
+export enum VipOrderSpecialistState {
+  Accepted = 'پدیرفته شده',
+  Working = 'در حال انجام',
+  Rejected = 'رد شده',
+  canceled = 'لغو شده',
+  Ended = 'پایان یافته',
+}
 
 const TableItem = ({item, keys, values, index}: TableItemProps) => {
   const [expand, setExpand] = useState(false)
   const topContainerClass = `${expand}TopContainer`
   const summaryClass = `${expand}Summary`
 
-
+  console.log(item, keys, values, index)
   const handleAccordionChange = () => {
     setExpand(!expand)
   }
@@ -48,7 +55,8 @@ const TableItem = ({item, keys, values, index}: TableItemProps) => {
                     {values[index]}
                   </Text>
                   <Text align={'right'} className={styles.detailsInfo} color={'grey.500'}>
-                    {item[keys[index]]}
+                    {/* @ts-ignore */}
+                    {keys[index] === 'state' ? VipOrderSpecialistState[item[keys[index]]] : item[keys[index]]}
                   </Text>
                 </Div>
               )

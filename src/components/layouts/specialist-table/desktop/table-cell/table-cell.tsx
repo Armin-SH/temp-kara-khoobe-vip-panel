@@ -6,8 +6,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 import {SpecialistTableActions} from "@store/specialist-table/specialist-table-actions";
 
-const TableCell = ({data, id, index}: TableCellProps) => {
+export enum VipOrderSpecialistState {
+  Accepted = 'پدیرفته شده',
+  Working = 'در حال انجام',
+  Rejected = 'رد شده',
+  canceled = 'لغو شده',
+  Ended = 'پایان یافته',
+}
 
+const TableCell = ({data, id, index}: TableCellProps) => {
   const dispatch = useDispatch()
   const state = useSelector((state: ReducerTypes) => state.specialistTable);
   const {cancelOrderLoading} = useSelector((state: ReducerTypes) => state.order);
@@ -61,7 +68,8 @@ const TableCell = ({data, id, index}: TableCellProps) => {
   return (
     <Div className={styles.cellContainer}>
       <Text color={'grey.900'} typography={'tiny'}>
-        {data}
+        {/* @ts-ignore */}
+        {id === 'state' ? VipOrderSpecialistState[data] : data}
       </Text>
     </Div>
   )
