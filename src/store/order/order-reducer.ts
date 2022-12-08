@@ -232,7 +232,6 @@ function orderReducer(state = initialState, action: any) {
     }
 
     case OrderActionTypes.CANCEL_USER_ORDER:
-      console.log(state.orderList[action?.data?.id])
       return {
         ...state,
         cancelOrderId: state.orderList[action?.data?.id].id,

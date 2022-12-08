@@ -16,7 +16,6 @@ const TableItem = ({item, keys, values, index}: TableItemProps) => {
   const topContainerClass = `${expand}TopContainer`
   const summaryClass = `${expand}Summary`
 
-  console.log(item, keys, values, index)
   const handleAccordionChange = () => {
     setExpand(!expand)
   }

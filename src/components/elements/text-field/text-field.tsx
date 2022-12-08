@@ -138,8 +138,6 @@ const TextField = (props: TextFieldProps) => {
     ...rest
   } = props;
 
-  console.log({error})
-
   let CssTextField = variant === "filled" ? FilledTextField : OutlinedTextField;
 
   return (

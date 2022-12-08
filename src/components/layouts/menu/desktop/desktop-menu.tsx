@@ -135,7 +135,6 @@ const DesktopMenu = () => {
   const rightContainer = `${expanded}RightMenuContainer`
   const subItemClass = `${expanded}SubItem`
   const indicatorPosition = `${expanded}${router.pathname.replaceAll('/', '').replaceAll(']', '').replaceAll('[', '')}IndicatorPosition`
-  console.log(indicatorPosition)
   useEffect(() => {
     if (!expanded) {
       const el: any = document.getElementById('scroll');
