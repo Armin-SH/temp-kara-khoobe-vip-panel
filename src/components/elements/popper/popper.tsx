@@ -6,7 +6,7 @@ import {PopperProps} from './popper.props'
 const Popper = ({open, children, anchorEl, id, className, placement}: PopperProps) => {
 
   return (
-    <MaterialPopper className={className} placement={placement} open={open} anchorEl={anchorEl} id={id}>
+    <MaterialPopper className={className} placement={placement} open={open} anchorEl={anchorEl} id={id} nonce={undefined} onResize={undefined} onResizeCapture={undefined}>
       {children}
     </MaterialPopper>
   )
