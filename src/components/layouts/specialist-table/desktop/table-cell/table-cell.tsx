@@ -56,7 +56,7 @@ const TableCell = ({data, id, index}: TableCellProps) => {
     return (
       <Div className={styles.cellContainer}>
         <Button className={styles.actionButton} onClick={handleClick} variant={'contained'} size={"medium"}>
-          <Text color={'common.white'} typography={'tiny'}>
+          <Text color={'common.white'} typography={'small'}>
             اقدامات
           </Text>
         </Button>

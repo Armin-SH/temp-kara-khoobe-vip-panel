@@ -103,7 +103,9 @@ const ReOrderModal = () => {
           </Div>
         </Div>
         <Button loading={storeOrderLoading} disabled={storeOrderLoading} onClick={handleStoreOrder} className={styles.button}>
+          <Text color={'common.white'} typography={'small'} type={'medium'}>
           ثبت سفارش
+          </Text>
         </Button>
       </Div>
     </Modal>

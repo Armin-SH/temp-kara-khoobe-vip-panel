@@ -52,12 +52,12 @@ const Settings = () => {
         </Div>
         <Div mobile='column' className={styles.buttonContainer}>
           <Button className={styles.button}>
-            <Text color={'common.white'} typography={'tiny'} type={'medium'}>
+            <Text color={'common.white'} typography={'small'} type={'medium'}>
               افزایش موجودی
             </Text>
           </Button>
           <Button color={'secondary'} className={styles.button}>
-            <Text color={'common.white'} typography={'tiny'} type={'medium'}>
+            <Text color={'common.white'} typography={'small'} type={'medium'}>
               انصراف
             </Text>
           </Button>

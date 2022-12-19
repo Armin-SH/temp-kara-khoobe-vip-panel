@@ -54,7 +54,7 @@ const Verify = () => {
   return (
     <Div className={styles.container} mobile={"column"}>
       <Button href={routes['route.auth.otp']} className={styles.returnButton} variant={"text"}>
-        <Text typography={"tiny"} color={'grey.900'}>
+        <Text typography={"small"} color={'grey.900'}>
           بازگشت
         </Text>
         <Div className={styles.returnIcon}>
