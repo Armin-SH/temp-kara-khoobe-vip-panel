@@ -70,13 +70,13 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
             <Popper className={styles.popperContainer} id={id} placement={'bottom-start'} open={open} anchorEl={anchorEl}>
               <Div mobile={'column'} className={styles.popper}>
                 <Button disabled={cancelOrderLoading} onClick={handleReOrder} className={styles.actionButton} variant={"text"}>
-                  <Text color={"grey.900"} typography={'tiny'} align={"right"}>
+                  <Text color={"grey.900"} typography={'small'} align={"right"}>
                     درخواست مجدد
                   </Text>
                 </Button>
                 {live ? (
                   <Button disabled={cancelOrderLoading} loading={cancelOrderLoading} onClick={handleCancelOrder} className={styles.actionButton} variant={"text"}>
-                    <Text color={"grey.900"} typography={'tiny'} align={"right"}>
+                    <Text color={"grey.900"} typography={'small'} align={"right"}>
                       لغو
                     </Text>
                   </Button>
@@ -104,7 +104,7 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
             })}
             <Div key={index} className={styles.specialistButtonContainer}>
               <Button className={styles.specialistButton} variant={'contained'} onClick={handleSpecialist}>
-                <Text color={"common.white"} typography={"tiny"}>
+                <Text color={"common.white"} typography={"small"}>
                   مشاهده متخصصین
                 </Text>
               </Button>
@@ -115,7 +115,7 @@ const TableItem = ({item, keys, values, modal, modalAction, index}: TableItemPro
                   وضعیت
                 </Text>
                 <Button size={'small'} className={styles.modalButton} onClick={modalAction}>
-                  <Text color={'common.white'} typography={'tiny'} type={'medium'}>
+                  <Text color={'common.white'} typography={'small'} type={'medium'}>
                     درخواست
                   </Text>
                 </Button>

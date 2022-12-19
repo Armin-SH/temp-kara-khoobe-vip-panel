@@ -36,7 +36,7 @@ const TableItem = ({item, keys, values, index}: TableItemProps) => {
             </Div>
             <Button className={styles.actionButton} variant={'contained'} size={"medium"} onClick={() => {
             }}>
-              <Text color={'common.white'} typography={'tiny'}>
+              <Text color={'common.white'} typography={'small'}>
                 اقدامات
               </Text>
             </Button>

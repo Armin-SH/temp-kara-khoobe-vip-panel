@@ -6,7 +6,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
 
 
-const AddressItem = ({item, editCallback}: { item: any, editCallback: ({item, map}: { item: any, map: boolean }) => void }) => {
+const AddressItem = ({item, editCallback}: {
+  item: any, editCallback: ({
+                              item,
+                              map
+                            }: { item: any, map: boolean }) => void
+}) => {
   const dispatch = useDispatch()
   const {addressLoading} = useSelector((state: ReducerTypes) => state.user);
 
@@ -54,11 +59,17 @@ const AddressItem = ({item, editCallback}: { item: any, editCallback: ({item, ma
         </Text>
       </Div>
       <Div className={styles.buttonContainer}>
-        <Button disabled={addressLoading} loading={addressLoading} onClick={handleRemoveAddress} variant={'outlined'} color={'error'} className={styles.button}>
-          حدف
+        <Button disabled={addressLoading} loading={addressLoading} onClick={handleRemoveAddress} variant={'outlined'}
+                color={'error'} className={styles.button}>
+          <Text color={'error.main'} typography={'small'} type={'medium'}>
+            حدف
+          </Text>
         </Button>
-        <Button disabled={addressLoading} loading={addressLoading} onClick={handleEditAddress} color={'primary'} className={styles.button}>
-          ویرایش
+        <Button disabled={addressLoading} loading={addressLoading} onClick={handleEditAddress} color={'primary'}
+                className={styles.button}>
+          <Text color={'common.white'} typography={'small'} type={'medium'}>
+            ویرایش
+          </Text>
         </Button>
       </Div>
     </Div>

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import AddressItem from './address-item'
 import {useSelector} from "react-redux";
 import {ReducerTypes} from "@store/reducer";
-import {Button, Div, Modal} from "@elements";
+import {Button, Div, Modal, Text} from "@elements";
 import styles from "./address-item/address-item.module.css";
 import {ParsiMap} from "@modules";
 
@@ -48,7 +48,9 @@ const AddressList = () => {
         )) : null}
       </Div>
       <Button onClick={handleAddNewAddress}>
+        <Text color={'common.white'} typography={'small'} type={'medium'}>
         افزودن آدرس جدید
+        </Text>
       </Button>
       <Modal open={map} onClose={() => setMap(false)}>
         <ParsiMap

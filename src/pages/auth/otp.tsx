@@ -45,7 +45,7 @@ const Otp = () => {
   return (
     <Div className={styles.container} mobile={"column"}>
       <Button href={routes['route.auth.login']} className={styles.returnButton} variant={"text"}>
-        <Text typography={"tiny"} color={'grey.900'}>
+        <Text typography={"small"} color={'grey.900'}>
           بازگشت
         </Text>
         <Div className={styles.returnIcon}>

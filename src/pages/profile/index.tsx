@@ -14,7 +14,15 @@ import {InputAdornment} from '@mui/material'
 
 
 const Profile = () => {
-  const {identifierFile, nationalIdFile, uploadFileLoading, userInfo, updateUSerInfoLoading, userInfoError, userError} = useSelector((state: ReducerTypes) => state.user);
+  const {
+    identifierFile,
+    nationalIdFile,
+    uploadFileLoading,
+    userInfo,
+    updateUSerInfoLoading,
+    userInfoError,
+    userError
+  } = useSelector((state: ReducerTypes) => state.user);
   const dispatch = useDispatch()
 
   const inputHandler = ({e, key}: { e: ChangeEvent<HTMLInputElement>, key: UserInfoFields }) => {
@@ -100,7 +108,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'firstName'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'firstName'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -129,7 +138,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'lastName'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'lastName'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -158,7 +168,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'phoneNumber'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'phoneNumber'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -187,7 +198,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'internalNumber'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'internalNumber'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -216,7 +228,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'nationalCode'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'nationalCode'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -245,7 +258,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'corporationTelephone'})} shape={"circle"}
+                          variant={"text"} size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -274,7 +288,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'corporationName'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'corporationName'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -303,7 +318,8 @@ const Profile = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment sx={{marginLeft: "6px"}} position="end">
-                  <Button onClick={() => clearTextField({key: 'corporationCode'})} shape={"circle"} variant={"text"} size={"small"}>
+                  <Button onClick={() => clearTextField({key: 'corporationCode'})} shape={"circle"} variant={"text"}
+                          size={"small"}>
                     <Div className={styles.clearInput}>
                       <Image src={CloseGreyIcon}/>
                     </Div>
@@ -327,13 +343,15 @@ const Profile = () => {
               </Text>
               {userInfo.ceoNationalCardUrl ? (
                 <Div className={styles.nationalCard}>
-                  <Image loader={() => `${userInfo.ceoNationalCardUrl}?mobile=true`} src={`${userInfo.ceoNationalCardUrl}?mobile=true`}/>
+                  <Image loader={() => `${userInfo.ceoNationalCardUrl}?mobile=true`}
+                         src={`${userInfo.ceoNationalCardUrl}?mobile=true`}/>
                 </Div>
               ) : (
                 <>
                   <Uploader file={nationalIdFile} fileCallback={handleUploadNationalCardFile}/>
                   {nationalIdFile ? (
-                    <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button} onClick={handleUploadNationalCardFileApi}>
+                    <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button}
+                            onClick={handleUploadNationalCardFileApi}>
                       بارگذاری تصویر
                     </Button>
                   ) : null}
@@ -346,13 +364,15 @@ const Profile = () => {
               </Text>
               {userInfo.corporationIdentifierUrl ? (
                 <Div className={styles.nationalCard}>
-                  <Image loader={() => `${userInfo.ceoNationalCardUrl}?mobile=true`} src={`${userInfo.ceoNationalCardUrl}?mobile=true`}/>
+                  <Image loader={() => `${userInfo.ceoNationalCardUrl}?mobile=true`}
+                         src={`${userInfo.ceoNationalCardUrl}?mobile=true`}/>
                 </Div>
               ) : (
                 <>
                   <Uploader file={identifierFile} fileCallback={handleUploadIdentifierFile}/>
                   {identifierFile ? (
-                    <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button} onClick={handleUploadIdentifierFileApi}>
+                    <Button loading={uploadFileLoading} disabled={uploadFileLoading} className={styles.button}
+                            onClick={handleUploadIdentifierFileApi}>
                       بارگذاری تصویر
                     </Button>
                   ) : null}
@@ -361,8 +381,11 @@ const Profile = () => {
             </Div>
           </Div>
           <Div className={styles.buttonContainer}>
-            <Button disabled={updateUSerInfoLoading} loading={updateUSerInfoLoading} onClick={handleUpdateUser} className={styles.button}>
-              ذخیره اطلاعات
+            <Button disabled={updateUSerInfoLoading} loading={updateUSerInfoLoading} onClick={handleUpdateUser}
+                    className={styles.button}>
+              <Text color={'common.white'} typography={'small'} type={'medium'}>
+                ذخیره اطلاعات
+              </Text>
             </Button>
           </Div>
         </Div>
